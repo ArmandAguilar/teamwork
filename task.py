@@ -38,7 +38,7 @@ def TaksTiempoDiarios(idtask):
         print (str(sql))
 
 def TaskRegistroProyectos(idproyect):
-    #https://forta.teamwork.com/projects/281337/tasks.json
+    
     requestProyectTask = urllib2.Request('https://forta.teamwork.com/projects/' + str(idproyect) + '/tasks.json)
     requestProyectTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseProyectTask = urllib2.urlopen(requestProyectTask)
