@@ -26,7 +26,7 @@ def task(arg):
                 TaksTiempoDiarios(str(Task['id']))
 
 def TaksTiempoDiarios(idtask):
-
+    sql_delete_RegistoTiemposDiarios()
     requestActivitiesTask = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idtask) + '/time_entries.json')
     requestActivitiesTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseActivitiesTask = urllib2.urlopen(requestActivitiesTask)
@@ -35,7 +35,8 @@ def TaksTiempoDiarios(idtask):
         print ('------>Tarea:' + str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + ' Ejecutor:' + str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + ' Id:' + str(activities['person-id']))
         ProyectoArray = str(activities['project-name']).split(" ")
         FechaJsonArrays = str(activities['date']).split("T")
-        sql = 'Insert Into AARegistroTiemposDiarios values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\')'
+        Descripcion = str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + '-' + str(activities['todo-list-name'])
+        sql = 'Insert Into AARegistroTiemposDiarios values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\')'
         print (str(sql))
         sql_sentencia(str(sql))
 
