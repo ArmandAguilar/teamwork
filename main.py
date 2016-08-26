@@ -13,5 +13,6 @@ print ("############################ Start Sync Datos Teamwork #################
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
     task(proyecto)
+    #TaskRegistroProyectos(proyecto)
 
 print ("############################ End Sync Datos Teamwork  ############################")
