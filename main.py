@@ -8,6 +8,7 @@ import unicodedata
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
+import pymssql
 print ("############################ Start Sync Datos Teamwork ############################")
 #1.- Lista de Proyectos
 for proyecto in projectos_id:
