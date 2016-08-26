@@ -38,8 +38,8 @@ def TaksTiempoDiarios(idtask):
         FechaJsonArrays = str(activities['date']).split("T")
         Descripcion = str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + '-' + str(activities['todo-list-name'])
         sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\')'
-        sql_sentencia(str(sql))
-        print (str(sql))
+        print sql_sentencia(sql)
+        #print (str(sql))
 
 
 def TaskRegistroProyectos(idproyect):
