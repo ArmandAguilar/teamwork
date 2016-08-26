@@ -19,7 +19,8 @@ def task(arg):
         for Task in datajsonTaks['todo-items']:
             i += 1
             if Task.get('responsible-party-ids') is None:
-                print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
+                #print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
+                valor = '0'
             else:
                 #print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
                 #print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
