@@ -21,8 +21,8 @@ def task(arg):
             if Task.get('responsible-party-ids') is None:
                 print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
             else:
-                print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
-                print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
+                #print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
+                #print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
                 TaksTiempoDiarios(str(Task['id']))
 
 def TaksTiempoDiarios(idtask):
