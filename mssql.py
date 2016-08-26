@@ -10,10 +10,10 @@ sys.setdefaultencoding("utf-8")
 def sql_sentencia(sql):
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
-    cur.execute(str(sql))
+    cur.execute(sql)
     conn.commit()
     conn.close()
-    return cur
+    return sql
 def sql_delete_RegistoTiemposDiarios():
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
