@@ -10,7 +10,7 @@ sys.setdefaultencoding("utf-8")
 def sql_sentencia(sql):
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
-    cur.execute(sql)
+    cur.execute(str(sql))
     conn.commit()
     conn.close()
     return conn
