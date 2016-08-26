@@ -13,7 +13,7 @@ def sql_sentencia(sql):
     cur.execute(str(sql))
     conn.commit()
     conn.close()
-    return conn
+    return cur
 def sql_delete_RegistoTiemposDiarios():
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
