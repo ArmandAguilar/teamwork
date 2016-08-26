@@ -44,7 +44,7 @@ def TaksTiempoDiarios(idtask):
         conn.commit()
         conn.close()
         #print sql_sentencia(sql)
-        #print (str(sql))
+        print (str(sql))
 
 
 def TaskRegistroProyectos(idproyect):
