@@ -1,6 +1,6 @@
 #!user/bin/python
 from tokens import *
-from mssql import *
+#from mssql import *
 import urllib2, base64
 import json
 import unicodedata
@@ -37,7 +37,7 @@ def TaksTiempoDiarios(idtask):
         FechaJsonArrays = str(activities['date']).split("T")
         Descripcion = str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + '-' + str(activities['todo-list-name'])
         sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\')'
-        sql_sentencia(sql)
+        #sql_sentencia(sql)
         print (str(sql))
 
 def TaskRegistroProyectos(idproyect):
@@ -65,8 +65,34 @@ def TaskRegistroProyectos(idproyect):
         EtiqFase = '---'
         EtiqDocumento = '---'
         EtiqDisciplina = '---'
-        sql = 'Insert into AARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(ProyectTask['start-date']) + '\',\'' + str(ProyectTask['due-date-base']) + '\',\'' + str(ProyectTask['due-date']) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
-        print (sql)
+        #StartDate
+        if ProyectTask['start-date'] is None:
+            StartDate = '1999-01-01 00:00:00'
+        else:
+            if ProyectTask['start-date'] == '':
+                StartDate = '1999-01-01 00:00:00'
+            else:
+                StartDate = datetime.strptime(str(ProyectTask['start-date']),'%Y%m%d')
+
+        #DueDateBase
+        if ProyectTask['due-date-base'] is None:
+            DueDateBase = '1999-01-01 00:00:00'
+        else:
+            if ProyectTask['due-date-base'] == '':
+                DueDateBase = '1999-01-01 00:00:00'
+            else:
+                DueDateBase = datetime.strptime(str(ProyectTask['due-date-base']),'%Y%m%d')
+
+        #DueDate
+        if ProyectTask['due-date'] is None:
+            DueDate = '1999-01-01 00:00:00'
+        else:
+            if ProyectTask['due-date'] == '':
+                DueDate = '1999-01-01 00:00:00'
+            else:
+                DueDate = datetime.strptime(str(ProyectTask['due-date']),'%Y%m%d')
+        sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
+        print (str(sql))
         sql_sentencia(sql)
 
 #def sap(sql):
