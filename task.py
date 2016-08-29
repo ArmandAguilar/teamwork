@@ -1,6 +1,6 @@
 #!user/bin/python
 from tokens import *
-#from mssql import *
+from mssql import *
 import urllib2, base64
 import json
 import unicodedata
