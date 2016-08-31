@@ -1,6 +1,6 @@
 #!user/bin/python
 from tokens import *
-from mssql import *
+#from mssql import *
 import urllib2, base64
 import json
 import unicodedata
@@ -48,14 +48,14 @@ def TaskRegistroProyectos(idproyect):
     datajsonProyectTask = json.loads(responseProyectTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTask  in datajsonProyectTask['todo-items']:
         ProyectoArray = str(ProyectTask['project-name']).split(" ")
-        IdResposnable = ''
+        IdResposnable = 0
         ParentTask = ''
         if ProyectTask.get('responsible-party-id') is None:
-            IdResposnable = ''
+            IdResposnable = 0
         else:
             IdResposnable = ProyectTask['responsible-party-ids']
         if ProyectTask.get('responsible-party-ids') is None:
-            IdResposnable = ''
+            IdResposnable = 0
         else:
             IdResposnable = ProyectTask['responsible-party-id']
         if ProyectTask.get('parentTaskId') is None:
@@ -91,9 +91,17 @@ def TaskRegistroProyectos(idproyect):
                 DueDate = '1999-01-01 00:00:00'
             else:
                 DueDate = datetime.strptime(str(ProyectTask['due-date']),'%Y%m%d')
-        sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
-        print (str(sql))
-        sql_sentencia(sql)
-
-#def sap(sql):
-#    pass
+        #IdUsuario
+        try:
+            int(IdResposnable)
+            #print ('algo' + '.-' + str(IdResposnable))
+            sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
+            #sql_sentencia(sql)
+        except ValueError:
+            #print ('cadean' + '.-' + str(IdResposnable))
+            AIdResposnable = str(IdResposnable).split(",")
+            for idUser in AIdResposnable:
+                #print ('algos' + '.-' + str(idUser))
+                sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
+                #sql_sentencia(sql)
+                print (str(sql))
