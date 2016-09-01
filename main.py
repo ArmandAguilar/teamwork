@@ -2,6 +2,7 @@
 from tokens import *
 from projects import *
 from task import *
+from mssql import *
 import urllib2, base64
 import json
 import unicodedata
