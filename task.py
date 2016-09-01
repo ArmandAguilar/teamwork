@@ -96,12 +96,16 @@ def TaskRegistroProyectos(idproyect):
             int(IdResposnable)
             #print ('algo' + '.-' + str(IdResposnable))
             sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
-            #sql_sentencia(sql)
+            sql_sentencia(sql)
         except ValueError:
             #print ('cadean' + '.-' + str(IdResposnable))
             AIdResposnable = str(IdResposnable).split(",")
             for idUser in AIdResposnable:
                 #print ('algos' + '.-' + str(idUser))
                 sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
-                #sql_sentencia(sql)
+                sql_sentencia(sql)
                 print (str(sql))
+
+#def RegistroASAP(date):
+
+#    pass

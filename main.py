@@ -8,11 +8,11 @@ import unicodedata
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
-#import pymssql
+import pymssql
 print ("############################ Start Sync Datos Teamwork ############################")
 #Borramos datos de las tablas :
-#sql_delete_RegistoTiemposDiarios()
-#sql_delete_RegistroProyectos()
+sql_delete_RegistoTiemposDiarios()
+sql_delete_RegistroProyectos()
 #1.- Lista de Proyectos
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
