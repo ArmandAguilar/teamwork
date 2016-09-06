@@ -62,7 +62,7 @@ def TaskRegistroProyectos(idproyect):
         else:
             IdResposnable = ProyectTask['responsible-party-id']
         if ProyectTask.get('parentTaskId') is None:
-            ParentTask = ''
+            ParentTask = '0'
         else:
             ParentTask = ProyectTask['parentTaskId']
         EtiqFase = '---'
