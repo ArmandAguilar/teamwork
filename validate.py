@@ -9,7 +9,7 @@ def validate_up_in(IdTareas,IdProyecto,IdUsuario,ListaTarea):
     cur = conn.cursor()
     cur.execute(sql_buscar)
     for value in cur:
-        print value
+        print str(value)
     conn.commit()
     conn.close()
     return value
