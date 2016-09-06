@@ -65,6 +65,10 @@ def TaskRegistroProyectos(idproyect):
             ParentTask = '0'
         else:
             ParentTask = ProyectTask['parentTaskId']
+            if ParentTask == '':
+                ParentTask
+            else:
+                ParentTask = ProyectTask['parentTaskId']
         EtiqFase = '---'
         EtiqDocumento = '---'
         EtiqDisciplina = '---'
