@@ -4,7 +4,7 @@ import pymssql
 
 
 def validate_up_in(IdTareas,IdProyecto,IdUsuario,ListaTarea):
-    sql_buscar = 'SELECT [IdTareas] FROM [SAP].[dbo].[AAARegistroProyecto] Where [IdTareas]=\'' + IdTareas + '\' and [IdProyecto]=\'' + IdProyecto + '\' and [IdUsuario]=\'' + IdUsuario + '\' and [ListaTarea]=\'' + ListaTarea + '\''
+    sql_buscar = 'SELECT [IdTareas] FROM [SAP].[dbo].[AAARegistroProyecto] Where [IdTareas]=\'' + str(IdTareas) + '\' and [IdProyecto]=\'' + str(IdProyecto) + '\' and [IdUsuario]=\'' + str(IdUsuario) + '\' and [ListaTarea]=\'' + str(ListaTarea) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
