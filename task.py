@@ -66,7 +66,7 @@ def TaskRegistroProyectos(idproyect):
         else:
             ParentTask = ProyectTask['parentTaskId']
             if ParentTask == '':
-                ParentTask
+                ParentTask = '0'
             else:
                 ParentTask = ProyectTask['parentTaskId']
         EtiqFase = '---'
