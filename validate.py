@@ -14,3 +14,15 @@ def validate_up_in(IdTareas,IdProyecto,IdUsuario,ListaTarea):
     conn.commit()
     conn.close()
     return accion
+
+def validate_up_in_AAARegistroDeTiemposDiarios(idTaskTeamwork):
+    accion = 'Insert'
+    sql_buscar = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] where [IdTeam] = \'' + str(idTaskTeamwork) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_buscar)
+    for value in cur:
+        accion = 'Update'
+    conn.commit()
+    conn.close()
+    return accion
