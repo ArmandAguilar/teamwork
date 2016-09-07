@@ -40,7 +40,7 @@ def TaksTiempoDiarios(idtask):
         FechaJsonArrays = str(activities['date']).split("T")
         Descripcion = str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + '-' + str(activities['todo-list-name'])
         #Validamos si es una actualizacion o un insert
-        tipoConsultas=validate_up_in_AAARegistroDeTiemposDiarios(idTaskTeamwork)
+        tipoConsultas=validate_up_in_AAARegistroDeTiemposDiarios(activities['id'])
         if tipoConsultas == 'Insert':
             sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + activities['id']+ '\')'
         else:
