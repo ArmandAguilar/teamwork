@@ -20,26 +20,32 @@ def task(arg):
         for Task in datajsonTaks['todo-items']:
             i += 1
             if Task.get('responsible-party-ids') is None:
-                print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
+                #print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
                 valor = '0'
             else:
-                print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
-                print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
+                #print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
+                #print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
                 TaksTiempoDiarios(str(Task['id']))
-
+#funcion que registra  en #funcion que registra  en AAARegistroProyecto
 def TaksTiempoDiarios(idtask):
     requestActivitiesTask = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idtask) + '/time_entries.json')
     requestActivitiesTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseActivitiesTask = urllib2.urlopen(requestActivitiesTask)
     datajsonActivitiesTask = json.loads(responseActivitiesTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     #Aqui se programa un diccionario para validar los dias y insterar o actualizar el regisro
+    tipoConsultas = ''
     for activities in datajsonActivitiesTask['time-entries']:
         print ('------>Tarea:' + str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + ' Ejecutor:' + str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + ' Id:' + str(activities['person-id']))
         ProyectoArray = str(activities['project-name']).split(" ")
         FechaJsonArrays = str(activities['date']).split("T")
         Descripcion = str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + '-' + str(activities['todo-list-name'])
-
-        sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + activities['id']+ '\')'
+        #Validamos si es una actualizacion o un insert
+        tipoConsultas=validate_up_in_AAARegistroDeTiemposDiarios(idTaskTeamwork)
+        if tipoConsultas == 'Insert':
+            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + activities['id']+ '\')'
+        else:
+            UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
+            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + activities['id'] + '\''
         sql_sentencia(sql)
         print (str(sql))
 #funcion que registra  en AAARegistroProyecto
