@@ -42,6 +42,6 @@ def sap_insert(DirTiempoDiario):
         #Funcion qu busca el nombre del proyecto registrado en la base de datos MSSQL
         Proy = ProyectName()
         #Consulta para instera en la tabla AATiemposDeProduccion
-        sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + DirMetaDataUser['Nombre'] + '\',\'' + DirMetaDataUser['Apellidos'] + '\',\'' + TiempoDiario['NumProyecto'] + '\',\'NomProyecto\',\'' + TiempoDiario['Dia'] + '\',\'' + TiempoDiario['Tarea'] + '\',\'Porcentaje\',\'Producto\',\'' + dataDir['IdUsuario'] + '\',\'0\',\'' + DirMetaDataUser['Departamento'] + '\',\'' + DirMetaDataUser['Perfil'] + '\',\'.\',\'' + DirMetaDataUser['Acronimo'] + '\',\'Si\')'
-    
+        sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(TiempoDiario['NumProyecto']) + '\',\'NomProyecto\',\'' + str(TiempoDiario['Dia']) + '\',\'' + str(TiempoDiario['Tarea']) + '\',\'Porcentaje\',\'Producto\',\'' + str(dataDir['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
+
     return sql
