@@ -36,14 +36,16 @@ def sap_insert(DirTiempoDiario):
     #DirSAP['Tarea'] = str(Descripcion)
     #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
     Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
+    DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
+    sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(TiempoDiario['NumProyecto']) + '\',\'NomProyecto\',\'' + str(TiempoDiario['Dia']) + '\',\'' + str(TiempoDiario['Tarea']) + '\',\'Porcentaje\',\'Producto\',\'' + str(dataDir['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
     #for TiempoDiario in DirTiempoDiario:
         #pass
         #funcion que completa los metadatos del usuario
-        #DirMetaDataUser = metaDataUser(TiempoDiario['IdUsuarioTeam'])
+        #
         #Funcion qu busca el nombre del proyecto registrado en la base de datos MSSQL
         #Proy = ProyectName(TiempoDiario['NumProyecto'])
 
         #Consulta para instera en la tabla AATiemposDeProduccion
         #sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(TiempoDiario['NumProyecto']) + '\',\'NomProyecto\',\'' + str(TiempoDiario['Dia']) + '\',\'' + str(TiempoDiario['Tarea']) + '\',\'Porcentaje\',\'Producto\',\'' + str(dataDir['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
 
-    return Proy
+    return sql
