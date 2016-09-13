@@ -35,13 +35,14 @@ def sap_insert(DirTiempoDiario):
     #DirSAP['Dia'] = FechaJsonArrays[0]
     #DirSAP['Tarea'] = str(Descripcion)
     #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+    Proy = DirTiempoDiario['NumProyecto']
     for TiempoDiario in DirTiempoDiario:
         #pass
         #funcion que completa los metadatos del usuario
         #DirMetaDataUser = metaDataUser(TiempoDiario['IdUsuarioTeam'])
         #Funcion qu busca el nombre del proyecto registrado en la base de datos MSSQL
         #Proy = ProyectName(TiempoDiario['NumProyecto'])
-        Proy = TiempoDiario[0]['NumProyecto']
+
         #Consulta para instera en la tabla AATiemposDeProduccion
         #sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(TiempoDiario['NumProyecto']) + '\',\'NomProyecto\',\'' + str(TiempoDiario['Dia']) + '\',\'' + str(TiempoDiario['Tarea']) + '\',\'Porcentaje\',\'Producto\',\'' + str(dataDir['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
 
