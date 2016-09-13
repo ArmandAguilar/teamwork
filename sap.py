@@ -7,7 +7,7 @@ def metaDataUser(idUserTeamWork):
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [TeamWok] =\'' + str(idUserTeamWork) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
-    cur.execute(sql_buscar)
+    cur.execute(sql)
     for value in cur:
         dataDir['IdUsuario'] = value['Id']
         dataDir['Nombre'] = value['Nombre']
