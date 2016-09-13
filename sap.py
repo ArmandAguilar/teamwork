@@ -36,7 +36,7 @@ def sap_insert(DirTiempoDiario):
     #DirSAP['Tarea'] = str(Descripcion)
     #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
     for TiempoDiario in DirTiempoDiario:
-        pass
+        #pass
         #funcion que completa los metadatos del usuario
         DirMetaDataUser = metaDataUser(str(TiempoDiario['IdUsuarioTeam']))
         #Funcion qu busca el nombre del proyecto registrado en la base de datos MSSQL
