@@ -55,8 +55,9 @@ def TaksTiempoDiarios(idtask):
         DirSAP['Dia'] = FechaJsonArrays[0]
         DirSAP['Tarea'] = str(Descripcion)
         DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+        print ('Sql aqui')
         print (str(sap_insert(DirSAP)))
-        sql_sentencia(sql)
+        #sql_sentencia(sql)
         #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
@@ -137,5 +138,5 @@ def TaskRegistroProyectos(idproyect):
                 else:
                     #update
                     sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(ProyectTask['content']) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[Cantidad] = \'\',[TiempoEstimado] = \'\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(idUser) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
-                sql_sentencia(sql)
+                #sql_sentencia(sql)
                 #print (str(sql))
