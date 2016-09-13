@@ -25,7 +25,7 @@ def ProyectName(IdProyecto):
     cur = conn.cursor()
     cur.execute(sql)
     for value in cur:
-        NombreProyecto = value['Proyecto']
+        NombreProyecto = value[0]
     conn.commit()
     conn.close()
     return NombreProyecto
