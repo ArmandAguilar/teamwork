@@ -4,7 +4,7 @@ from mssql import *
 
 def metaDataUser(idUserTeamWork):
     dataDir = {}
-    sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [TeamWok] =\'' + str(idUserTeamWork) + ''\''
+    sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [TeamWok] =\'' + str(idUserTeamWork) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
