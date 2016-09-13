@@ -35,7 +35,7 @@ def sap_insert(DirTiempoDiario):
     #DirSAP['Dia'] = FechaJsonArrays[0]
     #DirSAP['Tarea'] = str(Descripcion)
     #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
-    Proy = ProyectName(DirTiempoDiario['NumProyecto'])
+    Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
     #for TiempoDiario in DirTiempoDiario:
         #pass
         #funcion que completa los metadatos del usuario
