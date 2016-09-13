@@ -23,7 +23,7 @@ def ProyectName(IdProyecto):
     sql = 'SELECT [Proyecto] FROM [SAP].[dbo].[Presupuestos] Where [NoProyecto] =\'' + str(IdProyecto) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
-    cur.execute(sql_buscar)
+    cur.execute(sql)
     for value in cur:
         NombreProyecto = value['Proyecto']
     conn.commit()
