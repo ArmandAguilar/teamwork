@@ -30,6 +30,17 @@ def ProyectName(IdProyecto):
     conn.close()
     return NombreProyecto
 
+def CostoUnitarioRecursos(IdUsuario):
+    sql = 'SELECT [CostoUnitario] FROM [SAP].[dbo].[RecursosCostos] Where [IdRecurso] = \'' + str(IdUsuario) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql)
+    for value in cur:
+        CostoUnitario = value[0]
+    conn.commit()
+    conn.close()
+    return CostoUnitario
+
 def sap_insert(DirTiempoDiario):
     #DirSAP['NumProyecto'] = ProyectoArray[0]
     #DirSAP['Dia'] = FechaJsonArrays[0]
@@ -37,7 +48,10 @@ def sap_insert(DirTiempoDiario):
     #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
     Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
     DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
-    sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(DirTiempoDiario['NumProyecto']) + '\',\'NomProyecto\',\'' + str(DirTiempoDiario['Dia']) + '\',\'' + str(DirTiempoDiario['Tarea']) + '\',\'Porcentaje\',\'Producto\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
+    Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
+    Porcentaje = (DirTiempoDiario['Horas']/9.0) * 100
+    PorcentajeF = float("{0:.2f}".format(Porcentaje))
+    sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(DirTiempoDiario['NumProyecto']) + '\',\'' + str(Proy) + '\',\'' + str(DirTiempoDiario['Dia']) + '\',\'' + str(DirTiempoDiario['Tarea']) + '\',\'' + str(PorcentajeF) + '\',\'Producto\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
     #for TiempoDiario in DirTiempoDiario:
         #pass
         #funcion que completa los metadatos del usuario
