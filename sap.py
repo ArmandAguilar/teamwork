@@ -49,7 +49,7 @@ def sap_insert(DirTiempoDiario):
     Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
     DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
     Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
-    Porcentaje = (DirTiempoDiario['Horas']/9.0) * 100
+    Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
     PorcentajeF = float("{0:.2f}".format(Porcentaje))
     sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(DirTiempoDiario['NumProyecto']) + '\',\'' + str(Proy) + '\',\'' + str(DirTiempoDiario['Dia']) + '\',\'' + str(DirTiempoDiario['Tarea']) + '\',\'' + str(PorcentajeF) + '\',\'Producto\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\')'
     #for TiempoDiario in DirTiempoDiario:
