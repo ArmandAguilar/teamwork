@@ -12,21 +12,21 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 def task(arg):
-    if arg == '281337':
-        requestTask = urllib2.Request("https://forta.teamwork.com/projects/" + str(arg)  +"/tasks.json")
-        requestTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
-        responseTask = urllib2.urlopen(requestTask)
-        datajsonTaks = json.loads(responseTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
-        i = 0
-        for Task in datajsonTaks['todo-items']:
-            i += 1
-            if Task.get('responsible-party-ids') is None:
-                #print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
-                valor = '0'
-            else:
-                #print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
-                #print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
-                TaksTiempoDiarios(str(Task['id']))
+    #if arg == '281337':
+    requestTask = urllib2.Request("https://forta.teamwork.com/projects/" + str(arg)  +"/tasks.json")
+    requestTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
+    responseTask = urllib2.urlopen(requestTask)
+    datajsonTaks = json.loads(responseTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
+    i = 0
+    for Task in datajsonTaks['todo-items']:
+        i += 1
+        if Task.get('responsible-party-ids') is None:
+            #print ('[++Task('+ str(Task['id']) +'): ' + str(Task['content']) + ' Responsable: None ]')
+            valor = '0'
+        else:
+            #print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
+            #print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
+            TaksTiempoDiarios(str(Task['id']))
 #funcion que registra  en #funcion que registra  en AAARegistroProyecto
 def TaksTiempoDiarios(idtask):
     requestActivitiesTask = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idtask) + '/time_entries.json')
