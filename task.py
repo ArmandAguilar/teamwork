@@ -56,6 +56,7 @@ def TaksTiempoDiarios(idtask):
         DirSAP['Tarea'] = str(Descripcion)
         DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
         DirSAP['Horas'] = str(activities['hours'])
+        DirSAP['IdJson'] = str(activities['id'])
         print ('Sql aqui')
         print (str(sap_insert(DirSAP)))
         #sql_sentencia(sql)
