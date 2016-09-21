@@ -26,3 +26,18 @@ def validate_up_in_AAARegistroDeTiemposDiarios(idTaskTeamwork):
     conn.commit()
     conn.close()
     return accion
+
+def validar_100(idUsuario,Dia):
+    Accion = 'No'
+    Porcentaje = 0.0
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and  Dia=\'' + str(Dia) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_buscar)
+    for value in cur:
+         Porcentaje = Porcentaje + float(value[0])
+    conn.commit()
+    conn.close()
+    if Porcentaje >= 100:
+        Accion = 'Si'
+    return Accion
