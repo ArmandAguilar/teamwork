@@ -1,6 +1,7 @@
 #!user/bin/python
 from tokens import *
 from mssql import *
+from validate import *
 
 def metaDataUser(idUserTeamWork):
     dataDir = {}
