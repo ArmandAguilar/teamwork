@@ -6,6 +6,7 @@ import pymssql
 def validate_up_in(IdTareas,IdProyecto,IdUsuario,ListaTarea):
     accion = 'Insert'
     sql_buscar = 'SELECT [IdTareas] FROM [SAP].[dbo].[AAARegistroProyecto] Where [IdTareas]=\'' + str(IdTareas) + '\' and [IdProyecto]=\'' + str(IdProyecto) + '\' and [IdUsuario]=\'' + str(IdUsuario) + '\' and [ListaTarea]=\'' + str(ListaTarea) + '\''
+    print(sql_buscar)
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
@@ -41,3 +42,28 @@ def validar_100(idUsuario,Dia):
     if Porcentaje >= 100:
         Accion = 'Si'
     return Accion
+#Esta funcion va ha verificar que el dia tenga 100% si no lo tiene borra el dia para que en siguiente ciclo se verifique
+def ReconstruirDia(IdUsuario,Dia):
+    borrar_id = []
+    k = 0
+    sql_buscar = 'SELECT [Id],[Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(IdUsuario) + '\' and  Dia=\'' + str(Dia) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_buscar)
+    for value in cur:
+         Porcentaje = Porcentaje + float(value[1])
+         borrar_id.insert(k,str(value[0]))
+    conn.commit()
+    conn.close()
+    if Porcentaje == 100:
+        status ='Oka'
+    else:
+        #Borramos el contenido
+        for value in borrar_id:
+            sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE Id=\'' + str(value) + '\''
+            #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+            #cur = conn.cursor()
+            #cur.execute(sql_borrar)
+            #conn.commit()
+            #conn.close()
+    return sql_borrar

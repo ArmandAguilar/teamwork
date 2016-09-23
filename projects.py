@@ -25,6 +25,8 @@ for datos in datajson['projects']:
         Vacio = ""
     elif datos['id'] == '251282':
         Vacio = ""
+    elif datos['id'] == '306189':
+        Vacio = ""
     else:
         #print(str(datos['id']) + '.-' + str(datos['name']) )
         projectos_id.insert(k,str(datos['id']))
