@@ -29,7 +29,7 @@ def validate_up_in_AAARegistroDeTiemposDiarios(idTaskTeamwork):
     return accion
 
 def validar_100(idUsuario,Dia):
-    Accion = 'No'
+    Accion = 'Si'
     Porcentaje = 0.0
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and  Dia=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
@@ -40,8 +40,22 @@ def validar_100(idUsuario,Dia):
     conn.commit()
     conn.close()
     if Porcentaje >= 100:
-        Accion = 'Si'
+        Accion = 'No'
     return Accion
+#funcion que verifica la 9 hrs
+def time9(arg):
+    Varicado9hrs = 'No'
+    sql_verifica9hrs = ''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_verifica9hrs)
+    for value in cur:
+         SumHoras = SumHoras + float(value[0])
+    conn.commit()
+    conn.close()
+    if SumHoras >= 9:
+        Varicado9hrs = 'Si'
+    return
 #Esta funcion va ha verificar que el dia tenga 100% si no lo tiene borra el dia para que en siguiente ciclo se verifique
 def ReconstruirDia(IdUsuario,Dia):
     borrar_id = []
