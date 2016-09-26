@@ -49,21 +49,26 @@ def TaksTiempoDiarios(idtask):
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + activities['id'] + '\''
+        sql_sentencia(sql)
         #Aqui Verificamos si el registo del usuario cumple con las nueve 9 o mas
         #Si.- El registro es >=9 insertamos en la tambla de AAARegistrosDeProduccionClon
         #No .- Seleciionamos Dia y Usuario y lo borramos si ya existe en el sistema
         #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
-        
-        #Preparamos el dicionario para insertar datos en sap
-        DirSAP['NumProyecto'] = ProyectoArray[0]
-        DirSAP['Dia'] = FechaJsonArrays[0]
-        DirSAP['Tarea'] = str(Descripcion)
-        DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
-        DirSAP['Horas'] = str(activities['hours'])
-        DirSAP['IdJson'] = str(activities['id'])
-        print ('Sql aqui')
-        print (str(sap_insert(DirSAP)))
-        sql_sentencia(sql)
+        mayoriguala9 = time9(str(activities['person-id']))
+        if mayoriguala9 == 'Si':
+            #Preparamos el dicionario para insertar datos en sap
+            DirSAP['NumProyecto'] = ProyectoArray[0]
+            DirSAP['Dia'] = FechaJsonArrays[0]
+            DirSAP['Tarea'] = str(Descripcion)
+            DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+            DirSAP['Horas'] = str(activities['hours'])
+            DirSAP['IdJson'] = str(activities['id'])
+            print ('Sql aqui')
+            print (str(sap_insert(DirSAP)))
+        else:
+            BorramosDia(IdUsuarioTeam,Dia)
+
+
         #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):

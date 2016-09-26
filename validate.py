@@ -43,9 +43,9 @@ def validar_100(idUsuario,Dia):
         Accion = 'No'
     return Accion
 #funcion que verifica la 9 hrs
-def time9(arg):
+def time9(IdUserTeam):
     Varicado9hrs = 'No'
-    sql_verifica9hrs = ''
+    sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where  =\'' + str(IdUserTeam) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_verifica9hrs)
@@ -56,28 +56,12 @@ def time9(arg):
     if SumHoras >= 9:
         Varicado9hrs = 'Si'
     return
-#Esta funcion va ha verificar que el dia tenga 100% si no lo tiene borra el dia para que en siguiente ciclo se verifique
-def ReconstruirDia(IdUsuario,Dia):
-    borrar_id = []
-    k = 0
-    sql_buscar = 'SELECT [Id],[Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(IdUsuario) + '\' and  Dia=\'' + str(Dia) + '\''
+#Esta funcion borra un dia
+def BorramosDia(IdUsuarioTeam,Dia):
+    sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE Id=\'' + str(IdUsuarioTeam) + '\' and Dia=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
-    cur.execute(sql_buscar)
-    for value in cur:
-         Porcentaje = Porcentaje + float(value[1])
-         borrar_id.insert(k,str(value[0]))
+    cur.execute(sql_borrar)
     conn.commit()
     conn.close()
-    if Porcentaje == 100:
-        status ='Oka'
-    else:
-        #Borramos el contenido
-        for value in borrar_id:
-            sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE Id=\'' + str(value) + '\''
-            #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-            #cur = conn.cursor()
-            #cur.execute(sql_borrar)
-            #conn.commit()
-            #conn.close()
     return sql_borrar
