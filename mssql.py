@@ -21,9 +21,13 @@ def sql_delete_RegistroProyectos():
     conn.close()
     return conn
 def sql_sentencia(sql):
-    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-    cur = conn.cursor()
-    cur.execute(sql)
-    conn.commit()
-    conn.close()
-    return sql
+    try:
+        conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+        cur = conn.cursor()
+        cur.execute(sql)
+        conn.commit()
+        conn.close()
+        senetencia = sql
+    except ValueError:
+        sentencia = '-------Error------:' + sql + ''
+    return sentencia
