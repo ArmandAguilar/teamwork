@@ -43,9 +43,9 @@ def validar_100(idUsuario,Dia):
         Accion = 'No'
     return Accion
 #funcion que verifica la 9 hrs
-def time9(IdUserTeam):
+def time9(IdUserTeam,Dia):
     Varicado9hrs = 'No'
-    sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where  =\'' + str(IdUserTeam) + '\''
+    sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] IdUsuario=\'' + str(IdUsuarioTeam) + '\' and Dia=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_verifica9hrs)
@@ -58,7 +58,7 @@ def time9(IdUserTeam):
     return
 #Esta funcion borra un dia
 def BorramosDia(IdUsuarioTeam,Dia):
-    sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE Id=\'' + str(IdUsuarioTeam) + '\' and Dia=\'' + str(Dia) + '\''
+    sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE IdUsuario=\'' + str(IdUsuarioTeam) + '\' and Dia=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_borrar)
