@@ -55,7 +55,7 @@ def time9(IdUserTeam,Dia):
     conn.close()
     if SumHoras >= 9:
         Varicado9hrs = 'Si'
-    return
+    return sql_verifica9hrs
 #Esta funcion borra un dia
 def BorramosDia(IdUsuarioTeam,Dia):
     sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE IdUsuario=\'' + str(IdUsuarioTeam) + '\' and Dia=\'' + str(Dia) + '\''

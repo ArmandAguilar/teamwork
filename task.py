@@ -56,7 +56,7 @@ def TaksTiempoDiarios(idtask):
         #No .- Seleciionamos Dia y Usuario y lo borramos si ya existe en el sistema
         #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
         #Dos agumentos ne la funcion time9
-        print ('-------------!!! Kahuabonga !!!------------------')
+        print ('-------------!!! Kawuabonga !!!------------------')
         print(str(mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))))
         print ('-------------------------------')
         #if mayoriguala9 == 'Si':
@@ -138,8 +138,8 @@ def TaskRegistroProyectos(idproyect):
                 sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(ProyectTask['content']) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['description']) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
             else:
                 sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(ProyectTask['content']) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[Cantidad] = \'\',[TiempoEstimado] = \'\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(IdResposnable) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
-            print (str(sql))
-            #sql_sentencia(sql)
+            #print (str(sql))
+            sql_sentencia(sql)
         except ValueError:
             #print ('cadean' + '.-' + str(IdResposnable))
             AIdResposnable = str(IdResposnable).split(",")
