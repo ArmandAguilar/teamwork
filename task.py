@@ -50,6 +50,7 @@ def TaksTiempoDiarios(idtask):
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + activities['id'] + '\''
         sql_sentencia(sql)
+        #Quite esta zona
         #Aqui Verificamos si el registo del usuario cumple con las nueve 9 o mas
         #Si.- El registro es >=9 insertamos en la tambla de AAARegistrosDeProduccionClon
         #No .- Seleciionamos Dia y Usuario y lo borramos si ya existe en el sistema
