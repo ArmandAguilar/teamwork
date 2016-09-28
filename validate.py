@@ -46,15 +46,15 @@ def validar_100(idUsuario,Dia):
 def time9(IdUserTeam,Dia):
     Varicado9hrs = 'No'
     sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] IdUsuario=\'' + str(IdUserTeam) + '\' and Fecha=\'' + str(Dia) + '\''
-    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-    cur = conn.cursor()
-    cur.execute(sql_verifica9hrs)
-    for value in cur:
-         SumHoras = SumHoras + float(value[0])
-    conn.commit()
-    conn.close()
-    if SumHoras >= 9:
-        Varicado9hrs = 'Si'
+    #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    #cur = conn.cursor()
+    #cur.execute(sql_verifica9hrs)
+    #for value in cur:
+    #     SumHoras = SumHoras + float(value[0])
+    #conn.commit()
+    #conn.close()
+    #if SumHoras >= 9:
+    #    Varicado9hrs = 'Si'
     return sql_verifica9hrs
 #Esta funcion borra un dia
 def BorramosDia(IdUsuarioTeam,Dia):
