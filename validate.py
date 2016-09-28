@@ -45,6 +45,7 @@ def validar_100(idUsuario,Dia):
 #funcion que verifica la 9 hrs
 def time9(IdUserTeam,Dia):
     Varicado9hrs = 'No'
+    SumHoras = 0
     sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where IdUsuario=\'' + str(IdUserTeam) + '\' and Fecha=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
