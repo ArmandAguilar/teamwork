@@ -6,7 +6,7 @@ import pymssql
 def validate_up_in(IdTareas,IdProyecto,IdUsuario,ListaTarea):
     accion = 'Insert'
     sql_buscar = 'SELECT [IdTareas] FROM [SAP].[dbo].[AAARegistroProyecto] Where [IdTareas]=\'' + str(IdTareas) + '\' and [IdProyecto]=\'' + str(IdProyecto) + '\' and [IdUsuario]=\'' + str(IdUsuario) + '\' and [ListaTarea]=\'' + str(ListaTarea) + '\''
-    print(sql_buscar)
+    #print(sql_buscar)
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
@@ -45,7 +45,7 @@ def validar_100(idUsuario,Dia):
 #funcion que verifica la 9 hrs
 def time9(IdUserTeam,Dia):
     Varicado9hrs = 'No'
-    sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] IdUsuario=\'' + str(IdUserTeam) + '\' and Dia=\'' + str(Dia) + '\''
+    sql_verifica9hrs = 'SELECT [Tiempo] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] IdUsuario=\'' + str(IdUserTeam) + '\' and Fecha=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_verifica9hrs)
