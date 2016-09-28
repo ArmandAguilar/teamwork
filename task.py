@@ -57,7 +57,8 @@ def TaksTiempoDiarios(idtask):
         #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
         #Dos agumentos ne la funcion time9
         print ('-------------!!! Kawuabonga !!!------------------')
-        print(str(mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))))
+        mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
+        print(str(mayoriguala9))
         print ('-------------------------------')
         #if mayoriguala9 == 'Si':
             #Preparamos el dicionario para insertar datos en sap
