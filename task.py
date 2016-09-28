@@ -55,21 +55,19 @@ def TaksTiempoDiarios(idtask):
         #No .- Seleciionamos Dia y Usuario y lo borramos si ya existe en el sistema
         #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
         #Dos agumentos ne la funcion time9
-        mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
-        if mayoriguala9 == 'Si':
+        #mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
+        #if mayoriguala9 == 'Si':
             #Preparamos el dicionario para insertar datos en sap
-            DirSAP['NumProyecto'] = ProyectoArray[0]
-            DirSAP['Dia'] = FechaJsonArrays[0]
-            DirSAP['Tarea'] = str(Descripcion)
-            DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
-            DirSAP['Horas'] = str(activities['hours'])
-            DirSAP['IdJson'] = str(activities['id'])
-            print ('Sql aqui')
-            print (str(sap_insert(DirSAP)))
-        else:
-            BorramosDia(IdUsuarioTeam,Dia)
-
-
+        #    DirSAP['NumProyecto'] = ProyectoArray[0]
+        #    DirSAP['Dia'] = FechaJsonArrays[0]
+        #    DirSAP['Tarea'] = str(Descripcion)
+        #    DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+        #    DirSAP['Horas'] = str(activities['hours'])
+        #    DirSAP['IdJson'] = str(activities['id'])
+        #    print ('Sql aqui')
+        #    print (str(sap_insert(DirSAP)))
+        #else:
+        #    BorramosDia(IdUsuarioTeam,Dia)
         #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
