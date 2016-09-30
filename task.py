@@ -72,7 +72,7 @@ def TaksTiempoDiarios(idtask):
             DirSAP['IdJson'] = str(activities['id'])
             print (str(sap_insert(DirSAP)))
         print ('-------------------------------')
-        print (str(sql))
+        #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
 
