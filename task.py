@@ -45,10 +45,13 @@ def TaksTiempoDiarios(idtask):
         #Validamos si es una actualizacion o un insert
         tipoConsultas=validate_up_in_AAARegistroDeTiemposDiarios(activities['id'])
         if tipoConsultas == 'Insert':
-            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + activities['id']+ '\')'
+            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + str(activities['id']) + '\')'
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
-            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + activities['id'] + '\''
+            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
+            #Falata localizar el tiempo
+            BorramosDia(str(activities['person-id']),FechaJsonArrays[0],)
+
         sql_sentencia(sql)
         #Quite esta zona
         #Aqui Verificamos si el registo del usuario cumple con las nueve 9 o mas
@@ -56,11 +59,11 @@ def TaksTiempoDiarios(idtask):
         #No .- Seleciionamos Dia y Usuario y lo borramos si ya existe en el sistema
         #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
         #Dos agumentos ne la funcion time9
-        print ('-------------!!! Kawuabonga !!!------------------')
+        #
         mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
-        print(str(mayoriguala9))
-        if mayoriguala9 == 'Si':
+        if mayoriguala9 == 'No':
             #Preparamos el dicionario para insertar datos en sap
+            print ('-------------!!! Kawuabonga !!!------------------')
             DirSAP['NumProyecto'] = ProyectoArray[0]
             DirSAP['Dia'] = FechaJsonArrays[0]
             DirSAP['Tarea'] = str(Descripcion)
@@ -69,10 +72,8 @@ def TaksTiempoDiarios(idtask):
             DirSAP['IdJson'] = str(activities['id'])
             print ('Sql aqui')
             print (str(sap_insert(DirSAP)))
-        else:
-            BorramosDia(str(activities['person-id']),str(FechaJsonArrays[0]))
         print ('-------------------------------')
-        #print (str(sql))
+        print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
 

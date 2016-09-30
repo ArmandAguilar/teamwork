@@ -1,5 +1,6 @@
 #!user/bin/python
 from tokens import *
+from sap import *
 import pymssql
 
 
@@ -59,7 +60,10 @@ def time9(IdUserTeam,Dia):
     return Varicado9hrs
 #Esta funcion borra un dia
 def BorramosDia(IdUsuarioTeam,Dia):
-    sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE IdUsuario=\'' + str(IdUsuarioTeam) + '\' and Dia=\'' + str(Dia) + '\''
+    #Obtenemos el Id con esta def que esta en SAP.py
+    IdUsuario = IdUserSAP(str(IdUsuarioTeam))
+    #Borramos el Registro selcionado con el dia
+    sql_borrar ='DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE IdUsuario=\'' + str(IdUsuario) + '\' and Dia=\'' + str(Dia) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_borrar)

@@ -3,6 +3,17 @@ from tokens import *
 from mssql import *
 from validate import *
 
+def IdUserSAP(idUserTeamWork):
+    dataIdUsuario = 0
+    sql = 'SELECT [Id] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql)
+    for value in cur:
+        dataIdUsuario = value[0]
+    conn.commit()
+    conn.close()
+    return dataIdUsuario
 def metaDataUser(idUserTeamWork):
     dataDir = {}
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
