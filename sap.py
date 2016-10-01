@@ -85,4 +85,4 @@ def sap_insert(DirTiempoDiario):
         sql_sentencia(sql)
     else:
         valor='x'
-    return validarAccion
+    return sql
