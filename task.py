@@ -162,11 +162,11 @@ def ReordenarSAP():
         FechaInicio = '01/01/2016'
         FechaFinal = '31/12/2016'
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >=\'' + str(FechaInicio) + '\' and [Fecha] <= \'' + str(FechaFinal) + '\''
-        conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-        cur = conn.cursor()
-        cur.execute(sql)
-        for value in cur:
-            IdTarea = value[0]
+        #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+        #cur = conn.cursor()
+        #cur.execute(sql)
+        #for value in cur:
+        #    IdTarea = value[0]
             #IdUsuario = value[1]
             #IdProyecto = value[2]
             #Usuario = value[3]
@@ -188,8 +188,8 @@ def ReordenarSAP():
             #    print (str(sap_insert(DirSAP)))
             #else:
             #    print("......")
-        conn.commit()
-        conn.close()
+        #conn.commit()
+        #conn.close()
     except ValueError:
         sentencia = '-------Error------:' + str(sql)
-    return Regreso
+    return sql
