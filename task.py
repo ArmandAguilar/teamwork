@@ -159,33 +159,33 @@ def ReordenarSAP():
     Regreso = 'Oka'
     #1 Recorremos todos los rgistros
     try:
-        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= CAST(\'01/01/2016\' AS SMALLDATETIME) and [Fecha] <= CAST(\'01/01/2016\' AS SMALLDATETIME)'
+        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],Convert(varchar,[Fecha],101) as Fehca,[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= CAST(\'01/01/2016\' AS SMALLDATETIME) and [Fecha] <= CAST(\'01/01/2016\' AS SMALLDATETIME)'
         conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
         cur = conn.cursor()
         cur.execute(sql)
         for value in cur:
             IdTarea = value[0]
-            #IdUsuario = value[1]
-            #IdProyecto = value[2]
-            #Usuario = value[3]
-            #Descripcion = value[4]
-            #Fecha = value[5]
-            #Tiempo = value[6]
-            #IdTeam = value[7]
-            #obtenemos el Id del usuario
-            #IdUserSap = IdUserSAP(str(IdUsuario))
-            #Verificamos si el usuario tiene 100%
-            #Es100 = validar_100(str(IdUserSap),str(Fecha))
-            #if Es100 == 'No':
-            #    DirSAP['NumProyecto'] = ProyectoArray[0]
-            #    DirSAP['Dia'] = FechaJsonArrays[0]
-            #    DirSAP['Tarea'] = str(Descripcion)
-            #    DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
-            #    DirSAP['Horas'] = str(activities['hours'])
-            #    DirSAP['IdJson'] = str(activities['id'])
-            #    print (str(sap_insert(DirSAP)))
-            #else:
-            #    print("......")
+            IdUsuario = value[1]
+            IdProyecto = value[2]
+            Usuario = value[3]
+            Descripcion = value[4]
+            Fecha = value[5]
+            Tiempo = value[6]
+            IdTeam = value[7]
+            obtenemos el Id del usuario
+            IdUserSap = IdUserSAP(str(IdUsuario))
+            Verificamos si el usuario tiene 100%
+            Es100 = validar_100(str(IdUserSap),str(Fecha))
+            if Es100 == 'No':
+                DirSAP['NumProyecto'] = ProyectoArray[0]
+                DirSAP['Dia'] = FechaJsonArrays[0]
+                DirSAP['Tarea'] = str(Descripcion)
+                DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+                DirSAP['Horas'] = str(activities['hours'])
+                DirSAP['IdJson'] = str(activities['id'])
+                print (str(sap_insert(DirSAP)))
+            else:
+                print("......")
         conn.commit()
         conn.close()
     except ValueError:
