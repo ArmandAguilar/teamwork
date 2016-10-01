@@ -60,18 +60,18 @@ def TaksTiempoDiarios(idtask):
         #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
         #Dos agumentos ne la funcion time9
         #
-        mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
-        if mayoriguala9 == 'No':
+        #mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
+        #if mayoriguala9 == 'No':
             #Preparamos el dicionario para insertar datos en sap
-            print ('-------------!!! Kawuabonga !!!------------------')
-            DirSAP['NumProyecto'] = ProyectoArray[0]
-            DirSAP['Dia'] = FechaJsonArrays[0]
-            DirSAP['Tarea'] = str(Descripcion)
-            DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
-            DirSAP['Horas'] = str(activities['hours'])
-            DirSAP['IdJson'] = str(activities['id'])
-            print (str(sap_insert(DirSAP)))
-        print ('-------------------------------')
+            #print ('-------------!!! Kawuabonga !!!------------------')
+            #DirSAP['NumProyecto'] = ProyectoArray[0]
+            #DirSAP['Dia'] = FechaJsonArrays[0]
+            #DirSAP['Tarea'] = str(Descripcion)
+            #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+            #DirSAP['Horas'] = str(activities['hours'])
+            #DirSAP['IdJson'] = str(activities['id'])
+            #print (str(sap_insert(DirSAP)))
+        #print ('-------------------------------')
         #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
@@ -154,3 +154,40 @@ def TaskRegistroProyectos(idproyect):
                     sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(ProyectTask['content']) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[Cantidad] = \'\',[TiempoEstimado] = \'\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(idUser) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
                 #sql_sentencia(sql)
                 #print (str(sql))
+#Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
+def ReordenarSAP():
+    Regreso = 'Oka'
+    #1 Recorremos todos los rgistros
+    try:
+        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Fecha],[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >=\'01/01/2016\' and [Fecha] <= \'31/12/2016\''
+        conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+        cur = conn.cursor()
+        cur.execute(sql)
+        for value in cur:
+            IdTarea = value[0]
+            IdUsuario = value[1]
+            IdProyecto = value[2]
+            Usuario = value[3]
+            Descripcion = value[4]
+            Fecha = value[5]
+            Tiempo = value[6]
+            IdTeam = value[7]
+            #obtenemos el Id del usuario
+            IdUserSap = IdUserSAP(str(IdUsuario))
+            #Verificamos si el usuario tiene 100%
+            Es100 = validar_100(str(IdUserSap),str(Fecha))
+            if Es100 == 'No':
+                DirSAP['NumProyecto'] = ProyectoArray[0]
+                DirSAP['Dia'] = FechaJsonArrays[0]
+                DirSAP['Tarea'] = str(Descripcion)
+                DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+                DirSAP['Horas'] = str(activities['hours'])
+                DirSAP['IdJson'] = str(activities['id'])
+                print (str(sap_insert(DirSAP)))
+            else:
+                print("......")
+        conn.commit()
+        conn.close()
+    except ValueError:
+        sentencia = '-------Error------:' + str(sql)
+    return Regreso

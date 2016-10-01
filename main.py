@@ -17,6 +17,13 @@ print ("############################ Start Sync Datos Teamwork #################
 #1.- Lista de Proyectos
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
+    print("------------------- Begin Task -------------------")
     task(proyecto)
+    print("------------------- End Task -------------------")
+    print("------------------- Begin TaskRegistroProyectos -------------------")
     TaskRegistroProyectos(proyecto)
+    print("------------------- End TaskRegistroProyectos -------------------")
+    print("------------------- Begin ReordenarSAP -------------------")
+    ReordenarSAP()
+    print("------------------- End ReordenarSAP -------------------")
 print ("############################ End Sync Datos Teamwork  ############################")
