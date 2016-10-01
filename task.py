@@ -159,7 +159,7 @@ def ReordenarSAP():
     Regreso = 'Oka'
     #1 Recorremos todos los rgistros
     try:
-        sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >=\'01/01/2016\' and [Fecha] <= \'31/12/2016\''
+        sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios]'
         conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
         cur = conn.cursor()
         cur.execute(sql)
