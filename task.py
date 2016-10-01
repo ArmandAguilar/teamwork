@@ -173,7 +173,7 @@ def ReordenarSAP():
             #Tiempo = value[6]
             #IdTeam = value[7]
             #obtenemos el Id del usuario
-            IdUserSap = IdUserSAP(str(IdUsuario))
+            #IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%
             #Es100 = validar_100(str(IdUserSap),str(Fecha))
             #if Es100 == 'No':
