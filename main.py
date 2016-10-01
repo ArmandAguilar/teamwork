@@ -25,6 +25,6 @@ for proyecto in projectos_id:
     print("------------------- End TaskRegistroProyectos -------------------")
 
 print("------------------- Begin ReordenarSAP -------------------")
-ReordenarSAP()
+print(ReordenarSAP())
 print("------------------- End ReordenarSAP -------------------")
 print ("############################ End Sync Datos Teamwork  ############################")
