@@ -172,9 +172,9 @@ def ReordenarSAP():
             Fecha = value[5]
             Tiempo = value[6]
             IdTeam = value[7]
-            obtenemos el Id del usuario
+            #obtenemos el Id del usuario
             IdUserSap = IdUserSAP(str(IdUsuario))
-            Verificamos si el usuario tiene 100%
+            #Verificamos si el usuario tiene 100%
             Es100 = validar_100(str(IdUserSap),str(Fecha))
             if Es100 == 'No':
                 DirSAP['NumProyecto'] = ProyectoArray[0]
