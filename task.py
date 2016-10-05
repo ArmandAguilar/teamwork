@@ -173,19 +173,19 @@ def ReordenarSAP():
             IdTeam = value[6]
             #Fecha = value[7]
             #obtenemos el Id del usuario
-            IdUserSap = IdUserSAP(str(IdUsuario))
+            #IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%
-            Es100 = validar_100(str(IdUserSap),str(Fecha))
-            if Es100 == 'No':
-                DirSAP['NumProyecto'] = IdProyecto
-                DirSAP['Dia'] = '01-01-2016 00:00:00'
-                DirSAP['Tarea'] = Descripcion
-                DirSAP['IdUsuarioTeam'] = IdUsuario
-                DirSAP['Horas'] = Tiempo
-                DirSAP['IdJson'] = IdTeam
-                print (str(sap_insert(DirSAP)))
-            else:
-                print("......")
+            #Es100 = validar_100(str(IdUserSap),str(Fecha))
+            #if Es100 == 'No':
+            #    DirSAP['NumProyecto'] = IdProyecto
+            #    DirSAP['Dia'] = '01-01-2016 00:00:00'
+            #    DirSAP['Tarea'] = Descripcion
+            #    DirSAP['IdUsuarioTeam'] = IdUsuario
+            #    DirSAP['Horas'] = Tiempo
+            #    DirSAP['IdJson'] = IdTeam
+            #    print (str(sap_insert(DirSAP)))
+            #else:
+            #    print("......")
         conn.commit()
         conn.close()
     except ValueError:
