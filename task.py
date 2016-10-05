@@ -50,7 +50,7 @@ def TaksTiempoDiarios(idtask):
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
             #Falata localizar el tiempo
-            BorramosDia(str(activities['person-id']),FechaJsonArrays[0],)
+            #BorramosDia(str(activities['person-id']),FechaJsonArrays[0],)
 
         sql_sentencia(sql)
         #Quite esta zona
