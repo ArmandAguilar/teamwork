@@ -178,7 +178,7 @@ def ReordenarSAP():
             Es100 = validar_100(str(IdUserSap),str(Fecha))
             if Es100 == 'No':
                 DirSAP['NumProyecto'] = IdProyecto
-                DirSAP['Dia'] = Fecha
+                DirSAP['Dia'] = '01-01-2016 00:00:00'
                 DirSAP['Tarea'] = Descripcion
                 DirSAP['IdUsuarioTeam'] = IdUsuario
                 DirSAP['Horas'] = Tiempo
