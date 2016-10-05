@@ -11,6 +11,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 import pymssql
 print ("############################ Start Sync Datos Teamwork ############################")
+print("------------------- Begin Syc Datos -------------------")
 #Borramos datos de las tablas :
 #sql_delete_RegistoTiemposDiarios()
 #sql_delete_RegistroProyectos()
