@@ -159,7 +159,7 @@ def ReordenarSAP():
     Regreso = 'Oka'
     #1 Recorremos todos los rgistros
     try:
-        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],CAST([Fecha] AS VARCHAR) as Fecha,[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= CAST(\'01-01-2016\' AS SMALLDATETIME) and [Fecha] <= CAST(\'31-12-2016\' AS SMALLDATETIME)'
+        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= CAST(\'01-01-2016\' AS SMALLDATETIME) and [Fecha] <= CAST(\'31-12-2016\' AS SMALLDATETIME)'
         conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
         cur = conn.cursor()
         cur.execute(sql)
@@ -169,9 +169,9 @@ def ReordenarSAP():
             IdProyecto = value[2]
             Usuario = value[3]
             Descripcion = value[4]
-            Fecha = value[5]
-            Tiempo = value[6]
-            IdTeam = value[7]
+            Tiempo = value[5]
+            IdTeam = value[6]
+            #Fecha = value[7]
             #obtenemos el Id del usuario
             IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%
