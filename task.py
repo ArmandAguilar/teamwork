@@ -159,7 +159,7 @@ def ReordenarSAP():
     Regreso = 'Oka'
     #1 Recorremos todos los rgistros
     try:
-        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],Convert(varchar,[Fecha],101) as Fehca,[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= CAST(\'01/01/2016\' AS SMALLDATETIME) and [Fecha] <= CAST(\'01/01/2016\' AS SMALLDATETIME)'
+        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],Convert(varchar,[Fecha],101) as Fehca,[Tiempo],[IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= CAST(\'01/01/2016\' AS SMALLDATETIME) and [Fecha] <= CAST(\'31/12/2016\' AS SMALLDATETIME)'
         conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
         cur = conn.cursor()
         cur.execute(sql)
