@@ -154,6 +154,7 @@ def TaskRegistroProyectos(idproyect):
                 #sql_sentencia(sql)
                 #print (str(sql))
 #Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
+
 def ReordenarSAP():
     Regreso = 'Oka'
     #1 Recorremos todos los rgistros
