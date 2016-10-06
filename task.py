@@ -35,8 +35,7 @@ def TaksTiempoDiarios(idtask):
     datajsonActivitiesTask = json.loads(responseActivitiesTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     #Aqui se programa un diccionario para validar los dias y insterar o actualizar el regisro
     tipoConsultas = ''
-    #Diccionario  inicializacion
-    DirSAP = {}
+
     for activities in datajsonActivitiesTask['time-entries']:
         #print ('------>Tarea:' + str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + ' Ejecutor:' + str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + ' Id:' + str(activities['person-id']))
         ProyectoArray = str(activities['project-name']).split(" ")
@@ -158,6 +157,8 @@ def TaskRegistroProyectos(idproyect):
 def ReordenarSAP():
     Regreso = 'Oka'
     #1 Recorremos todos los rgistros
+    #Diccionario  inicializacion
+    DirSAP = {}
     try:
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\''
         conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
