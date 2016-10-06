@@ -20,13 +20,13 @@ def validar_100(idUsuario,Dia):
     Accion = 'No'
     Porcentaje = 0.0
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
-    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-    cur = conn.cursor()
+    con = pyodbc.connect(constr)
+    cur = con.cursor()
     cur.execute(sql_buscar)
     for value in cur:
          Porcentaje = Porcentaje + float(value[0])
-    conn.commit()
-    conn.close()
+    con.commit()
+    con.close()
     if Porcentaje >= 100:
         Accion = 'Si'
     return Accion
