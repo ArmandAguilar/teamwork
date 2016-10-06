@@ -2,6 +2,7 @@
 from tokens import *
 from mssql import *
 from validate import *
+import pypyodbc as pyodbc
 
 def IdUserSAP(idUserTeamWork):
     dataIdUsuario = 0
@@ -81,9 +82,13 @@ def sap_insert(DirTiempoDiario):
     ProductoF = float("{0:.2f}".format(Producto))
     #sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(DirTiempoDiario['NumProyecto']) + '\',\'' + str(Proy) + '\',CAST(\'' + str(DirTiempoDiario['Dia']) + '\' as SMALLDATETIME)' + ',\'' + str(DirTiempoDiario['Tarea']) + '\',\'' + str(PorcentajeF) + '\',\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\',\'' + str(DirTiempoDiario['IdJson']) + '\')'
     sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(DirTiempoDiario['NumProyecto']) + '\',\'' + str(Proy) + '\',\'' + str(DirTiempoDiario['Dia']) + '\',\'' + str(DirTiempoDiario['Tarea']) + '\',\'' + str(PorcentajeF) + '\',\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo']) + '\',\'Si\',\'' + str(DirTiempoDiario['IdJson']) + '\')'
-    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-    cur = conn.cursor()
+    connstr = 'Driver=Ingres;Server=(local);Database=iidbdb'
+    con = pyodbc.connect(connstr)
+    cur = con.cursor()
     cur.execute(sql)
-    conn.commit()
-    conn.close()
+    #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    #cur = conn.cursor()
+    #cur.execute(sql)
+    #conn.commit()
+    #conn.close()
     return sql

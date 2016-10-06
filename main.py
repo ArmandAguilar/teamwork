@@ -7,6 +7,7 @@ import urllib2, base64
 import json
 import unicodedata
 import sys
+import pypyodbc as pyodbc
 reload(sys)
 sys.setdefaultencoding("utf-8")
 import pymssql
