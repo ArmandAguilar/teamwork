@@ -16,9 +16,10 @@ def IdUserSAP(idUserTeamWork):
     conn.close()
     return dataIdUsuario
 def validar_100(idUsuario,Dia):
+    Fecha = str(Dia).replace('/','-')
     Accion = 'No'
     Porcentaje = 0.0
-    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\''
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
@@ -86,9 +87,5 @@ def sap_insert(DirTiempoDiario):
     cur = con.cursor()
     cur.execute(sql)
     con.commit()
-    #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-    #cur = conn.cursor()
-    #cur.execute(sql)
-    #conn.commit()
     con.close()
     return sql
