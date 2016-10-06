@@ -85,6 +85,7 @@ def sap_insert(DirTiempoDiario):
     con = pyodbc.connect(constr)
     cur = con.cursor()
     cur.execute(sql)
+    con.commit()
     #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     #cur = conn.cursor()
     #cur.execute(sql)
