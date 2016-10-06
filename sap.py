@@ -89,5 +89,5 @@ def sap_insert(DirTiempoDiario):
     #cur = conn.cursor()
     #cur.execute(sql)
     #conn.commit()
-    #conn.close()
+    conn.close()
     return sql
