@@ -17,7 +17,7 @@ def IdUserSAP(idUserTeamWork):
 def validar_100(idUsuario,Dia):
     Accion = 'Si'
     Porcentaje = 0.0
-    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and  [Dia] = \'CAST(\'' + str(Dia) + '\',VARCHAR,103)'
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and  [Dia] = CAST(\'' + str(Dia) + '\' as VARCHAR)'
     #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     #cur = conn.cursor()
     #cur.execute(sql_buscar)
