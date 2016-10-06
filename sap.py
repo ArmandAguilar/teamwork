@@ -15,19 +15,19 @@ def IdUserSAP(idUserTeamWork):
     conn.close()
     return dataIdUsuario
 def validar_100(idUsuario,Dia):
-    Accion = 'Si'
+    Accion = 'No'
     Porcentaje = 0.0
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and  [Dia] = CAST(\'' + str(Dia) + '\' as VARCHAR)'
-    #conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-    #cur = conn.cursor()
-    #cur.execute(sql_buscar)
-    #for value in cur:
-    #     Porcentaje = Porcentaje + float(value[0])
-    #conn.commit()
-    #conn.close()
-    #if Porcentaje >= 100:
-    #    Accion = 'No'
-    return sql_buscar
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_buscar)
+    for value in cur:
+         Porcentaje = Porcentaje + float(value[0])
+    conn.commit()
+    conn.close()
+    if Porcentaje >= 100:
+        Accion = 'Si'
+    return Accion
 def metaDataUser(idUserTeamWork):
     dataDir = {}
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
