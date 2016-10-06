@@ -181,7 +181,7 @@ def ReordenarSAP():
             #print(str(Fecha) + '-' + str(Es100))
             #if Es100 == 'No':
             DirSAP['NumProyecto'] = IdProyecto
-            DirSAP['Dia'] = str(Fecha).remplace('/','-')
+            DirSAP['Dia'] = str(Fecha).replace('/','-')
             DirSAP['Tarea'] = Descripcion
             DirSAP['IdUsuarioTeam'] = IdUsuario
             DirSAP['Horas'] = Tiempo
