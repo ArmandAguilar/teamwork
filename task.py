@@ -180,13 +180,13 @@ def ReordenarSAP():
             #Es100 = validar_100(str(IdUserSap),str(Fecha))
             #print(str(Fecha) + '-' + str(Es100))
             #if Es100 == 'No':
-                DirSAP['NumProyecto'] = IdProyecto
-                DirSAP['Dia'] = Fecha
-                DirSAP['Tarea'] = Descripcion
-                DirSAP['IdUsuarioTeam'] = IdUsuario
-                DirSAP['Horas'] = Tiempo
-                DirSAP['IdJson'] = IdTeam
-                print (str(sap_insert(DirSAP)))
+            DirSAP['NumProyecto'] = IdProyecto
+            DirSAP['Dia'] = Fecha
+            DirSAP['Tarea'] = Descripcion
+            DirSAP['IdUsuarioTeam'] = IdUsuario
+            DirSAP['Horas'] = Tiempo
+            DirSAP['IdJson'] = IdTeam
+            print (str(sap_insert(DirSAP)))
             #else:
             #    print("......")
         conn.commit()
