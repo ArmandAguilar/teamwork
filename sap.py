@@ -27,7 +27,7 @@ def validar_100(idUsuario,Dia):
     conn.close()
     if Porcentaje >= 100:
         Accion = 'No'
-    return Accion
+    return sql_buscar
 def metaDataUser(idUserTeamWork):
     dataDir = {}
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
