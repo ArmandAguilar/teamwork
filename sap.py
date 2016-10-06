@@ -21,7 +21,7 @@ def validar_100(idUsuario,Dia):
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
-    cursor.fetchall()
+    cur.fetchall()
     for value in cur:
          Porcentaje = Porcentaje + float(value[0])
     conn.commit()

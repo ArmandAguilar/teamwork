@@ -163,6 +163,7 @@ def ReordenarSAP():
         conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
         cur = conn.cursor()
         cur.execute(sql)
+        cur.fetchall()
         for value in cur:
             IdTarea = value[0]
             IdUsuario = value[1]
