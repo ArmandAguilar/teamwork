@@ -164,7 +164,7 @@ def ReordenarSAP():
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\''
         con = pyodbc.connect(constr)
         cur = con.cursor()
-        cur.execute(sql_buscar)
+        cur.execute(sql)
         for value in cur:
             IdTarea = value[0]
             IdUsuario = value[1]
