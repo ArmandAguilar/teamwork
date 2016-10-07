@@ -162,9 +162,9 @@ def ReordenarSAP():
     DirSAP = {}
     try:
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\''
-        conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
-        cur = conn.cursor()
-        cur.execute(sql)
+        con = pyodbc.connect(constr)
+        cur = con.cursor()
+        cur.execute(sql_buscar)
         for value in cur:
             IdTarea = value[0]
             IdUsuario = value[1]
@@ -189,8 +189,8 @@ def ReordenarSAP():
                 print ('Inserte en SAP')
             else:
                 print('No Inserte en SAP')
-        conn.commit()
-        conn.close()
+        con.commit()
+        con.close()
     except ValueError:
         sentencia = '-------Error------:' + str(sql)
     return sql
