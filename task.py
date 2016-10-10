@@ -196,7 +196,7 @@ def ReordenarSAP():
                     DirSAP['IdUsuarioTeam'] = IdUsuario
                     DirSAP['Horas'] = Tiempo
                     DirSAP['IdJson'] = IdTeam
-                    sap_update(DirTiempoDiario)
+                    sap_update(DirSAP)
                     print ('Update en SAP')
             else:
                 print('Dia con 100 Detctado')
