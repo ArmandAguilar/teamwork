@@ -179,16 +179,27 @@ def ReordenarSAP():
             #Verificamos si el usuario tiene 100%
             Es100 = validar_100(str(IdUserSap),str(Fecha))
             if Es100 == 'No':
-                DirSAP['NumProyecto'] = IdProyecto
-                DirSAP['Dia'] = str(Fecha).replace('/','-')
-                DirSAP['Tarea'] = Descripcion
-                DirSAP['IdUsuarioTeam'] = IdUsuario
-                DirSAP['Horas'] = Tiempo
-                DirSAP['IdJson'] = IdTeam
-                sap_insert(DirSAP)
-                print ('Inserte en SAP')
+                TipoAccion = RegistroExistenteEnSap(str(IdTeam))
+                if TipoAccion == 'Insert':
+                    DirSAP['NumProyecto'] = IdProyecto
+                    DirSAP['Dia'] = str(Fecha).replace('/','-')
+                    DirSAP['Tarea'] = Descripcion
+                    DirSAP['IdUsuarioTeam'] = IdUsuario
+                    DirSAP['Horas'] = Tiempo
+                    DirSAP['IdJson'] = IdTeam
+                    sap_insert(DirSAP)
+                    print ('Inserte en SAP')
+                else:
+                    DirSAP['NumProyecto'] = IdProyecto
+                    DirSAP['Dia'] = str(Fecha).replace('/','-')
+                    DirSAP['Tarea'] = Descripcion
+                    DirSAP['IdUsuarioTeam'] = IdUsuario
+                    DirSAP['Horas'] = Tiempo
+                    DirSAP['IdJson'] = IdTeam
+                    sap_update(DirTiempoDiario)
+                    print ('Update en SAP')
             else:
-                print('No Inserte en SAP')
+                print('Dia con 100 Detctado')
         con.commit()
         con.close()
     except ValueError:

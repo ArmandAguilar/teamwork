@@ -68,7 +68,17 @@ def CostoUnitarioRecursos(IdUsuario):
     conn.commit()
     conn.close()
     return CostoUnitario
-
+def RegistroExistenteEnSap(IdTeamWok):
+    Accion = 'Insert'
+    sql = 'SELECT [Id] FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE [IdTemaWork] = \'' + str(IdTeamWok) + '\''
+    con = pyodbc.connect(constr)
+    cur = con.cursor()
+    cur.execute(sql)
+    for value in cur:
+        Accion = "Update"
+    con.commit()
+    con.close()
+    return Accion
 def sap_insert(DirTiempoDiario):
     #DirSAP['NumProyecto'] = ProyectoArray[0]
     #DirSAP['Dia'] = FechaJsonArrays[0]
@@ -88,4 +98,23 @@ def sap_insert(DirTiempoDiario):
     cur.execute(sql)
     con.commit()
     con.close()
+    return sql
+def sap_update(DirTiempoDiario):
+    #DirSAP['NumProyecto'] = ProyectoArray[0]
+    #DirSAP['Dia'] = FechaJsonArrays[0]
+    #DirSAP['Tarea'] = str(Descripcion)
+    #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
+    Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
+    DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
+    Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
+    Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
+    PorcentajeF = float("{0:.2f}".format(Porcentaje))
+    Producto = (PorcentajeF * float(Costo)) / 100
+    ProductoF = float("{0:.2f}".format(Producto))
+    sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' + str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \''+ str(DirMetaDataUser['Apellidos']) +'\',[NumProyecto] = \'' + str(DirTiempoDiario['NumProyecto'])  + '\',[NomProyecto] = \'' + str(Proy)+ '\',[Dia] = \'' + str(DirTiempoDiario['Dia']) + '\',[Tarea] = \' + str(DirTiempoDiario['Tarea']) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \''+ str(DirMetaDataUser['IdUsuario']) + '\',[IdInternet] = \'0\',[Departamento] = \'' + str(DirMetaDataUser['Departamento']) + '\',[Perfil] = \''+  str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[Programado] = \'Si\' WHERE [IdTemaWork] = \'IdTemaWork\''
+    #con = pyodbc.connect(constr)
+    #cur = con.cursor()
+    #cur.execute(sql)
+    #con.commit()
+    #con.close()
     return sql
