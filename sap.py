@@ -87,6 +87,7 @@ def sap_insert(DirTiempoDiario):
     Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
     DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
     Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
+    HorasMarcadas = int(DirTiempoDiario['Horas'])
     if HorasMarcadas > 9:
         Porcentaje = (int(DirTiempoDiario['Horas'])/HorasMarcadas) * 100
     else:
