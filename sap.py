@@ -16,7 +16,7 @@ def IdUserSAP(idUserTeamWork):
     conn.close()
     return dataIdUsuario
 def validar_100(idUsuario,Dia,Tiempo):
-    OtroPorciento = (int(DirTiempoDiario['Horas'])/9) * 100
+    OtroPorciento = (int(Tiempo)/9.0) * 100
     Fecha = str(Dia).replace('/','-')
     Accion = 'No'
     Porcentaje = 0.0
