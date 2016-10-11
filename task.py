@@ -199,7 +199,7 @@ def ReordenarSAP():
                     print(sap_update(DirSAP))
                     print ('Update en SAP')
             else:
-                print('Dia con 100 Detctado')
+                print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
         con.commit()
         con.close()
     except ValueError:
