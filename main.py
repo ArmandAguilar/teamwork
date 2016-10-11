@@ -17,9 +17,9 @@ print("------------------- Begin Syc Datos -------------------")
 #sql_delete_RegistoTiemposDiarios()
 #sql_delete_RegistroProyectos()
 #1.- Lista de Proyectos
-#for proyecto in projectos_id:
+for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
-    #task(proyecto)
+    task(proyecto)
     #TaskRegistroProyectos(proyecto)
 
 print("------------------- Begin ReordenarSAP -------------------")
