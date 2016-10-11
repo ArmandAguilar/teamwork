@@ -15,7 +15,8 @@ def IdUserSAP(idUserTeamWork):
     conn.commit()
     conn.close()
     return dataIdUsuario
-def validar_100(idUsuario,Dia):
+def validar_100(idUsuario,Dia,Tiempo):
+    OtroPorciento = (int(DirTiempoDiario['Horas'])/9) * 100
     Fecha = str(Dia).replace('/','-')
     Accion = 'No'
     Porcentaje = 0.0
@@ -27,6 +28,7 @@ def validar_100(idUsuario,Dia):
          Porcentaje = Porcentaje + float(value[0])
     con.commit()
     con.close()
+    Porcentaje = Porcentaje + OtroPorciento
     if Porcentaje >= 100:
         Accion = 'Si'
     return Accion
