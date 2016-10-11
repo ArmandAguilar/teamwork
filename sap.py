@@ -29,7 +29,7 @@ def validar_100(idUsuario,Dia,Tiempo):
     con.commit()
     con.close()
     Porcentaje = Porcentaje + OtroPorciento
-    if Porcentaje >= 100:
+    if Porcentaje > 100:
         Accion = 'Si'
     return Accion
 def metaDataUser(idUserTeamWork):
