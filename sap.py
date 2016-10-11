@@ -107,7 +107,11 @@ def sap_update(DirTiempoDiario):
     Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
     DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
     Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
-    Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
+    HorasMarcadas = int(DirTiempoDiario['Horas'])
+    if HorasMarcadas > 9:
+        Porcentaje = (int(DirTiempoDiario['Horas'])/HorasMarcadas) * 100
+    else:
+        Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
     PorcentajeF = float("{0:.2f}".format(Porcentaje))
     Producto = (PorcentajeF * float(Costo)) / 100
     ProductoF = float("{0:.2f}".format(Producto))
