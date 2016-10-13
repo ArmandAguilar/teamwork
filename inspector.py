@@ -28,7 +28,6 @@ def Corregir():
     cur.execute(sql)
     for value in cur:
         ExisteTarea(value)
-
     con.commit()
     con.close()
 
@@ -39,5 +38,6 @@ def Corregir():
 #    cur.execute(sql)
 #    con.commit()
 #    con.close()
-
+print ("############################ Begin Revinsado Datos de la Tabla AAARegistroDeTiemposDiarios ############################")
 print Corregir()
+print ("############################ End Revinsado Datos de la Tabla AAARegistroDeTiemposDiarios ############################")
