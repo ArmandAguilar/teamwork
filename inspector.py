@@ -30,7 +30,7 @@ def Corregir():
     for value in cur:
         Llave = value[0]
         print(Llave)
-        #ExisteTarea(str(Llave))
+        ExisteTarea(str(Llave))
     con.commit()
     con.close()
 
