@@ -10,14 +10,15 @@ sys.setdefaultencoding("utf-8")
 
 def ExisteTarea(IdTask):
     urlTarea = 'https://forta.teamwork.com/tasks/' + str(IdTask) + '.json'
-    try:
-        request = urllib2.Request(urlTarea)
-        request.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
-        response = urllib2.urlopen(request)
-        datajson = json.loads(response.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
-        Status = datajson['STATUS']
-    except Exception as e:
-        Status = 'Elimina'
+    Status = 'Oka'
+    #try:
+    #    request = urllib2.Request(urlTarea)
+    #    request.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
+    #    response = urllib2.urlopen(request)
+    #    datajson = json.loads(response.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
+    #    Status = datajson['STATUS']
+    #except Exception as e:
+    #    Status = 'Elimina'
     return Status  + '-' + str(IdTask)
 
 def Corregir():
