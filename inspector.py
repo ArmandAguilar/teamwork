@@ -23,7 +23,7 @@ def ExisteTarea(IdTask):
 
 def Corregir():
     #1 .- Leemos la base de datos y obtenemos los id de teamwork
-    sql = 'SELECT [IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] order by [IdTeam] desc'
+    sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] order by [IdTeam] desc'
     con = pyodbc.connect(constr)
     cur = con.cursor()
     cur.execute(sql)
