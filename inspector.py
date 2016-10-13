@@ -23,7 +23,7 @@ def ExisteTarea(IdTask):
 
 def Corregir():
     #1 .- Leemos la base de datos y obtenemos los id de teamwork
-    sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] order by [IdTeam] desc'
+    sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] order by [IdTarea] desc'
     con = pyodbc.connect(constr)
     cur = con.cursor()
     cur.execute(sql)
@@ -38,20 +38,23 @@ def Corregir():
             response = urllib2.urlopen(request)
             datajson = json.loads(response.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
             Status = datajson['STATUS']
+            print(BorramosIdNoExitente(Llave))
         except Exception as e:
             Status = 'Elimina'
+            print(BorramosIdNoExitente(Llave))
         print Status
     con.commit()
     con.close()
 
 
-#def BorramosIdNoExitente(Id):
-#    sql='Delete FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [IdTeam] =  \'' + str(Id) + '\''
-#    con = pyodbc.connect(constr)
-#    cur = con.cursor()
-#    cur.execute(sql)
-#    con.commit()
-#    con.close()
+def BorramosIdNoExitente(Id):
+    sql='Delete FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [IdTarea] =  \'' + str(Id) + '\''
+    #con = pyodbc.connect(constr)
+    #cur = con.cursor()
+    #cur.execute(sql)
+    #con.commit()
+    #con.close()
+    return sql
 print ("############################ Begin Revinsado Datos de la Tabla AAARegistroDeTiemposDiarios ############################")
 print Corregir()
 print ("############################ End Revinsado Datos de la Tabla AAARegistroDeTiemposDiarios ############################")
