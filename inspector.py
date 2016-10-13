@@ -8,12 +8,13 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 def ExisteTarea(IdTask):
-    request = urllib2.Request('https://forta.teamwork.com/tasks/' + str(IdTask) + '.json')
+    urlTarea = 'https://forta.teamwork.com/tasks/' + str(IdTask) + '.json'
+    request = urllib2.Request(urlTarea)
     request.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     response = urllib2.urlopen(request)
     datajson = json.loads(response.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     Status = datajson['status']
-    return Status
+    return urlTarea
 
 #def Corregir(arg):
 #    #1 .- Leemos la base de datos y obtenemos los id de teamwork
