@@ -18,7 +18,7 @@ def ExisteTarea(IdTask):
         Status = datajson['STATUS']
     except Exception as e:
         Status = 'Elimina'
-    return Status
+    return Status  + '-' + str(IdTask)
 
 def Corregir():
     #1 .- Leemos la base de datos y obtenemos los id de teamwork
