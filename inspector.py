@@ -29,8 +29,11 @@ def Corregir():
     cur.execute(sql)
     for value in cur:
         Llave = value[0]
-        print(Llave)
-        ExisteTarea(str(Llave))
+        if Llave == 'None':
+            vacio = 'n'
+        else:
+            print(Llave)
+            ExisteTarea(str(Llave))
     con.commit()
     con.close()
 
