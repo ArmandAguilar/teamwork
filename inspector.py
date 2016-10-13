@@ -25,9 +25,10 @@ def Corregir():
     sql = 'SELECT [IdTeam] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] order by [IdTeam] desc'
     con = pyodbc.connect(constr)
     cur = con.cursor()
+    cur.execute(sql)
     for value in cur:
         ExisteTarea(value)
-    cur.execute(sql)
+
     con.commit()
     con.close()
 
