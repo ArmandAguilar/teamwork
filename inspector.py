@@ -27,7 +27,7 @@ def Corregir():
     cur = con.cursor()
     cur.execute(sql)
     for value in cur:
-        print(value)
+        print(value[IdTeam])
     con.commit()
     con.close()
 
