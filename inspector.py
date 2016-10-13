@@ -29,13 +29,21 @@ def Corregir():
     cur.execute(sql)
     for value in cur:
         Llave = value[0]
-        if Llave == 'None':
-            vacio = 'n'
-        else:
-            print(Llave)
-            ExisteTarea(str(Llave))
+        urlTarea = 'https://forta.teamwork.com/tasks/' + str(Llave) + '.json'
+        print urlTarea
+        Status = 'Oka'
+        try:
+            request = urllib2.Request(urlTarea)
+            request.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
+            response = urllib2.urlopen(request)
+            datajson = json.loads(response.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
+            Status = datajson['STATUS']
+        except Exception as e:
+            Status = 'Elimina'
+        print Status
     con.commit()
     con.close()
+
 
 #def BorramosIdNoExitente(Id):
 #    sql='Delete FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [IdTeam] =  \'' + str(Id) + '\''
