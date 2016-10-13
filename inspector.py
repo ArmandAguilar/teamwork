@@ -34,4 +34,4 @@ def ExisteTarea(IdTask):
 #    con.commit()
 #    con.close()
 
-print ExisteTarea(11111)
+print ExisteTarea('11111')
