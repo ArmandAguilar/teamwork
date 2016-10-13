@@ -27,7 +27,7 @@ def Corregir():
     cur = con.cursor()
     cur.execute(sql)
     for value in cur:
-        print(value[0])
+        ExisteTarea(value[0])
     con.commit()
     con.close()
 
