@@ -74,7 +74,7 @@ def TaksTiempoDiarios(idtask):
         #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
-    outfile = open('texto.txt', 'w') # Indicamos el valor 'w'.
+    .
     requestProyectTask = urllib2.Request('https://forta.teamwork.com/projects/' + str(idproyect) + '/tasks.json')
     requestProyectTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseProyectTask = urllib2.urlopen(requestProyectTask)
@@ -154,8 +154,9 @@ def TaskRegistroProyectos(idproyect):
                     sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(ProyectTask['content']) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[Cantidad] = \'\',[TiempoEstimado] = \'\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(idUser) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
                 #sql_sentencia(sql)
                 print (str(sql))
+                outfile = open('texto.txt', 'w') # Indicamos el valor 'w'
                 outfile.write( str(sql) + '\n')
-        outfile.close()
+                outfile.close()
 #Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
 
 def ReordenarSAP():
