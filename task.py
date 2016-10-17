@@ -74,7 +74,7 @@ def TaksTiempoDiarios(idtask):
         #print (str(sql))
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
-    .
+
     requestProyectTask = urllib2.Request('https://forta.teamwork.com/projects/' + str(idproyect) + '/tasks.json')
     requestProyectTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseProyectTask = urllib2.urlopen(requestProyectTask)
