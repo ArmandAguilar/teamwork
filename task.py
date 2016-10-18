@@ -131,6 +131,7 @@ def TaskRegistroProyectos(idproyect):
         #Aqui se programa un diccionario para validar los dias y insterar o actualizar el regisro
         tipoConsulta = ''
         Tarea = str(ProyectTask['content']).replace('\'','.')
+        Tarea = str(Tarea).replace('"',' ')
         #IdUsuario
         try:
             int(IdResposnable)
