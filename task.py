@@ -137,7 +137,7 @@ def TaskRegistroProyectos(idproyect):
 
         Descripcion = str(ProyectTask['description'])
         Descripcion = str(Descripcion).replace('\'',' ')
-        Descripcion = str(Tarea).replace('"'',' ')
+        Descripcion = str(Tarea).replace('"',' ')
         print (str(Descripcion))
         #IdUsuario
         try:
