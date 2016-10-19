@@ -130,7 +130,7 @@ def TaskRegistroProyectos(idproyect):
                 DueDate = datetime.strptime(str(ProyectTask['due-date']),'%Y%m%d')
         #Aqui se programa un diccionario para validar los dias y insterar o actualizar el regisro
         tipoConsulta = ''
-        Tarea = ProyectTask['content']
+        Tarea = str(ProyectTask['description'])
         Tarea = str(Tarea).replace('\'','.')
         print (str(Tarea))
         #IdUsuario
