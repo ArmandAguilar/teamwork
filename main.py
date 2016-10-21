@@ -19,7 +19,7 @@ print("------------------- Begin Syc Datos -------------------")
 #1.- Lista de Proyectos
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
-    #task(proyecto)
+    task(proyecto)
     TaskRegistroProyectos(proyecto)
 
 print("------------------- Begin ReordenarSAP -------------------")

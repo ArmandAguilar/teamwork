@@ -165,12 +165,22 @@ def TaskRegistroProyectos(idproyect):
                 sql_sentencia(sql)
                 #print (str(sql))
 #Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
-
 def ReordenarSAP():
     Regreso = 'Oka'
+    #Quitamos los proyectos archivados
+    IdsArchivados = []
+    k = 0
+    requestProyectArchived = urllib2.Request('https://forta.teamwork.com/projects.json?status=ARCHIVED')
+    requestProyectArchived.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
+    responseProyectArchived = urllib2.urlopen(requestProyectArchived)
+    datajsonProyectArchived = json.loads(responseProyectTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
+    for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
+        IdsArchivados.insert(k,str(datos['id']))
+
+        
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
-    DirSAP = {}
+
     try:
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\''
         con = pyodbc.connect(constr)
