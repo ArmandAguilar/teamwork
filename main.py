@@ -21,8 +21,7 @@ for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
     task(proyecto)
     TaskRegistroProyectos(proyecto)
-
 print("------------------- Begin ReordenarSAP -------------------")
-#print(ReordenarSAP())
+print(ReordenarSAP())
 print("------------------- End ReordenarSAP -------------------")
 print ("############################ End Sync Datos Teamwork  ############################")
