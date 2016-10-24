@@ -175,11 +175,12 @@ def ReordenarSAP():
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
-        IdsArchivados.insert(k,str(ProyectTaskArchivade['projects']['id']))
+        #IdsArchivados.insert(k,str(ProyectTaskArchivade['projects']['id']))
+        print (ProyectTaskArchivade['projects']['id'])
 
 
-    for IdPNoSupendidos in IdsArchivados:
-        print ('Proyectos Archivados : ' + str(IdPNoSupendidos))
+    #for IdPNoSupendidos in IdsArchivados:
+    #    print ('Proyectos Archivados : ' + str(IdPNoSupendidos))
 
 
     #1 Recorremos todos los rgistros
