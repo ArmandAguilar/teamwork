@@ -44,7 +44,7 @@ def TaksTiempoDiarios(idtask):
         #Validamos si es una actualizacion o un insert
         tipoConsultas=validate_up_in_AAARegistroDeTiemposDiarios(activities['id'])
         if tipoConsultas == 'Insert':
-            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + str(activities['id']) + '\')'
+            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + str(activities['id']) + '\',\'' + str(activities['project-id']) + '\')'
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
@@ -175,14 +175,11 @@ def ReordenarSAP():
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
-        #IdsArchivados.insert(k,str(ProyectTaskArchivade['projects']['id']))
-        print (ProyectTaskArchivade['id'])
+        IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
+        #print (ProyectTaskArchivade['id'])
+        SqlWhere = SqlWhere + '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\'' and
 
-
-    #for IdPNoSupendidos in IdsArchivados:
-    #    print ('Proyectos Archivados : ' + str(IdPNoSupendidos))
-
-
+    print (SqlWhere)
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
 
