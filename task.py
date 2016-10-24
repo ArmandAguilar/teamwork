@@ -173,7 +173,7 @@ def ReordenarSAP():
     requestProyectArchived = urllib2.Request('https://forta.teamwork.com/projects.json?status=ARCHIVED')
     requestProyectArchived.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
-    datajsonProyectArchived = json.loads(responseProyectTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
+    datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
         IdsArchivados.insert(k,str(datos['id']))
 
