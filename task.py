@@ -170,6 +170,7 @@ def ReordenarSAP():
     #Quitamos los proyectos archivados
     IdsArchivados = []
     k = 0
+    SqlWhere = ''
     requestProyectArchived = urllib2.Request('https://forta.teamwork.com/projects.json?status=ARCHIVED')
     requestProyectArchived.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
