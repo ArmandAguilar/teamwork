@@ -178,6 +178,10 @@ def ReordenarSAP():
         IdsArchivados.insert(k,str(datos['id']))
 
 
+    for IdPNoSupendidos in IdsArchivados:
+        print ('Proyectos Archivados : ' + str(IdPNoSupendidos))
+
+
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
 
