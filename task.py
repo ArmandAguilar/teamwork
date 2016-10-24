@@ -177,9 +177,9 @@ def ReordenarSAP():
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
         IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
-        SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and'
+        SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
-    print (SqlWhere[:-4])
+    print (SqlWhere[:-5])
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
 
