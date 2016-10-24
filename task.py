@@ -144,7 +144,7 @@ def TaskRegistroProyectos(idproyect):
                 sql_sentencia(sql)
                 #print (str(sql))
 #Esta funcion Borra los registros no activos en la tabla AAARegistroDeTiemposDiarios
-def EliminarCambioEnTiemposDiarios()
+def EliminarCambioEnTiemposDiarios():
     Regreso = 'Oka'
     SqlWhere = ''
     StWhere = ''
@@ -156,16 +156,22 @@ def EliminarCambioEnTiemposDiarios()
         IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
-    StWhere =  SqlWhere[:-5]
+    if SqlWhere.len() > 0 :
+        StWhere = ' Where ' + SqlWhere[:-5]
+    else:
+        StWhere = ' '
 
-    return Regreso
+    sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
+    #con = pyodbc.connect(constr)
+    #cur = con.cursor()
+    #cur.execute(sql)
+
+    return sql
 
 #Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
 def ParaSAP():
     Regreso = 'Oka'
     #Quitamos los proyectos archivados
-    IdsArchivados = []
-    k = 0
     SqlWhere = ''
     StWhere = ''
     requestProyectArchived = urllib2.Request('https://forta.teamwork.com/projects.json?status=ARCHIVED')
@@ -173,54 +179,53 @@ def ParaSAP():
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
-        IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
     StWhere =  SqlWhere[:-5]
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
-    #try:
-    #    sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
-    #    con = pyodbc.connect(constr)
-    #    cur = con.cursor()
-    #    cur.execute(sql)
-    #    for value in cur:
-    #        IdTarea = value[0]
-    #        IdUsuario = value[1]
-    #        IdProyecto = value[2]
-    #        Usuario = value[3]
-    #        Descripcion = value[4]
-    #        Tiempo = value[5]
-    #        IdTeam = value[6]
-    #        Fecha = value[7]
-    #        #obtenemos el Id del usuario
-    #        IdUserSap = IdUserSAP(str(IdUsuario))
-    #        #Verificamos si el usuario tiene 100%
-    #        Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
-    #        if Es100 == 'No':
-    #            TipoAccion = RegistroExistenteEnSap(str(IdTeam))
-    #            if TipoAccion == 'Insert':
-    #                DirSAP['NumProyecto'] = IdProyecto
-    #                DirSAP['Dia'] = str(Fecha).replace('/','-')
-    #                DirSAP['Tarea'] = Descripcion
-    #                DirSAP['IdUsuarioTeam'] = IdUsuario
-    #                DirSAP['Horas'] = Tiempo
-    #                DirSAP['IdJson'] = IdTeam
-    #                sap_insert(DirSAP)
-    #                print ('Inserte en SAP')
-    #            else:
-    #                DirSAP['NumProyecto'] = IdProyecto
-    #                DirSAP['Dia'] = str(Fecha).replace('/','-')
-    #                DirSAP['Tarea'] = Descripcion
-    #                DirSAP['IdUsuarioTeam'] = IdUsuario
-    #                DirSAP['Horas'] = Tiempo
-    #                DirSAP['IdJson'] = IdTeam
-    #                print(sap_update(DirSAP))
-    #                print ('Update en SAP')
-    #        else:
-    #            print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
-    #    con.commit()
-    #    con.close()
-    #except ValueError:
-    #    sentencia = '-------Error------:' + str(sql)
+    try:
+        sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
+        con = pyodbc.connect(constr)
+        cur = con.cursor()
+        cur.execute(sql)
+        for value in cur:
+            IdTarea = value[0]
+            IdUsuario = value[1]
+            IdProyecto = value[2]
+            Usuario = value[3]
+            Descripcion = value[4]
+            Tiempo = value[5]
+            IdTeam = value[6]
+            Fecha = value[7]
+            #obtenemos el Id del usuario
+            IdUserSap = IdUserSAP(str(IdUsuario))
+            #Verificamos si el usuario tiene 100%
+            Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
+            if Es100 == 'No':
+                TipoAccion = RegistroExistenteEnSap(str(IdTeam))
+                if TipoAccion == 'Insert':
+                    DirSAP['NumProyecto'] = IdProyecto
+                    DirSAP['Dia'] = str(Fecha).replace('/','-')
+                    DirSAP['Tarea'] = Descripcion
+                    DirSAP['IdUsuarioTeam'] = IdUsuario
+                    DirSAP['Horas'] = Tiempo
+                    DirSAP['IdJson'] = IdTeam
+                    sap_insert(DirSAP)
+                    print ('Inserte en SAP')
+                else:
+                    DirSAP['NumProyecto'] = IdProyecto
+                    DirSAP['Dia'] = str(Fecha).replace('/','-')
+                    DirSAP['Tarea'] = Descripcion
+                    DirSAP['IdUsuarioTeam'] = IdUsuario
+                    DirSAP['Horas'] = Tiempo
+                    DirSAP['IdJson'] = IdTeam
+                    print(sap_update(DirSAP))
+                    print ('Update en SAP')
+            else:
+                print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
+        con.commit()
+        con.close()
+    except ValueError:
+        sentencia = '-------Error------:' + str(sql)
     return Regreso
