@@ -179,7 +179,7 @@ def ReordenarSAP():
         IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and'
 
-    print (SqlWhere)
+    print (SqlWhere[:-4])
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
 
