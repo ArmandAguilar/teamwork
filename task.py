@@ -155,7 +155,7 @@ def EliminarCambioEnTiemposDiarios():
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
-    if SqlWhere.len() > 0 :
+    if len(SqlWhere) > 0 :
         StWhere = ' Where ' + SqlWhere[:-5]
     else:
         StWhere = ' '
