@@ -48,30 +48,9 @@ def TaksTiempoDiarios(idtask):
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
-            #Falata localizar el tiempo
-            #BorramosDia(str(activities['person-id']),FechaJsonArrays[0],)
 
         sql_sentencia(sql)
-        #Quite esta zona
-        #Aqui Verificamos si el registo del usuario cumple con las nueve 9 o mas
-        #Si.- El registro es >=9 insertamos en la tambla de AAARegistrosDeProduccionClon
-        #No .- Seleciionamos Dia y Usuario y lo borramos si ya existe en el sistema
-        #Si es actualizacion de un dia borramos el dia y se carga de nuevo si es >=9
-        #Dos agumentos ne la funcion time9
-        #
-        #mayoriguala9 = time9(str(activities['person-id']),str(FechaJsonArrays[0]))
-        #if mayoriguala9 == 'No':
-            #Preparamos el dicionario para insertar datos en sap
-            #print ('-------------!!! Kawuabonga !!!------------------')
-            #DirSAP['NumProyecto'] = ProyectoArray[0]
-            #DirSAP['Dia'] = FechaJsonArrays[0]
-            #DirSAP['Tarea'] = str(Descripcion)
-            #DirSAP['IdUsuarioTeam'] = str(activities['person-id'])
-            #DirSAP['Horas'] = str(activities['hours'])
-            #DirSAP['IdJson'] = str(activities['id'])
-            #print (str(sap_insert(DirSAP)))
-        #print ('-------------------------------')
-        #print (str(sql))
+
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
 
@@ -164,13 +143,11 @@ def TaskRegistroProyectos(idproyect):
                     sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(Tarea) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[Cantidad] = \'\',[TiempoEstimado] = \'\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(idUser) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
                 sql_sentencia(sql)
                 #print (str(sql))
-#Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
-def ReordenarSAP():
+#Esta funcion Borra los registros no activos en la tabla AAARegistroDeTiemposDiarios
+def EliminarCambioEnTiemposDiarios()
     Regreso = 'Oka'
-    #Quitamos los proyectos archivados
-    IdsArchivados = []
-    k = 0
     SqlWhere = ''
+    StWhere = ''
     requestProyectArchived = urllib2.Request('https://forta.teamwork.com/projects.json?status=ARCHIVED')
     requestProyectArchived.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
@@ -179,12 +156,31 @@ def ReordenarSAP():
         IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
-    print (SqlWhere[:-5])
+    StWhere =  SqlWhere[:-5]
+
+    return Regreso
+
+#Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
+def ParaSAP():
+    Regreso = 'Oka'
+    #Quitamos los proyectos archivados
+    IdsArchivados = []
+    k = 0
+    SqlWhere = ''
+    StWhere = ''
+    requestProyectArchived = urllib2.Request('https://forta.teamwork.com/projects.json?status=ARCHIVED')
+    requestProyectArchived.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
+    responseProyectArchived = urllib2.urlopen(requestProyectArchived)
+    datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
+    for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
+        IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
+        SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
+
+    StWhere =  SqlWhere[:-5]
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
-
     #try:
-    #    sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\''
+    #    sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
     #    con = pyodbc.connect(constr)
     #    cur = con.cursor()
     #    cur.execute(sql)
