@@ -153,7 +153,6 @@ def EliminarCambioEnTiemposDiarios():
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
-        IdsArchivados.insert(k,str(ProyectTaskArchivade['id']))
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
     if SqlWhere.len() > 0 :
