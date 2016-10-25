@@ -161,11 +161,11 @@ def EliminarCambioEnTiemposDiarios():
         StWhere = ' '
     task_id = []
     k = 0
-    sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
+    sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
     con = pyodbc.connect(constr)
     cur = con.cursor()
     for value in cur:
-        task_id.insert(k,str(datos['id']))
+        task_id.insert(k,str(value[0]))
     cur.execute(sql)
 
     for value in task_id:
