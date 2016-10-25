@@ -164,10 +164,11 @@ def EliminarCambioEnTiemposDiarios():
     sql = 'SELECT [IdTarea] FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
     con = pyodbc.connect(constr)
     cur = con.cursor()
+    cur.execute(sql)
     for value in cur:
         task_id.insert(k,str(value[0]))
-    cur.execute(sql)
-
+    con.commit()
+    con.close()
     for value in task_id:
         print (VerifcaEnTeamworkJson(str(value)))
 
@@ -186,7 +187,8 @@ def VerifcaEnTeamworkJson(idtask):
         con = pyodbc.connect(constr)
         cur = con.cursor()
         cur.execute(sql)
-
+        con.commit()
+        con.close()
     return Estado
 #Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
 def ParaSAP():
