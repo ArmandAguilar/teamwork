@@ -156,17 +156,38 @@ def EliminarCambioEnTiemposDiarios():
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
     if len(SqlWhere) > 0 :
-        StWhere = ' Where ' + SqlWhere[:-5]
+        StWhere = ' and ' + SqlWhere[:-5]
     else:
         StWhere = ' '
-
+    task_id = []
+    k = 0
     sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
-    #con = pyodbc.connect(constr)
-    #cur = con.cursor()
-    #cur.execute(sql)
+    con = pyodbc.connect(constr)
+    cur = con.cursor()
+    for value in cur:
+        task_id.insert(k,str(datos['id']))
+    cur.execute(sql)
+
+    for value in task_id:
+        print (VerifcaEnTeamworkJson(str(value)))
 
     return sql
+#Elimina los datos no encontrados en team del mssql
+def VerifcaEnTeamworkJson(idtask):
+    Estado = 'Oka'
+    requestActivitiesTask = urllib2.Request('https://forta.teamwork.com/tasks/' + idtask + '/time_entries.json')
+    requestActivitiesTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
+    responseActivitiesTask = urllib2.urlopen(requestActivitiesTask)
+    datajsonActivitiesTask = json.loads(responseActivitiesTask.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
 
+    if len(datajsonActivitiesTask['time-entries']) == 0:
+        Estado = 'Borramos Actividad ' + str(idtask)
+        sql = 'DELETE  FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [IdProyectoTeam]=\'' + str(idtask) + '\''
+        con = pyodbc.connect(constr)
+        cur = con.cursor()
+        cur.execute(sql)
+
+    return Estado
 #Esta funcione lee los cambio de la tabla AAARegistroDeTiemposDiarios para insertar en la tabla de sap
 def ParaSAP():
     Regreso = 'Oka'
