@@ -19,10 +19,10 @@ print("------------------- Begin Syc Datos -------------------")
 #1.- Lista de Proyectos
 #for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
-    #task(proyecto)
-    #TaskRegistroProyectos(proyecto)
+    task(proyecto)
+    TaskRegistroProyectos(proyecto)
 print("------------------- Begin ReordenarSAP -------------------")
-print(EliminarCambioEnTiemposDiarios())
+#print(EliminarCambioEnTiemposDiarios())
 #print(ParaSAP())
 print("------------------- End ReordenarSAP -------------------")
 print ("############################ End Sync Datos Teamwork  ############################")
