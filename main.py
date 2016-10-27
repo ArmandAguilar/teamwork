@@ -11,18 +11,24 @@ import pypyodbc as pyodbc
 reload(sys)
 sys.setdefaultencoding("utf-8")
 import pymssql
+from mensajes import *
 print ("############################ Start Sync Datos Teamwork ############################")
-print("------------------- Begin Syc Datos -------------------")
 #Borramos datos de las tablas :
 #sql_delete_RegistoTiemposDiarios()
 #sql_delete_RegistroProyectos()
 #1.- Lista de Proyectos
+cargardo()
+
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
     task(proyecto)
     TaskRegistroProyectos(proyecto)
-print("------------------- Begin ReordenarSAP -------------------")
+
+proceso('Corrigiendo Tiempo Diarios')
 EliminarCambioEnTiemposDiarios()
-print(ParaSAP())
-print("------------------- End ReordenarSAP -------------------")
+
+proceso('Procsnado SAP')
+ParaSAP()
+
+proceso_terminado()
 print ("############################ End Sync Datos Teamwork  ############################")
