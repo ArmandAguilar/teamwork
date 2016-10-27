@@ -11,6 +11,10 @@ import pypyodbc as pyodbc
 reload(sys)
 sys.setdefaultencoding("utf-8")
 import pymssql
+from colorama import init
+init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
+from termcolor import cprint
+from pyfiglet import figlet_format
 from mensajes import *
 print ("############################ Start Sync Datos Teamwork ############################")
 #Borramos datos de las tablas :
