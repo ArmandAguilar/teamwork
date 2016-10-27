@@ -230,21 +230,21 @@ def ParaSAP():
             if Es100 == 'No':
                 TipoAccion = RegistroExistenteEnSap(str(IdTeam))
                 if TipoAccion == 'Insert':
-                    DirSAP['NumProyecto'] = IdProyecto
+                    DirSAP['NumProyecto'] = str(IdProyecto)
                     DirSAP['Dia'] = str(Fecha).replace('/','-')
-                    DirSAP['Tarea'] = Descripcion
-                    DirSAP['IdUsuarioTeam'] = IdUsuario
-                    DirSAP['Horas'] = Tiempo
-                    DirSAP['IdJson'] = IdTeam
+                    DirSAP['Tarea'] = str(Descripcion)
+                    DirSAP['IdUsuarioTeam'] = str(IdUsuario)
+                    DirSAP['Horas'] = str(Tiempo)
+                    DirSAP['IdJson'] = str(IdTeam)
                     sap_insert(DirSAP)
                     print ('Inserte en SAP')
                 else:
-                    DirSAP['NumProyecto'] = IdProyecto
+                    DirSAP['NumProyecto'] = str(IdProyecto)
                     DirSAP['Dia'] = str(Fecha).replace('/','-')
-                    DirSAP['Tarea'] = Descripcion
-                    DirSAP['IdUsuarioTeam'] = IdUsuario
-                    DirSAP['Horas'] = Tiempo
-                    DirSAP['IdJson'] = IdTeam
+                    DirSAP['Tarea'] = str(Descripcion)
+                    DirSAP['IdUsuarioTeam'] = str(IdUsuario)
+                    DirSAP['Horas'] = str(Tiempo)
+                    DirSAP['IdJson'] = str(IdTeam)
                     print(sap_update(DirSAP))
                     print ('Update en SAP')
             else:
