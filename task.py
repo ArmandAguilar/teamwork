@@ -153,7 +153,7 @@ def EliminarCambioEnTiemposDiarios():
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
-        SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
+        SqlWhere += '[IdProyectoTeam]<>\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
     if len(SqlWhere) > 0 :
         StWhere = ' and ' + SqlWhere[:-5]
@@ -200,7 +200,7 @@ def ParaSAP():
     responseProyectArchived = urllib2.urlopen(requestProyectArchived)
     datajsonProyectArchived = json.loads(responseProyectArchived.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
-        SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
+        SqlWhere += '[IdProyectoTeam]<>\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
     if len(SqlWhere) > 0 :
         StWhere = ' and ' + SqlWhere[:-5]
