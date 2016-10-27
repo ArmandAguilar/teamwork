@@ -202,7 +202,10 @@ def ParaSAP():
     for ProyectTaskArchivade  in datajsonProyectArchived['projects']:
         SqlWhere += '[IdProyectoTeam]=\''  + str(ProyectTaskArchivade['id']) +  '\' and '
 
-    StWhere =  SqlWhere[:-5]
+    if len(SqlWhere) > 0 :
+        StWhere = ' and ' + SqlWhere[:-5]
+    else:
+        StWhere = ' '
     #1 Recorremos todos los rgistros
     #Diccionario  inicializacion
     try:
