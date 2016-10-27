@@ -215,14 +215,14 @@ def ParaSAP():
         cur = con.cursor()
         cur.execute(sql)
         for value in cur:
-            IdTarea = value[0]
-            IdUsuario = value[1]
-            IdProyecto = value[2]
-            Usuario = value[3]
-            Descripcion = value[4]
-            Tiempo = value[5]
-            IdTeam = value[6]
-            Fecha = value[7]
+            IdTarea = str(value[0])
+            IdUsuario = str(value[1])
+            IdProyecto = str(value[2])
+            Usuario = str(value[3])
+            Descripcion = str(value[4])
+            Tiempo = str(value[5])
+            IdTeam = str(value[6])
+            Fecha = str(value[7])
             #obtenemos el Id del usuario
             IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%
