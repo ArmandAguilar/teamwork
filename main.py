@@ -8,14 +8,12 @@ import json
 import unicodedata
 import sys
 import pypyodbc as pyodbc
-reload(sys)
-sys.setdefaultencoding("utf-8")
 import pymssql
 from colorama import init
-init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint
 from pyfiglet import figlet_format
 from mensajes import *
+sys.setdefaultencoding("utf-8")
 print ("############################ Start Sync Datos Teamwork ############################")
 #Borramos datos de las tablas :
 #sql_delete_RegistoTiemposDiarios()
