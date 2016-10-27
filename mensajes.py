@@ -1,3 +1,4 @@
+import sys
 from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint

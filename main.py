@@ -1,4 +1,5 @@
 #!user/bin/python
+import sys
 from tokens import *
 from projects import *
 from task import *
@@ -6,7 +7,6 @@ from mssql import *
 import urllib2, base64
 import json
 import unicodedata
-import sys
 import pypyodbc as pyodbc
 import pymssql
 from colorama import init
