@@ -15,7 +15,7 @@ projectos_id = []
 k = 0
 for datos in datajson['projects']:
     ProyectoArray = str(datos['name']).split(" ")
-    if datos['id'] == '273773':
+    if datos['id'] == '271006':
         Vacio = ""
     elif datos['id'] == '271006':
         Vacio = ""
@@ -27,7 +27,7 @@ for datos in datajson['projects']:
         Vacio = ""
     elif datos['id'] == '306189':
         Vacio = ""
-    elif datos['id'] == '271006':
+    elif datos['id'] == '273773':
         Vacio = "1"
     else:
         ##print(str(datos['id']) + '.-' + str(datos['name']) )
