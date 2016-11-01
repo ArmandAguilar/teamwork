@@ -33,3 +33,5 @@ for datos in datajson['projects']:
         ##print(str(datos['id']) + '.-' + str(datos['name']) )
         ProyectoArray = str(datos['name']).split(" ")
         projectos_id.insert(k,str(datos['id']))
+
+print projectos_id
