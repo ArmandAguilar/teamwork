@@ -23,9 +23,9 @@ cargardo()
 
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
-    task(proyecto)
+    #task(proyecto)
     #TaskRegistroProyectos(proyecto)
-
+print (proyecto)
 proceso('Corrigiendo Tiempo Diarios')
 EliminarCambioEnTiemposDiarios()
 
