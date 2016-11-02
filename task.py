@@ -141,8 +141,8 @@ def TaskRegistroProyectos(idproyect):
                 else:
                     #update
                     sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(Tarea) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[Cantidad] = \'\',[TiempoEstimado] = \'\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(idUser) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
-                sql_sentencia(sql)
-                #print (str(sql))
+                #sql_sentencia(sql)
+                print (str(sql))
 #Esta funcion Borra los registros no activos en la tabla AAARegistroDeTiemposDiarios
 def EliminarCambioEnTiemposDiarios():
     Regreso = 'Oka'
