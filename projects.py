@@ -16,19 +16,19 @@ k = 0
 for datos in datajson['projects']:
 
     if datos['id'] == '271006':
-        Vacio = ""
+        Vacio = "o"
     elif datos['id'] == '271006':
-        Vacio = ""
+        Vacio = "o"
     elif datos['id'] == '237790':
-        Vacio = ""
+        Vacio = "o"
     elif datos['id'] == '258970':
-        Vacio = ""
+        Vacio = "o"
     elif datos['id'] == '251282':
-        Vacio = ""
+        Vacio = "o"
     elif datos['id'] == '306189':
-        Vacio = ""
+        Vacio = "o"
     elif datos['id'] == '273773':
-        Vacio = "1"
+        Vacio = "o"
     else:
         ##print(str(datos['id']) + '.-' + str(datos['name']) )
         ProyectoArray = str(datos['name']).split(" ")

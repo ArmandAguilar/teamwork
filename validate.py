@@ -15,7 +15,7 @@ def validate_up_in(IdTareas,IdProyecto,IdUsuario,ListaTarea):
         accion = 'Update'
     conn.commit()
     conn.close()
-    return accion
+    return sql_buscar
 
 def validate_up_in_AAARegistroDeTiemposDiarios(idTaskTeamwork):
     accion = 'Insert'

@@ -123,7 +123,7 @@ def TaskRegistroProyectos(idproyect):
         try:
             int(IdResposnable)
 
-            tipoConsulta = validate_up_in(str(ProyectTask['id']),ProyectoArray[0],str(IdResposnable),str(ParentTask))
+            tipoConsulta = validate_up_in(str(ProyectTask['id']),str(ProyectoArray[0]),str(IdResposnable),str(ParentTask))
             if tipoConsulta == 'Insert':
                 sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + ProyectoArray[0] +'\',\'' + str(IdResposnable) + '\',\''+ str(Tarea) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(Descripcion) + '\',\'' + str(ProyectTask['estimated-minutes']) + '\')'
             else:
