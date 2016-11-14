@@ -170,7 +170,7 @@ def EliminarCambioEnTiemposDiarios():
     con.commit()
     con.close()
     for value in task_id:
-        print (VerifcaEnTeamworkJson(str(value)))
+        VerifcaEnTeamworkJson(str(value))
     return sql
 #Elimina los datos no encontrados en team del mssql
 def VerifcaEnTeamworkJson(idtask):
