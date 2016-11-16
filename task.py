@@ -253,4 +253,4 @@ def ParaSAP():
         con.close()
     except ValueError:
         sentencia = '-------Error------:' + str(sql)
-    return Regreso
+    return sql
