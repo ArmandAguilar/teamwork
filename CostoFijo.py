@@ -22,10 +22,19 @@ def costo_fijo():
         else:
             ProyectoArray = str(CostoFijoVal['todo-list-name']).split(" ")
             FechaJsonArrays = str(CostoFijoVal['date']).split("T")
-            sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (<Nombre, varchar(100),>,<Apellidos, varchar(100),>,\'' + ProyectoArray[0] + '\',\'' + ProyectoArray[1] + '\',\'', + FechaJsonArrays[0] + '\',\'' + CostoFijoVal['todo-item-name'] + '\',<Porcentaje, float,>,<Producto, float,>,<IdUsuario, int,>,<IdInternet, int,>,<Departamento, varchar(50),>,<Perfil, varchar(50),>,<Titulo, varchar(20),>,<Acronimo, varchar(50),>,<Programado, varchar(3),>,<IdTemaWork, int,>)'
-
-    print(sql)
-    print(FechaJsonArrays[0])
-    return
+            Horas = float(CostoFijoVal['hours'])
+            Minutos = float(CostoFijoVal['minutes']) / 60
+            HorasReal = Horas + Minutos
+            if HorasReal is None:
+                val = 'None'
+            else:
+                if HorasReal > 9:
+                    Porcentaje = (HorasReal/HorasReal) * 100
+                else:
+                    Porcentaje = (HorasReal/9.0) * 100
+                PorcentajeF = float("{0:.2f}".format(Porcentaje))
+                sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (Nombre,Apellidos,\'' + str(ProyectoArray[0]) + '\',\'' + str(ProyectoArray[1]) + '\',\',' + str(FechaJsonArrays[0]) + '\',\'' + str(CostoFijoVal['todo-item-name']) + '\',\'' + str(PorcentajeF) + '\',\'Producto\',\'IdUsuario\',\'0\',\'Departamento\',\'Perfil\',\'Titulo\',\'Acronimo\',\'Programado,\'' + CostoFijoVal['id'] + '\')'
+                print(sql)
+    #return sql
 
 costo_fijo()

@@ -27,7 +27,7 @@ def task(arg):
             #print ('--[Task('+ str(Task['id']) +'): ' + str(Task['content']) + ']')
             #print ('---->Responsable: ' + str(Task['responsible-party-ids']) + ' | ' + str(Task['responsible-party-names']))
             TaksTiempoDiarios(str(Task['id']))
-#funcion que registra  en #funcion que registra  en AAARegistroProyecto
+#funcion que registra  en AAARegistroDeTiemposDiarios
 def TaksTiempoDiarios(idtask):
     requestActivitiesTask = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idtask) + '/time_entries.json')
     requestActivitiesTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
@@ -43,11 +43,15 @@ def TaksTiempoDiarios(idtask):
         Descripcion = str(activities['parentTaskName']) + '-' + str(activities['todo-item-name']) + '-' + str(activities['todo-list-name'])
         #Validamos si es una actualizacion o un insert
         tipoConsultas=validate_up_in_AAARegistroDeTiemposDiarios(activities['id'])
+        #Calculamos las Horas
+        Horas = float(activities['hours'])
+        Minutos = float(activities['minutes']) / 60
+        HorasReal = Horas + Minutos
         if tipoConsultas == 'Insert':
-            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' +str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(activities['hours']) + '\',\'' + str(activities['id']) + '\',\'' + str(activities['project-id']) + '\')'
+            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' + str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(HorasReal) + '\',\'' + str(activities['id']) + '\',\'' + str(activities['project-id']) + '\')'
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
-            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(activities['hours']) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
+            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(HorasReal) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
 
         sql_sentencia(sql)
 

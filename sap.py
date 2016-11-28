@@ -94,6 +94,7 @@ def sap_insert(DirTiempoDiario):
         Porcentaje = (int(DirTiempoDiario['Horas'])/HorasMarcadas) * 100
     else:
         Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
+
     PorcentajeF = float("{0:.2f}".format(Porcentaje))
     Producto = (PorcentajeF * float(Costo)) / 100
     ProductoF = float("{0:.2f}".format(Producto))
