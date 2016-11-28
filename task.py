@@ -48,11 +48,15 @@ def TaksTiempoDiarios(idtask):
         Horas = float(activities['hours'])
         Minutos = float(activities['minutes']) / 60
         HorasReal = Horas + Minutos
+        DescripcionUser = str(activities['description'])
+        DescripcionUser = str(DescripcionUser).replace('\'',' ')
+        DescripcionUser = str(DescripcionUser).replace('"',' ')
+        DescripcionUser = str(DescripcionUser).strip()
         if tipoConsultas == 'Insert':
-            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' + str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(HorasReal) + '\',\'' + str(activities['id']) + '\',\'' + str(activities['project-id']) + '\')'
+            sql = 'Insert Into [SAP].[dbo].[AAARegistroDeTiemposDiarios] values(\'' + str(idtask) + '\',\'' + str(activities['person-id']) + '\',\'' + ProyectoArray[0] + '\',\''+ str(activities['person-first-name']) + ' ' + str(activities['person-last-name']) + '\',\'' + str(Descripcion) + '\',\'' + str(DescripcionUser) + '\',\'' + FechaJsonArrays[0] + '\',\'' + str(HorasReal) + '\',\'' + str(activities['id']) + '\',\'' + str(activities['project-id']) + '\')'
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
-            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(HorasReal) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
+            sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',DescripcionUser=\'' + str(DescripcionUser) + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(HorasReal) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
 
         #sql_sentencia(sql)
 
