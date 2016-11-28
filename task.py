@@ -58,7 +58,7 @@ def TaksTiempoDiarios(idtask):
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',DescripcionUser=\'' + str(DescripcionUser) + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(HorasReal) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
 
-        #sql_sentencia(sql)
+        sql_sentencia(sql)
 
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
