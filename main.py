@@ -24,14 +24,14 @@ cargardo()
 for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
     task(proyecto)
-    TaskRegistroProyectos(proyecto)
+    #TaskRegistroProyectos(proyecto)
     #print (proyecto)
 
-proceso('Corrigiendo Tiempo Diarios')
-EliminarCambioEnTiemposDiarios()
+#proceso('Corrigiendo Tiempo Diarios')
+#EliminarCambioEnTiemposDiarios()
 
-proceso('Procsnado SAP')
-ParaSAP()
+#proceso('Procsnado SAP')
+#ParaSAP()
 
 proceso_terminado()
 print ("############################ End Sync Datos Teamwork  ############################")

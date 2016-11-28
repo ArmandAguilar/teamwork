@@ -29,6 +29,7 @@ def task(arg):
             TaksTiempoDiarios(str(Task['id']))
 #funcion que registra  en AAARegistroDeTiemposDiarios
 def TaksTiempoDiarios(idtask):
+    print('https://forta.teamwork.com/tasks/' + str(idtask) + '/time_entries.json')
     requestActivitiesTask = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idtask) + '/time_entries.json')
     requestActivitiesTask.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseActivitiesTask = urllib2.urlopen(requestActivitiesTask)
@@ -53,7 +54,7 @@ def TaksTiempoDiarios(idtask):
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(HorasReal) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
 
-        sql_sentencia(sql)
+        #sql_sentencia(sql)
 
 #funcion que registra  en AAARegistroProyecto
 def TaskRegistroProyectos(idproyect):
