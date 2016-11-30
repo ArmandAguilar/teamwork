@@ -57,7 +57,6 @@ def TaksTiempoDiarios(idtask):
         else:
             UserName = str(activities['person-first-name']) + ' ' + str(activities['person-last-name'])
             sql = 'UPDATE [SAP].[dbo].[AAARegistroDeTiemposDiarios] SET [IdUsuario] = \'' + str(activities['person-id']) + '\',[IdProyecto] = \'' + ProyectoArray[0] + '\',[Usuario] = \'' + str(UserName)  + '\',[Descripcion] = \'' +  str(Descripcion)  + '\',DescripcionUser=\'' + str(DescripcionUser) + '\',[Fecha] = \'' + FechaJsonArrays[0] + '\',[Tiempo] = \'' + str(HorasReal) + '\' WHERE [IdTeam] = \'' + str(activities['id']) + '\''
-
         sql_sentencia(sql)
 
 #funcion que registra  en AAARegistroProyecto
@@ -137,7 +136,7 @@ def TaskRegistroProyectos(idproyect):
                 sql = 'Insert into AAARegistroProyecto values(\''  + str(ProyectTask['id']) + '\',\'' + str(ProyectoArray[0]) +'\',\'' + str(IdResposnable) + '\',\''+ str(Tarea) + '\',\'' + str(ParentTask) + '\',\'' + str(StartDate) + '\',\'' + str(DueDateBase) + '\',\'' + str(DueDate) + '\',\'' + str(ProyectTask['progress']) + '\',\'' + str(ProyectTask['completed']) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDisciplina\',\'' + str(ProyectTask['estimated-minutes']) + '\',\'' + str(Descripcion) + '\')'
             else:
                 sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(Tarea) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[TiempoEstimado] = \'' + str(ProyectTask['estimated-minutes']) + '\',[Descripcion] = \'' + str(Descripcion) + '\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(IdResposnable) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
-            #print (str(sql))
+            print (str(sql))
             sql_sentencia(sql)
         except ValueError:
             #print ('cadean' + '.-' + str(IdResposnable))
@@ -150,8 +149,9 @@ def TaskRegistroProyectos(idproyect):
                 else:
                     #update
                     sql = 'UPDATE [SAP].[dbo].[AAARegistroProyecto] SET [Tarea] = \'' + str(Tarea) + '\',[FechaIncio] = \'' + str(StartDate) + '\',[FechaFinalProgramada] = \'' + str(DueDateBase) + '\',[FehaFinalR] = \'' + str(DueDate) + '\',[Avance] = \'' + str(ProyectTask['progress']) + '\',[Completada] = \'' + str(ProyectTask['completed']) + '\',[EtqFase] = \'----\',[EtqDocumento] = \'---\',[EtqDiciplina] = \'---\',[TiempoEstimado] = \'' + str(ProyectTask['estimated-minutes']) + '\',[Descripcion] = \'' + str(Descripcion) + '\' WHERE [IdTareas]=\'' + str(ProyectTask['id']) + '\' and [IdProyecto]=\'' + ProyectoArray[0] + '\' and [IdUsuario]=\'' + str(idUser) + '\' and [ListaTarea]=\'' + str(ParentTask) + '\''
-                sql_sentencia(sql)
                 print (str(sql))
+                sql_sentencia(sql)
+
 #Esta funcion Borra los registros no activos en la tabla AAARegistroDeTiemposDiarios
 def EliminarCambioEnTiemposDiarios():
     Regreso = 'Oka'
