@@ -28,10 +28,10 @@ for proyecto in projectos_id:
     #print (proyecto)
 
 #proceso('Corrigiendo Tiempo Diarios')
-#EliminarCambioEnTiemposDiarios()
+EliminarCambioEnTiemposDiarios()
 
 #proceso('Procsnado SAP')
-#ParaSAP()
+ParaSAP()
 
 proceso_terminado()
 print ("############################ End Sync Datos Teamwork  ############################")
