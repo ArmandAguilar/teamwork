@@ -27,10 +27,10 @@ for proyecto in projectos_id:
     TaskRegistroProyectos(proyecto)
     #print (proyecto)
 
-#proceso('Corrigiendo Tiempo Diarios')
+proceso('Corrigiendo Tiempo Diarios')
 EliminarCambioEnTiemposDiarios()
 
-#proceso('Procsnado SAP')
+proceso('Procsnado SAP')
 ParaSAP()
 
 proceso_terminado()
