@@ -227,7 +227,6 @@ def ParaSAP():
         cur.execute(sql)
         for value in cur:
             ssuma = ssuma + 1
-            print ssuma
             #IdTarea = str(value[0])
             #IdUsuario = str(value[1])
             #IdProyecto = str(value[2])
@@ -263,6 +262,7 @@ def ParaSAP():
             #    print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
         con.commit()
         con.close()
+        print ssuma
     except ValueError:
         sentencia = '-------Error------:' + str(sql)
     #return sql
