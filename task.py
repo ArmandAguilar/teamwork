@@ -221,7 +221,7 @@ def ParaSAP():
     try:
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
         print (sql)
-        ssuma = 1
+        ssuma = 0
         con = pyodbc.connect(constr)
         cur = con.cursor()
         cur.execute(sql)
@@ -239,7 +239,8 @@ def ParaSAP():
             IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%23
             Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
-            print(Es100)
+            valor =  ssuma + '_' + Es100
+            print(valor)
             #if Es100 == 'No':
             #    TipoAccion = RegistroExistenteEnSap(str(IdTeam))
             #    if TipoAccion == 'Insert':
