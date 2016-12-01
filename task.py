@@ -221,43 +221,45 @@ def ParaSAP():
     try:
         sql = 'SELECT [IdTarea],[IdUsuario],[IdProyecto],[Usuario],[Descripcion],[Tiempo],[IdTeam],CONVERT(VARCHAR,Fecha,103) As Fehca FROM [SAP].[dbo].[AAARegistroDeTiemposDiarios] Where [Fecha] >= \'01-01-2016\' ' + str(StWhere)
         print (sql)
+        ssuma = 1
         con = pyodbc.connect(constr)
         cur = con.cursor()
         cur.execute(sql)
         for value in cur:
-            IdTarea = str(value[0])
-            IdUsuario = str(value[1])
-            IdProyecto = str(value[2])
-            Usuario = str(value[3])
-            Descripcion = str(value[4])
-            Tiempo = str(value[5])
-            IdTeam = str(value[6])
-            Fecha = str(value[7])
+            print ssuma + 1
+            #IdTarea = str(value[0])
+            #IdUsuario = str(value[1])
+            #IdProyecto = str(value[2])
+            #Usuario = str(value[3])
+            #Descripcion = str(value[4])
+            #Tiempo = str(value[5])
+            #IdTeam = str(value[6])
+            #Fecha = str(value[7])
             #obtenemos el Id del usuario
-            IdUserSap = IdUserSAP(str(IdUsuario))
+            #IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%23
-            Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
-            print(Es100)
-            if Es100 == 'No':
-                TipoAccion = RegistroExistenteEnSap(str(IdTeam))
-                if TipoAccion == 'Insert':
-                    DirSAP['NumProyecto'] = str(IdProyecto)
-                    DirSAP['Dia'] = str(Fecha).replace('/','-')
-                    DirSAP['Tarea'] = str(Descripcion)
-                    DirSAP['IdUsuarioTeam'] = str(IdUsuario)
-                    DirSAP['Horas'] = str(Tiempo)
-                    DirSAP['IdJson'] = str(IdTeam)
-                    sql = sap_insert(DirSAP)
-                else:
-                    DirSAP['NumProyecto'] = str(IdProyecto)
-                    DirSAP['Dia'] = str(Fecha).replace('/','-')
-                    DirSAP['Tarea'] = str(Descripcion)
-                    DirSAP['IdUsuarioTeam'] = str(IdUsuario)
-                    DirSAP['Horas'] = str(Tiempo)
-                    DirSAP['IdJson'] = str(IdTeam)
-                    sql = sap_update(DirSAP)
-            else:
-                print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
+            #Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
+            #print(Es100)
+            #if Es100 == 'No':
+            #    TipoAccion = RegistroExistenteEnSap(str(IdTeam))
+            #    if TipoAccion == 'Insert':
+            #        DirSAP['NumProyecto'] = str(IdProyecto)
+            #        DirSAP['Dia'] = str(Fecha).replace('/','-')
+            #        DirSAP['Tarea'] = str(Descripcion)
+            #        DirSAP['IdUsuarioTeam'] = str(IdUsuario)
+            #        DirSAP['Horas'] = str(Tiempo)
+            #        DirSAP['IdJson'] = str(IdTeam)
+            #        sql = sap_insert(DirSAP)
+            #    else:
+            #        DirSAP['NumProyecto'] = str(IdProyecto)
+            #        DirSAP['Dia'] = str(Fecha).replace('/','-')
+            #        DirSAP['Tarea'] = str(Descripcion)
+            #        DirSAP['IdUsuarioTeam'] = str(IdUsuario)
+            #        DirSAP['Horas'] = str(Tiempo)
+            #        DirSAP['IdJson'] = str(IdTeam)
+            #        sql = sap_update(DirSAP)
+            #else:
+            #    print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
         con.commit()
         con.close()
     except ValueError:
