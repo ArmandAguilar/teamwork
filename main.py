@@ -31,7 +31,7 @@ proceso('Corrigiendo Tiempo Diarios')
 EliminarCambioEnTiemposDiarios()
 
 proceso('Procsnado SAP')
-ParaSAP()
+print(ParaSAP())
 
 proceso_terminado()
 print ("############################ End Sync Datos Teamwork  ############################")

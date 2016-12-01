@@ -245,8 +245,7 @@ def ParaSAP():
                     DirSAP['IdUsuarioTeam'] = str(IdUsuario)
                     DirSAP['Horas'] = str(Tiempo)
                     DirSAP['IdJson'] = str(IdTeam)
-                    sap_insert(DirSAP)
-                    print ('Inserte en SAP')
+                    sql = sap_insert(DirSAP)
                 else:
                     DirSAP['NumProyecto'] = str(IdProyecto)
                     DirSAP['Dia'] = str(Fecha).replace('/','-')
@@ -254,8 +253,7 @@ def ParaSAP():
                     DirSAP['IdUsuarioTeam'] = str(IdUsuario)
                     DirSAP['Horas'] = str(Tiempo)
                     DirSAP['IdJson'] = str(IdTeam)
-                    print(sap_update(DirSAP))
-                    print ('Update en SAP')
+                    sql = sap_update(DirSAP)
             else:
                 print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
         con.commit()
