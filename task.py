@@ -235,7 +235,8 @@ def ParaSAP():
             #obtenemos el Id del usuario
             IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%
-            print(Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo)))
+            Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
+            print(Es100)
             if Es100 == 'No':
                 TipoAccion = RegistroExistenteEnSap(str(IdTeam))
                 if TipoAccion == 'Insert':
