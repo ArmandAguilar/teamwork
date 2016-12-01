@@ -226,7 +226,7 @@ def ParaSAP():
         cur = con.cursor()
         cur.execute(sql)
         for value in cur:
-            print ssuma + 1
+            print ssuma = ssuma + 1
             #IdTarea = str(value[0])
             #IdUsuario = str(value[1])
             #IdProyecto = str(value[2])
