@@ -21,6 +21,7 @@ def validar_100(idUsuario,Dia,Tiempo):
     Accion = 'No'
     Porcentaje = 0.0
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
+    print(sql_buscar)
     con = pyodbc.connect(constr)
     cur = con.cursor()
     cur.execute(sql_buscar)
