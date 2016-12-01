@@ -235,7 +235,7 @@ def ParaSAP():
             Fecha = str(value[7])
             #obtenemos el Id del usuario
             IdUserSap = IdUserSAP(str(IdUsuario))
-            #Verificamos si el usuario tiene 100%
+            #Verificamos si el usuario tiene 100%23
             Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
             print(Es100)
             if Es100 == 'No':
