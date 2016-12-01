@@ -227,19 +227,19 @@ def ParaSAP():
         cur.execute(sql)
         for value in cur:
             ssuma = ssuma + 1
-            #IdTarea = str(value[0])
-            #IdUsuario = str(value[1])
-            #IdProyecto = str(value[2])
-            #Usuario = str(value[3])
-            #Descripcion = str(value[4])
-            #Tiempo = str(value[5])
-            #IdTeam = str(value[6])
-            #Fecha = str(value[7])
+            IdTarea = str(value[0])
+            IdUsuario = str(value[1])
+            IdProyecto = str(value[2])
+            Usuario = str(value[3])
+            Descripcion = str(value[4])
+            Tiempo = str(value[5])
+            IdTeam = str(value[6])
+            Fecha = str(value[7])
             #obtenemos el Id del usuario
-            #IdUserSap = IdUserSAP(str(IdUsuario))
+            IdUserSap = IdUserSAP(str(IdUsuario))
             #Verificamos si el usuario tiene 100%23
-            #Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
-            #print(Es100)
+            Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
+            print(Es100)
             #if Es100 == 'No':
             #    TipoAccion = RegistroExistenteEnSap(str(IdTeam))
             #    if TipoAccion == 'Insert':
