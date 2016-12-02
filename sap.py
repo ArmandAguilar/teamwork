@@ -28,10 +28,11 @@ def validar_100(idUsuario,Dia,Tiempo):
          Porcentaje = Porcentaje + float(value[0])
     con.commit()
     con.close()
-    Porcentaje = Porcentaje + OtroPorciento
-    if Porcentaje > 100:
+    PorcentajeTotal = Porcentaje + OtroPorciento
+    if PorcentajeTotal  > 100:
         Accion = 'Si'
-    return Accion
+    val = 'Accion :' + str(Accion) + 'Usuario :' + str(idUsuario) + 'Dia:' + str(Fecha) + 'Porcentaje:' + str(OtroPorciento)
+    return val
 def metaDataUser(idUserTeamWork):
     dataDir = {}
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
@@ -89,11 +90,11 @@ def sap_insert(DirTiempoDiario):
     Proy = ProyectName(str(DirTiempoDiario['NumProyecto']))
     DirMetaDataUser = metaDataUser(str(DirTiempoDiario['IdUsuarioTeam']))
     Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
-    HorasMarcadas = int(DirTiempoDiario['Horas'])
+    HorasMarcadas = float(DirTiempoDiario['Horas'])
     if HorasMarcadas > 9:
-        Porcentaje = (int(DirTiempoDiario['Horas'])/HorasMarcadas) * 100
+        Porcentaje = (float(DirTiempoDiario['Horas'])/HorasMarcadas) * 100
     else:
-        Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
+        Porcentaje = (float(DirTiempoDiario['Horas'])/9.0) * 100
 
     PorcentajeF = float("{0:.2f}".format(Porcentaje))
     Producto = (PorcentajeF * float(Costo)) / 100
@@ -118,7 +119,7 @@ def sap_update(DirTiempoDiario):
     if HorasMarcadas > 9:
         Porcentaje = (int(DirTiempoDiario['Horas'])/HorasMarcadas) * 100
     else:
-        Porcentaje = (int(DirTiempoDiario['Horas'])/9.0) * 100
+        Porcentaje = (float(DirTiempoDiario['Horas'])/9.0) * 100
     PorcentajeF = float("{0:.2f}".format(Porcentaje))
     Producto = (PorcentajeF * float(Costo)) / 100
     ProductoF = float("{0:.2f}".format(Producto))
