@@ -51,6 +51,8 @@ for datos in datajson['projects']:
         Vacio = "o"
     elif datos['id'] == '323016':
         Vacio = "o"
+    elif datos['id'] == '317749':
+        Vacio = "o"
     else:
         ##print(str(datos['id']) + '.-' + str(datos['name']) )
         ProyectoArray = str(datos['name']).split(" ")
