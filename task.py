@@ -239,11 +239,11 @@ def ParaSAP():
             #Verificamos si el usuario tiene 100%23
             Es100 = validar_100(str(IdUserSap),str(Fecha),str(Tiempo))
             valor =  str(ssuma) + '_' + str(Es100) + ' IdSAP:' + str(IdUserSap) + ' Tiempo:' + str(Tiempo) + 'Fecha:' + str(Fecha)
-
             if Es100 == 'No':
                 print(Es100)
                 ssuma = ssuma + 1
-            #    TipoAccion = RegistroExistenteEnSap(str(IdTeam))
+                TipoAccion = RegistroExistenteEnSap(str(IdTeam))
+                print(TipoAccion)
             #    if TipoAccion == 'Insert':
             #        DirSAP['NumProyecto'] = str(IdProyecto)
             #        DirSAP['Dia'] = str(Fecha).replace('/','-')
