@@ -32,7 +32,7 @@ def validar_100(idUsuario,Dia,Tiempo):
     if PorcentajeTotal  > 100:
         Accion = 'Si'
     val = 'Accion :' + str(Accion) + 'Usuario :' + str(idUsuario) + 'Dia:' + str(Fecha) + 'Porcentaje:' + str(OtroPorciento)
-    return val
+    return Accion
 def metaDataUser(idUserTeamWork):
     dataDir = {}
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
