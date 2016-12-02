@@ -252,7 +252,7 @@ def ParaSAP():
             #        DirSAP['Horas'] = str(Tiempo)
             #        DirSAP['IdJson'] = str(IdTeam)
             #        sql = sap_insert(DirSAP)
-                else:
+            #    else:
             #        DirSAP['NumProyecto'] = str(IdProyecto)
             #        DirSAP['Dia'] = str(Fecha).replace('/','-')
             #        DirSAP['Tarea'] = str(Descripcion)
