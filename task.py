@@ -226,7 +226,6 @@ def ParaSAP():
         cur = con.cursor()
         cur.execute(sql)
         for value in cur:
-            ssuma = ssuma + 1
             IdTarea = str(value[0])
             IdUsuario = str(value[1])
             IdProyecto = str(value[2])
@@ -243,6 +242,7 @@ def ParaSAP():
 
             if Es100 == 'No':
                 print(Es100)
+                ssuma = ssuma + 1
             #    TipoAccion = RegistroExistenteEnSap(str(IdTeam))
             #    if TipoAccion == 'Insert':
             #        DirSAP['NumProyecto'] = str(IdProyecto)
