@@ -21,14 +21,14 @@ print ("############################ Start Sync Datos Teamwork #################
 #1.- Lista de Proyectos
 cargardo()
 
-#for proyecto in projectos_id:
+for proyecto in projectos_id:
 #2.- Buscamos las tareas de cada proyectos
-    #task(proyecto)
-    #TaskRegistroProyectos(proyecto)
+    task(proyecto)
+    TaskRegistroProyectos(proyecto)
     #print (proyecto)
 
-#proceso('Corrigiendo Tiempo Diarios')
-#EliminarCambioEnTiemposDiarios()
+proceso('Corrigiendo Tiempo Diarios')
+EliminarCambioEnTiemposDiarios()
 
 proceso('Procsnado SAP')
 ParaSAP()

@@ -252,19 +252,18 @@ def ParaSAP():
                      DirSAP['Horas'] = str(Tiempo)
                      DirSAP['IdJson'] = str(IdTeam)
                      sql = sap_insert(DirSAP)
-            #    else:
-            #        DirSAP['NumProyecto'] = str(IdProyecto)
-            #        DirSAP['Dia'] = str(Fecha).replace('/','-')
-            #        DirSAP['Tarea'] = str(Descripcion)
-            #        DirSAP['IdUsuarioTeam'] = str(IdUsuario)
-            #        DirSAP['Horas'] = str(Tiempo)
-            #        DirSAP['IdJson'] = str(IdTeam)
-            #        sql = sap_update(DirSAP)
-            #else:
-            #    print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
+                else:
+                    DirSAP['NumProyecto'] = str(IdProyecto)
+                    DirSAP['Dia'] = str(Fecha).replace('/','-')
+                    DirSAP['Tarea'] = str(Descripcion)
+                    DirSAP['IdUsuarioTeam'] = str(IdUsuario)
+                    DirSAP['Horas'] = str(Tiempo)
+                    DirSAP['IdJson'] = str(IdTeam)
+                    sql = sap_update(DirSAP)
+            else:
+                print('Dia con 100 Detctado' + 'Usuario:' + str(IdUsuario)  + 'Dia:' + str(Fecha) + 'NumProyecto:' + str(IdProyecto))
         con.commit()
         con.close()
-        print ssuma
     except ValueError:
         sentencia = '-------Error------:' + str(sql)
-    #return sql
+    return sql
