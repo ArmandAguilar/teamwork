@@ -245,13 +245,13 @@ def ParaSAP():
                 #print(TipoAccion)
                 if TipoAccion == 'Insert':
                      ssuma = ssuma + 1
-            #        DirSAP['NumProyecto'] = str(IdProyecto)
-            #        DirSAP['Dia'] = str(Fecha).replace('/','-')
-            #        DirSAP['Tarea'] = str(Descripcion)
-            #        DirSAP['IdUsuarioTeam'] = str(IdUsuario)
-            #        DirSAP['Horas'] = str(Tiempo)
-            #        DirSAP['IdJson'] = str(IdTeam)
-            #        sql = sap_insert(DirSAP)
+                     DirSAP['NumProyecto'] = str(IdProyecto)
+                     DirSAP['Dia'] = str(Fecha).replace('/','-')
+                     DirSAP['Tarea'] = str(Descripcion)
+                     DirSAP['IdUsuarioTeam'] = str(IdUsuario)
+                     DirSAP['Horas'] = str(Tiempo)
+                     DirSAP['IdJson'] = str(IdTeam)
+                     sql = sap_insert(DirSAP)
             #    else:
             #        DirSAP['NumProyecto'] = str(IdProyecto)
             #        DirSAP['Dia'] = str(Fecha).replace('/','-')
