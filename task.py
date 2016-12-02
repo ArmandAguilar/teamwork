@@ -241,10 +241,10 @@ def ParaSAP():
             valor =  str(ssuma) + '_' + str(Es100) + ' IdSAP:' + str(IdUserSap) + ' Tiempo:' + str(Tiempo) + 'Fecha:' + str(Fecha)
             if Es100 == 'No':
                 print(Es100)
-                ssuma = ssuma + 1
                 TipoAccion = RegistroExistenteEnSap(str(IdTeam))
-                print(TipoAccion)
-            #    if TipoAccion == 'Insert':
+                #print(TipoAccion)
+                if TipoAccion == 'Insert':
+                     ssuma = ssuma + 1
             #        DirSAP['NumProyecto'] = str(IdProyecto)
             #        DirSAP['Dia'] = str(Fecha).replace('/','-')
             #        DirSAP['Tarea'] = str(Descripcion)
