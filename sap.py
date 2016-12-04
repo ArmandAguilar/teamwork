@@ -46,7 +46,7 @@ def metaDataUser(idUserTeamWork):
     cur = conn.cursor()
     cur.execute(sql)
     for value in cur:
-        dataDir['IdUsuario'] = value[0]
+        dataDir['IdUsuario'] = 12
         dataDir['Nombre'] = value[1]
         dataDir['Apellidos'] = value[2]
         dataDir['Departamento'] = value[3]
