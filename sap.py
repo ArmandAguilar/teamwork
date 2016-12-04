@@ -35,6 +35,12 @@ def validar_100(idUsuario,Dia,Tiempo):
     return Accion
 def metaDataUser(idUserTeamWork):
     dataDir = {}
+    dataDir['IdUsuario'] = 'V'
+    dataDir['Nombre'] = 'V'
+    dataDir['Apellidos'] = 'V'
+    dataDir['Departamento'] = 'V'
+    dataDir['Perfil'] = 'V'
+    dataDir['Acronimo'] = 'V'
     sql = 'SELECT [Id],[Nombre],[Apellidos],[Departamento],[Perfil],[Acronimo] FROM [Northwind].[dbo].[Usuarios] Where [IdTemWork] =\'' + str(idUserTeamWork) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
