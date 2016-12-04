@@ -53,7 +53,7 @@ def Tiempos_TemaWork(IdProyecto):
             Porcentaje = (HorasReal/9.0) * 100
 
         #Costo de Actividad
-        Costo = CostoUnitarioRecursos(IdUsuario)
+        Costo = CostoUnitarioRecursos(str(DirMetaDataUser['IdUsuario']))
         PorcentajeF = float("{0:.2f}".format(Porcentaje))
         Producto = (PorcentajeF * float(Costo)) / 100
         ProductoF = float("{0:.2f}".format(Producto))
