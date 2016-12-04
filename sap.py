@@ -35,7 +35,7 @@ def validar_100(idUsuario,Dia,Tiempo):
     return Accion
 def metaDataUser(idUserTeamWork):
     dataDir = {}
-    dataDir['IdUsuario'] = 'V'
+    dataDir['IdUsuario'] = '12'
     dataDir['Nombre'] = 'V'
     dataDir['Apellidos'] = 'V'
     dataDir['Departamento'] = 'V'
@@ -46,7 +46,7 @@ def metaDataUser(idUserTeamWork):
     cur = conn.cursor()
     cur.execute(sql)
     for value in cur:
-        dataDir['IdUsuario'] = 12
+        dataDir['IdUsuario'] = value[0]
         dataDir['Nombre'] = value[1]
         dataDir['Apellidos'] = value[2]
         dataDir['Departamento'] = value[3]
