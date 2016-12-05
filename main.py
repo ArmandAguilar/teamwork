@@ -30,8 +30,8 @@ for proyecto in projectos_id:
 proceso('Corrigiendo Tiempo Diarios')
 EliminarCambioEnTiemposDiarios()
 
-proceso('Procsnado SAP')
-ParaSAP()
+#proceso('Procsnado SAP')
+#ParaSAP()
 
 proceso_terminado()
 print ("############################ End Sync Datos Teamwork  ############################")
