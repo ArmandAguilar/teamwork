@@ -81,7 +81,7 @@ def Tiempos_TemaWork(IdProyecto):
         Producto = (PorcentajeF * float(Costo)) / 100
         ProductoF = float("{0:.2f}".format(Producto))
         #Formateando Fecha
-        Fecha = dataValor['date']
+        Fecha = dataValor['dateUserPerspective']
         FechaJsonArrays = str(Fecha).split("T")
         #Verifcamos si existe le registro
         Existe = validar_si_exiete(dataValor['id'])

@@ -1,0 +1,144 @@
+PS C:\Users\Administrador> python C:\ShellScript2016\teamwork\alternative.py
+
+
+Erick Barrios TÚllez :
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-01
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-08
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-10
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-10
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-10
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-18
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-24
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Erick Barrios TÚllez Dia:2016-11-25
+
+Roberto J Jara GarcÝa :
+Proyecto: 318304-1877 Grow Terracer├¡as y Estructura Lago Usuario : Roberto J Jara GarcÝa Dia:2016-11-11
+Proyecto: 318304-1877 Grow Terracer├¡as y Estructura Lago Usuario : Roberto J Jara GarcÝa Dia:2016-11-22
+
+
+Omar Nolasco Cervantes :
+Proyecto: 321408-1864 Urbanizaci├│n Fracc. Lomas Country Club Usuario : Omar Nolasco Cervantes Dia:2016-12-01
+
+
+Guillermo Carmona Munci±o :
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Guillermo Carmona Munci±o Dia:2016-10-27
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Guillermo Carmona Munci±o Dia:2016-10-28
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-01
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-01
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-02
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-03
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-03
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-03
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-04
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-04
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Guillermo Carmona Munci±o Dia:2016-11-04
+
+
+Magali Cortes Gil :
+Proyecto: 281337-1837 Magneti Marelli Usuario : Magali Cortes Gil Dia:2016-08-01
+Proyecto: 281337-1837 Magneti Marelli Usuario : Magali Cortes Gil Dia:2016-08-02
+Proyecto: 281337-1837 Magneti Marelli Usuario : Magali Cortes Gil Dia:2016-08-03
+
+
+Magneti Marelli Usuario :
+Proyecto: 281337-1837 Magneti Marelli Usuario : Jose Antonio Vertiz Orozco Dia:2016-09-26
+Proyecto: 281337-1837 Magneti Marelli Usuario : Jose Antonio Vertiz Orozco Dia:2016-09-28
+Proyecto: 281337-1837 Magneti Marelli Usuario : Jose Antonio Vertiz Orozco Dia:2016-10-04
+Proyecto: 281337-1837 Magneti Marelli Usuario : Jose Antonio Vertiz Orozco Dia:2016-10-04
+
+Jorge Higuera Reyes :
+Proyecto: 281337-1837 Magneti Marelli Usuario : Jorge Higuera Reyes Dia:2016-10-25
+Proyecto: 281337-1837 Magneti Marelli Usuario : Jorge Higuera Reyes Dia:2016-10-27
+
+J. Miguel Cordero OlguÝn :
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : J. Miguel Cordero OlguÝn Dia:2016-07-04
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : J. Miguel Cordero OlguÝn Dia:2016-07-19
+
+Jaime G GarcÝa MartÝnez :
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Jaime G GarcÝa MartÝnez Dia:2016-07-15
+
+Jose Luis Corona Macias :
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Jose Luis Corona Macias Dia:2016-06-17
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Jose Luis Corona Macias Dia:2016-06-17
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Jose Luis Corona Macias Dia:2016-06-17
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Jose Luis Corona Macias Dia:2016-06-17
+
+
+Sarah Victoria L¾pez Adams :
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Sarah Victoria L¾pez Adams Dia:2016-11-07
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Sarah Victoria L¾pez Adams Dia:2016-11-07
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Sarah Victoria L¾pez Adams Dia:2016-11-07
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Sarah Victoria L¾pez Adams Dia:2016-10-31
+Proyecto: 251598-1814 Proyecto Huatulco Usuario : Sarah Victoria L¾pez Adams Dia:2016-10-31
+
+Victor Abel Torres Fernandez :
+Proyecto: 324204-1492 ORANGE EDIFICIO AMBAR Usuario : Victor Abel Torres Fernandez Dia:2016-12-01
+Proyecto: 322636-1882 ESCALA QUADRA TOWERS Usuario : Victor Abel Torres Fernandez Dia:2016-11-23
+Proyecto: 322636-1882 ESCALA QUADRA TOWERS Usuario : Victor Abel Torres Fernandez Dia:2016-11-23
+
+
+Eduardo Aguilar :
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 318869-1878 Asmon Anteproyecto Huanacanaxtle Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-05
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-11
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-04
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-07
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-08
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-08
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-08
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-08
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-08-08
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-11-05
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-11-07
+Proyecto: 262636-1822 GROW Proyecto Terracer├¡as Parque Central Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 281337-1837 Magneti Marelli Usuario : Eduardo Aguilar MartÝnez Dia:2016-09-15
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-05
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-11
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-05
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-11
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-05
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-11
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-05
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-11
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-05
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-06
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-11
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Eduardo Aguilar MartÝnez Dia:2016-07-13
+
+Registros Desconocidos :
+Proyecto: 322727-1874 Husky Usuario : V V Dia:2016-11-22
+Proyecto: 322727-1874 Husky Usuario : V V Dia:2016-11-22
+Proyecto: 322727-1874 Husky Usuario : V V Dia:2016-12-02
+Proyecto: 322727-1874 Husky Usuario : V V Dia:2016-12-02
+Proyecto: 322727-1874 Husky Usuario : V V Dia:2016-12-02
+
+Efren Espinoza :
+Proyecto: 316506-1726 Maramod CETRAM Constitucion 1917 Usuario : Efren Espinosa Bautista Dia:2016-07-13
+Proyecto: 314159-1859 ORANGE MURO DESCENDENTE SIRUS Usuario : Efren Espinosa Bautista Dia:2016-07-13
+Proyecto: 315095-1863 INMOBILIA ARIA PUERTO CANCUN Usuario : Efren Espinosa Bautista Dia:2016-07-13
+Proyecto: 317839-1862 REDBRICK Edificio en Tuxpan 54 Usuario : Efren Espinosa Bautista Dia:2016-07-13
+Proyecto: 314079-1860 ORANGE MURO DESCENDENTE PROYECTO AMBAR Usuario : Efren Espinosa Bautista Dia:2016-07-13
+Proyecto: 295281-1845 Cuarto de Monitoreo Usuario : Efren Espinosa Bautista Dia:2016-07-13
