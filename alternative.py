@@ -9,7 +9,6 @@ sys.setdefaultencoding("utf-8")
 
 def validar_si_exiete(IdTemaWork):
     Accion = 'No'
-    Fecha = str(Dia).replace('/','-')
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where IdTemaWork = \'' + str(IdTemaWork) + '\''
     con = pyodbc.connect(constr)
     cur = con.cursor()
