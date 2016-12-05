@@ -24,7 +24,7 @@ def validar_dia_completo(IdUsuario,Dia,Porcentajes):
     Fecha = str(Dia).replace('/','-')
     Permitir = 'Si'
     Porcentaje = 0.0
-    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(idUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(IdUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
     con = pyodbc.connect(constr)
     cur = con.cursor()
     cur.execute(sql_buscar)
