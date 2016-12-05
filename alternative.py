@@ -96,7 +96,7 @@ def Tiempos_TemaWork(IdProyecto):
             else:
                 alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos'])
                 print(alerta)
-        print(str(sql))
+    
 
 for proyecto in projectos_id:
 
