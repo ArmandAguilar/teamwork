@@ -10,13 +10,13 @@ sys.setdefaultencoding("utf-8")
 def validar_si_exiete(IdTemaWork):
     Accion = 'No'
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where IdTemaWork = \'' + str(IdTemaWork) + '\''
-    con = pyodbc.connect(constr)
-    cur = con.cursor()
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
     cur.execute(sql_buscar)
     for value in cur:
          Accion = 'Si'
-    con.commit()
-    con.close()
+    conn.commit()
+    conn.close()
 
     return Accion
 def validar_dia_completo(IdUsuario,Dia,Porcentajes):
@@ -25,13 +25,13 @@ def validar_dia_completo(IdUsuario,Dia,Porcentajes):
     Permitir = 'Si'
     Porcentaje = 0.0
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(IdUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
-    con = pyodbc.connect(constr)
-    cur = con.cursor()
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
     cur.execute(sql_buscar)
     for value in cur:
          Porcentaje = Porcentaje + float(value[0])
-    con.commit()
-    con.close()
+    conn.commit()
+    conn.close()
     PorcentajeTotal = Porcentaje + OtroPorciento
     if PorcentajeTotal  > 100:
         Permitir = 'No'
