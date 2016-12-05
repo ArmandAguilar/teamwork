@@ -86,7 +86,7 @@ def Tiempos_TemaWork(IdProyecto):
         Existe = validar_si_exiete(dataValor['id'])
         if Existe == 'Si':
             sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\' [NumProyecto] = \'' + str(ProyectoArray[0]) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Fecha) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
-            procesar_sap_clon(sql)
+            #procesar_sap_clon(sql)
         else:
             EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
             if EsInsertable == 'Si':
