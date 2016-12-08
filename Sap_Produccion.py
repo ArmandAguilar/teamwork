@@ -33,7 +33,7 @@ def validar_dia_completo(IdUsuario,Dia,Porcentajes):
     conn.commit()
     conn.close()
     PorcentajeTotal = Porcentaje + OtroPorciento
-    if PorcentajeTotal  > 100:
+    if PorcentajeTotal  >= 100.0:
         Permitir = 'No'
     return Permitir
 def procesar_sap_clon(sql):
