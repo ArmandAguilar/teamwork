@@ -33,7 +33,7 @@ def validar_dia_completo(IdUsuario,Dia,Porcentajes):
     conn.commit()
     conn.close()
     PorcentajeTotal = Porcentaje + OtroPorciento
-    if PorcentajeTotal  >= 100.0:
+    if PorcentajeTotal  > 100.0:
         Permitir = 'No'
     return Permitir
 def procesar_sap_clon(sql):
@@ -88,7 +88,7 @@ def Tiempos_TemaWork(IdProyecto):
         if DirMetaDataUser['Nombre'] == 'V':
             vPass = 0
         else:
-            
+
             if Existe == 'Si':
                 sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\', [NumProyecto] = \'' + str(ProyectoArray[0]) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
                 procesar_sap_clon(sql)
