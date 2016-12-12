@@ -55,7 +55,7 @@ def Tiempos_TemaWork(IdProyecto):
     Suma = 0
     Alerta = ''
     for dataValor in datajsonTiempo['time-entries']:
-        if dataValor['todo-list-name'] is '':
+        if len(dataValor['todo-list-name']) == 0:
             Passv = 0
         else:
             ProyectoArray = str(dataValor['todo-list-name']).split(" ")
