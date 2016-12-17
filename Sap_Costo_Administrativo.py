@@ -4,6 +4,10 @@ from projects import *
 from sap import *
 from mssql import *
 import pypyodbc as pyodbc
+import urllib2, base64
+import json
+import unicodedata
+import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
