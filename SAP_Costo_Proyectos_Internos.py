@@ -73,4 +73,6 @@ def Tiempos_TemaWork(IdProyecto):
         sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Perfil'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\')'
         print (str(sql))
 #Run the function by insert the dates
+print('#################################### Insert Proyectos Internos ##########################')
 Tiempos_TemaWork('323850')
+print('#################################### End Proyectos Internos    ##########################')
