@@ -45,17 +45,32 @@ def Tiempos_TemaWork(IdProyecto):
         DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
 
         #Get Number and Name of proyect
-        get_tag_task(idTask)
-
+        NumProyecto = get_tag_task(idTask)
+        NomProyecto = '.'
         #Get Descripcion of work
         DescripcionUser = str(dataValor['description'])
         DescripcionUser = str(DescripcionUser).replace('\'',' ')
         DescripcionUser = str(DescripcionUser).replace('"',' ')
         DescripcionUser = str(DescripcionUser).strip()
-
+        #Get Date
+        Fecha = dataValor['dateUserPerspective']
+        FechaJsonArrays = str(Fecha).split("T")
+        #i make  the % and Time
+        Horas = float(dataValor['hours'])
+        Minutos = float(dataValor['minutes']) / 60
+        HorasReal = Horas + Minutos
+        if HorasReal > 9:
+            Porcentaje = (HorasReal/HorasReal) * 100
+        else:
+            Porcentaje = (HorasReal/9.0) * 100
+            #Costo de Actividad
+            Costo = CostoUnitarioRecursos(DirMetaDataUser['IdUsuario'])
+            PorcentajeF = float("{0:.2f}".format(Porcentaje))
+            Producto = (PorcentajeF * float(Costo)) / 100
+            ProductoF = float("{0:.2f}".format(Producto))
 
         #sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\', [NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
-        #sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Perfil'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\')'
-
+        sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Perfil'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\')'
+        print (str(sql))
 #Run the function by insert the dates
 Tiempos_TemaWork('323850')
