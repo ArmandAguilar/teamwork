@@ -14,6 +14,8 @@ sys.setdefaultencoding("utf-8")
 #  i create a function by get the Tag of each task
 def get_tag_task(idTask):
     NumProyecto = ''
+    link = 'https://forta.teamwork.com/tasks/' + str(idTask)  + '.json'
+    print (str(link))
     requestTag = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idTask)  + '.json')
     requestTag.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseTag = urllib2.urlopen(requestTag)
