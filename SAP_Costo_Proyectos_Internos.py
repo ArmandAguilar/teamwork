@@ -68,7 +68,7 @@ def get_name_proyect(idProyect):
 def get_tag_task(idTask):
     NumProyecto = ''
     link = 'https://forta.teamwork.com/tasks/' + str(idTask)  + '.json'
-    print (str(link))
+    #print (str(link))
     requestTag = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idTask)  + '.json')
     requestTag.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseTag = urllib2.urlopen(requestTag)
