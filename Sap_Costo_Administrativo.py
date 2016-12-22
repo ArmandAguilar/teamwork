@@ -50,7 +50,6 @@ def procesar_sap_clon(sql):
     return valor
 def Tiempos_TemaWork(IdProyecto):
     Link = 'https://forta.teamwork.com/projects/' + IdProyecto + '/time.json'
-    print (str(Link))
     requestTiempo = urllib2.Request('https://forta.teamwork.com/projects/' + IdProyecto + '/time.json')
     requestTiempo.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseTiempo = urllib2.urlopen(requestTiempo)
