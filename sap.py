@@ -57,6 +57,7 @@ def metaDataUser(idUserTeamWork):
     return dataDir
 
 def ProyectName(IdProyecto):
+    NombreProyecto = ''
     sql = 'SELECT [Proyecto] FROM [SAP].[dbo].[Presupuestos] Where [NoProyecto] =\'' + str(IdProyecto) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
