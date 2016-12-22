@@ -11,6 +11,46 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+def validar_si_exiete(IdTemaWork):
+    Accion = 'No'
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where IdTemaWork = \'' + str(IdTemaWork) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_buscar)
+    for value in cur:
+         Accion = 'Si'
+    conn.commit()
+    conn.close()
+
+    return Accion
+
+def validar_dia_completo(IdUsuario,Dia,Porcentajes):
+    OtroPorciento = float(Porcentajes)
+    Fecha = str(Dia).replace('/','-')
+    Permitir = 'Si'
+    Porcentaje = 0.0
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdUsuario] = \'' + str(IdUsuario) + '\' and Dia = \'' + str(Fecha) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql_buscar)
+    for value in cur:
+         Porcentaje = Porcentaje + float(value[0])
+    conn.commit()
+    conn.close()
+    PorcentajeTotal = Porcentaje + OtroPorciento
+    if PorcentajeTotal  > 100:
+        Permitir = 'No'
+    return Permitir
+
+def procesar_sap_clon(sql):
+    valor = 'Procesando..'
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql)
+    conn.commit()
+    conn.close()
+    return valor
+
 # i create a function by get the name of proyect
 def get_name_proyect(idProyect):
     NameProyect = ''
