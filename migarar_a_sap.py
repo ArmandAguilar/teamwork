@@ -42,6 +42,7 @@ def migrate():
         Titulo = value[11]
         Acronimo = value[12]
         IdTemaWork = value[13]
+        #Ask if existe somby field
         Exist = filed_exist(IdTemaWork)
         if Exist == 'Si':
             #here update the field
