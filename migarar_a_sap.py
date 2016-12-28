@@ -44,7 +44,8 @@ def migrate():
         IdTemaWork = value[13]
         #Ask if existe somby field
         Exist = filed_exist(IdTemaWork)
-        print (str(IdTemaWork) + ':' + Exist)
+        cadena = str(IdTemaWork) + ':' + str(Exist)
+        print (cadena)
         #if Exist == 'Si':
             #here update the field
         #    sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'Nombre\',\'Apellidos\',\'NumProyecto\',\'NomProyecto\',\'Dia\',\'Tarea\',\'Porcentaje\',\'Producto\',\'IdUsuario\',\'0\',\'Departamento\',\'Perfil\',\'Titulo\',\'Acronimo\',\'Si\',\'IdTeamWork\')'
