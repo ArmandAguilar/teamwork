@@ -48,7 +48,7 @@ def migrate():
         cadena = str(IdTemaWork) + ':' + str(Exist)
         if Exist == 'Si':
             #here update the field
-            sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(Nombre) + '\',\'' + str(Apellidos) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(Dia) + '\',\'' + str(Tarea) + '\',\'' + str(Porcentaje) + '\',\'' + str(Producto) + '\',\'' + srt(IdUsuario) + '\',\'0\',\'' + str(Departamento) + ''\',\'' + str(Perfil) + '\',\'' + str(Titulo) + '\',\'' + str(Acronimo) + '\',\'Si\',\'' + str(IdTemaWork) + '\')'
+            sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(Nombre) + '\',\'' + str(Apellidos) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(Dia) + '\',\'' + str(Tarea) + '\',\'' + str(Porcentaje) + '\',\'' + str(Producto) + '\',\'' + srt(IdUsuario) + '\',\'0\',\'' + str(Departamento) + '\',\'' + str(Perfil) + '\',\'' + str(Titulo) + '\',\'' + str(Acronimo) + '\',\'Si\',\'' + str(IdTemaWork) + '\')'
             print (sqlInsert)
         else:
             #here insert the update
