@@ -11,7 +11,7 @@ sys.setdefaultencoding("utf-8")
 #This funcion show if we need make update or insert
 def filed_exist(IdTemaWork):
     Accion = 'No'
-    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccion] Where IdTemaWork = \'' + str(IdTemaWork) + '\''
+    sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccion] Where IdTeamWork = \'' + str(IdTemaWork) + '\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql_buscar)
