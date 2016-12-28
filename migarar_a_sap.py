@@ -53,4 +53,6 @@ def migrate():
             print (sqlupdate)
     conn.commit()
     conn.close()
-    return valor
+    #return valor
+
+migrate()
