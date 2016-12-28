@@ -45,14 +45,14 @@ def migrate():
         #Ask if existe somby field
         print (str(IdTemaWork))
         #Exist = filed_exist(IdTemaWork)
-        if Exist == 'Si':
+        #if Exist == 'Si':
             #here update the field
-            sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'Nombre\',\'Apellidos\',\'NumProyecto\',\'NomProyecto\',\'Dia\',\'Tarea\',\'Porcentaje\',\'Producto\',\'IdUsuario\',\'0\',\'Departamento\',\'Perfil\',\'Titulo\',\'Acronimo\',\'Si\',\'IdTeamWork\')'
-            print (sqlInsert)
-        else:
+        #    sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'Nombre\',\'Apellidos\',\'NumProyecto\',\'NomProyecto\',\'Dia\',\'Tarea\',\'Porcentaje\',\'Producto\',\'IdUsuario\',\'0\',\'Departamento\',\'Perfil\',\'Titulo\',\'Acronimo\',\'Si\',\'IdTeamWork\')'
+        #    print (sqlInsert)
+        #else:
             #here insert the update
-            sqlupdate = 'UPDATE [SAP].[dbo].[AATiemposDeProduccion] SET [Nombre] = \'' + str(Nombre) + '\' ,[Apellidos] = \'' + str(Apellidos) + '\',[NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Dia) + '\',[Tarea] = \'' + str(Tarea) + '\',[Porcentaje] = \'' + str(Porcentaje) + '\',[Producto] = \'' + str(Producto) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Departamento] = \'' + str(Departamento) + '\',[Perfil] = \'' + str(Perfil) + '\',[Titulo] = \'' + str(Titulo) + '\',[Acronimo] = \'' + str(Acronimo) + '\' WHERE [IdTeamWork] = \'' + str(IdTeamWork) + '\''
-            print (sqlupdate)
+        #    sqlupdate = 'UPDATE [SAP].[dbo].[AATiemposDeProduccion] SET [Nombre] = \'' + str(Nombre) + '\' ,[Apellidos] = \'' + str(Apellidos) + '\',[NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Dia) + '\',[Tarea] = \'' + str(Tarea) + '\',[Porcentaje] = \'' + str(Porcentaje) + '\',[Producto] = \'' + str(Producto) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Departamento] = \'' + str(Departamento) + '\',[Perfil] = \'' + str(Perfil) + '\',[Titulo] = \'' + str(Titulo) + '\',[Acronimo] = \'' + str(Acronimo) + '\' WHERE [IdTeamWork] = \'' + str(IdTeamWork) + '\''
+        #    print (sqlupdate)
     conn.commit()
     conn.close()
     #return valor
