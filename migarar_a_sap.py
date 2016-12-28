@@ -26,7 +26,7 @@ def migrate():
     sql = 'SELECT [Nombre],[Apellidos],[NumProyecto],[NomProyecto],[Dia],[Tarea],[Porcentaje],[Producto],[IdUsuario],[Departamento],[Perfil],[Titulo],[Acronimo],[IdTemaWork] FROM  [SAP].[dbo].[AATiemposDeProduccionClon] WHERE [Dia] >= \'01-12-2016\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
-    cur.execute(sql_buscar)
+    cur.execute(sql)
     for value in cur:
         Nombre = value[0]
         Apellidos = value[1]
