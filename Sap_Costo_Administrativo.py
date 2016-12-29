@@ -54,8 +54,6 @@ def Tiempos_TemaWork(IdProyecto):
     Paginado = 1
     Limite = True
     while Limite == True:
-        #
-
         requestTiempo = urllib2.Request('https://forta.teamwork.com/projects/' + IdProyecto + '/time.json?page=' + str(Paginado))
         requestTiempo.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
         responseTiempo = urllib2.urlopen(requestTiempo)
@@ -65,13 +63,12 @@ def Tiempos_TemaWork(IdProyecto):
         Alerta = ''
         #Ask if json have data
         Data = len(datajsonTiempo['time-entries'])
-        print (str(Data))
         if Data == 0:
             # set Limit to false
             Limite = False
         else:
             # i process data
-            print ('================> Pagina: ' + str(Paginado) + '<================')
+            print ('================> Pagina: ' + str(Paginado) + ' <================')
             for dataValor in datajsonTiempo['time-entries']:
                 if len(dataValor['todo-list-name']) == 0:
                     Passv = 0
