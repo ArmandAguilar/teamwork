@@ -69,9 +69,8 @@ def Tiempos_TemaWork(IdProyecto):
         if Data == 0:
             # set Limit to false
             Limite = False
-            print('ya no hay datos')
         else:
-            print ('Continuo con dtaos')
+            # i process data
             for dataValor in datajsonTiempo['time-entries']:
                 if len(dataValor['todo-list-name']) == 0:
                     Passv = 0
