@@ -66,7 +66,6 @@ def Tiempos_TemaWork(IdProyecto):
             # i process data
             print ('================> Pagina: ' + str(Paginado) + ' <================')
             for dataValor in datajsonTiempo['time-entries']:
-
                 ProyectoArray = str(dataValor['project-name']).split(" ")
                 #Fecha = str(dataValor['date']).split("T")
                 DescripcionUser = str(dataValor['description'])
@@ -116,7 +115,7 @@ def Tiempos_TemaWork(IdProyecto):
                         else:
                             alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
                             print(alerta)
-            Paginado += 1
+        Paginado += 1
 print('#################################### Insert Porduccion ##########################')
 for proyecto in projectos_id:
 
