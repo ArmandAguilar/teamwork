@@ -59,12 +59,12 @@ def migrate():
         if Exist == 'Si':
             #here insert the update
             sqlupdate = 'UPDATE [SAP].[dbo].[AATiemposDeProduccion] SET [Nombre] = \'' + str(Nombre) + '\' ,[Apellidos] = \'' + str(Apellidos) + '\',[NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Dia) + '\',[Tarea] = \'' + str(Tarea) + '\',[Porcentaje] = \'' + str(Porcentaje) + '\',[Producto] = \'' + str(Producto) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Departamento] = \'' + str(Departamento) + '\',[Perfil] = \'' + str(Perfil) + '\',[Titulo] = \'' + str(Titulo) + '\',[Acronimo] = \'' + str(Acronimo) + '\' WHERE [IdTeamWork] = \'' + str(IdTemaWork) + '\''
-            procesar_sap(sql)
+            procesar_sap(sqlupdate)
             print (sqlupdate)
         else:
             #here update the field
             sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(Nombre) + '\',\'' + str(Apellidos) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(Dia) + '\',\'' + str(TareaLimit) + '\',\'' + str(Porcentaje) + '\',\'' + str(Producto) + '\',\'' + str(IdUsuario) + '\',\'0\',\'' + str(Departamento) + '\',\'' + str(Perfil) + '\',\'' + str(Titulo) + '\',\'' + str(Acronimo) + '\',\'Si\',\'' + str(IdTemaWork) + '\')'
-            procesar_sap(sql)
+            procesar_sap(sqlInsert)
             print (sqlInsert)
     conn.commit()
     conn.close()
