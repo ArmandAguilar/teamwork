@@ -49,7 +49,6 @@ def procesar_sap_clon(sql):
     conn.close()
     return valor
 def Tiempos_TemaWork(IdProyecto):
-
     #this section run a page1 ...n
     Paginado = 1
     Limite = True
