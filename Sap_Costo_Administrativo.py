@@ -71,6 +71,8 @@ def Tiempos_TemaWork(IdProyecto):
             Limite = False
             print('ya no hay datos')
         else:
+            print ('Continuo con dtaos')
+        Paginado =+ 1
         #for dataValor in datajsonTiempo['time-entries']:
         #    if len(dataValor['todo-list-name']) == 0:
         #        Passv = 0
@@ -126,7 +128,6 @@ def Tiempos_TemaWork(IdProyecto):
         #                        else:
         #                            alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
         #                            print(alerta)
-        Paginado += 1
 #Costo Administrativo 317730
 print('#################################### Insert Costo Administrativo ##########################')
 Tiempos_TemaWork('317730')
