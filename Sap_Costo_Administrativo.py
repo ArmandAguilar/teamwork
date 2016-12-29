@@ -100,8 +100,6 @@ def Tiempos_TemaWork(IdProyecto):
                         procesar_sap_clon(sql)
                         print (sql)
                     else:
-
-                        g
                         EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
                         print(str(EsInsertable) + ' ' + str(DirMetaDataUser['IdUsuario']) + ' ' + str(FechaJsonArrays[0]) + ' '  + str(PorcentajeF))
                         if str(EsInsertable) == 'Si':
