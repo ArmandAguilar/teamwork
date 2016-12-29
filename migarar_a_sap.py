@@ -7,6 +7,15 @@ import pypyodbc as pyodbc
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+#This function insert field inte the table AATiemposDeProduccion
+def procesar_sap(sql):
+    valor = 'Procesando..'
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql)
+    conn.commit()
+    conn.close()
+    return valor
 
 #This funcion show if we need make update or insert
 def filed_exist(IdTemaWork):
@@ -43,16 +52,19 @@ def migrate():
         Titulo = value[11]
         Acronimo = value[12]
         IdTemaWork = value[13]
+        TareaLimit = str(Tarea[:200])
         #Ask if existe somby field
         Exist = filed_exist(IdTemaWork)
         cadena = str(IdTemaWork) + ':' + str(Exist)
         if Exist == 'Si':
             #here insert the update
             sqlupdate = 'UPDATE [SAP].[dbo].[AATiemposDeProduccion] SET [Nombre] = \'' + str(Nombre) + '\' ,[Apellidos] = \'' + str(Apellidos) + '\',[NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Dia) + '\',[Tarea] = \'' + str(Tarea) + '\',[Porcentaje] = \'' + str(Porcentaje) + '\',[Producto] = \'' + str(Producto) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Departamento] = \'' + str(Departamento) + '\',[Perfil] = \'' + str(Perfil) + '\',[Titulo] = \'' + str(Titulo) + '\',[Acronimo] = \'' + str(Acronimo) + '\' WHERE [IdTeamWork] = \'' + str(IdTemaWork) + '\''
+            procesar_sap(sql)
             print (sqlupdate)
         else:
             #here update the field
-            sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(Nombre) + '\',\'' + str(Apellidos) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(Dia) + '\',\'' + str(Tarea) + '\',\'' + str(Porcentaje) + '\',\'' + str(Producto) + '\',\'' + str(IdUsuario) + '\',\'0\',\'' + str(Departamento) + '\',\'' + str(Perfil) + '\',\'' + str(Titulo) + '\',\'' + str(Acronimo) + '\',\'Si\',\'' + str(IdTemaWork) + '\')'
+            sqlInsert = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccion] VALUES (\'' + str(Nombre) + '\',\'' + str(Apellidos) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(Dia) + '\',\'' + str(TareaLimit) + '\',\'' + str(Porcentaje) + '\',\'' + str(Producto) + '\',\'' + str(IdUsuario) + '\',\'0\',\'' + str(Departamento) + '\',\'' + str(Perfil) + '\',\'' + str(Titulo) + '\',\'' + str(Acronimo) + '\',\'Si\',\'' + str(IdTemaWork) + '\')'
+            procesar_sap(sql)
             print (sqlInsert)
     conn.commit()
     conn.close()
