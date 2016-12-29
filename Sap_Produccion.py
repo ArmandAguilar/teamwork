@@ -64,7 +64,7 @@ def Tiempos_TemaWork(IdProyecto):
             Limite = False
         else:
             # i process data
-            print ('================> Pagina: ' + str(Paginado) + 'Proyecto: ' + IdProyecto + ' <================')
+            print ('================> Pagina: ' + str(Paginado) + 'Proyecto Id: ' + IdProyecto + ' <================')
             for dataValor in datajsonTiempo['time-entries']:
                 ProyectoArray = str(dataValor['project-name']).split(" ")
                 #Fecha = str(dataValor['date']).split("T")
