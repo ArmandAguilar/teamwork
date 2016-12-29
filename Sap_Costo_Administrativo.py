@@ -72,7 +72,7 @@ def Tiempos_TemaWork(IdProyecto):
             print('ya no hay datos')
         else:
             print ('Continuo con dtaos')
-        Paginado =+ 1
+        Paginado += 1
         #for dataValor in datajsonTiempo['time-entries']:
         #    if len(dataValor['todo-list-name']) == 0:
         #        Passv = 0
