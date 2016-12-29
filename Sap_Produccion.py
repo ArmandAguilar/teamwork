@@ -50,7 +50,7 @@ def Tiempos_TemaWork(IdProyecto):
     Limite = True
     while Limite == True:
         #
-        requestTiempo = urllib2.Request('https://forta.teamwork.com/projects/' + IdProyecto + '/time.json')
+        requestTiempo = urllib2.Request('https://forta.teamwork.com/projects/' + IdProyecto + '/time.json?page=' + str(Paginado))
         requestTiempo.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
         responseTiempo = urllib2.urlopen(requestTiempo)
         datajsonTiempo = json.loads(responseTiempo.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
