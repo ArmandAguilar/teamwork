@@ -52,13 +52,13 @@ def migrate():
         Titulo = value[11]
         Acronimo = value[12]
         IdTemaWork = value[13]
-        TareaLimit = str(Tarea[:200])
+        TareaLimit = str(Tarea[:150])
         #Ask if existe somby field
         Exist = filed_exist(IdTemaWork)
         cadena = str(IdTemaWork) + ':' + str(Exist)
         if Exist == 'Si':
             #here insert the update
-            sqlupdate = 'UPDATE [SAP].[dbo].[AATiemposDeProduccion] SET [Nombre] = \'' + str(Nombre) + '\' ,[Apellidos] = \'' + str(Apellidos) + '\',[NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Dia) + '\',[Tarea] = \'' + str(Tarea) + '\',[Porcentaje] = \'' + str(Porcentaje) + '\',[Producto] = \'' + str(Producto) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Departamento] = \'' + str(Departamento) + '\',[Perfil] = \'' + str(Perfil) + '\',[Titulo] = \'' + str(Titulo) + '\',[Acronimo] = \'' + str(Acronimo) + '\' WHERE [IdTeamWork] = \'' + str(IdTemaWork) + '\''
+            sqlupdate = 'UPDATE [SAP].[dbo].[AATiemposDeProduccion] SET [Nombre] = \'' + str(Nombre) + '\' ,[Apellidos] = \'' + str(Apellidos) + '\',[NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(Dia) + '\',[Tarea] = \'' + str(TareaLimit) + '\',[Porcentaje] = \'' + str(Porcentaje) + '\',[Producto] = \'' + str(Producto) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Departamento] = \'' + str(Departamento) + '\',[Perfil] = \'' + str(Perfil) + '\',[Titulo] = \'' + str(Titulo) + '\',[Acronimo] = \'' + str(Acronimo) + '\' WHERE [IdTeamWork] = \'' + str(IdTemaWork) + '\''
             procesar_sap(sqlupdate)
             print (sqlupdate)
         else:
