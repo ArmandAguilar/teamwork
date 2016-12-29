@@ -126,6 +126,7 @@ def Tiempos_TemaWork(IdProyecto):
                                     else:
                                         alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
                                         print(alerta)
+        Paginado += 1
 #Costo Administrativo 317730
 print('#################################### Insert Costo Administrativo ##########################')
 Tiempos_TemaWork('317730')
