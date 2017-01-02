@@ -56,5 +56,10 @@ for datos in datajson['projects']:
     else:
         ##print(str(datos['id']) + '.-' + str(datos['name']) )
         ProyectoArray = str(datos['name']).split(" ")
-        projectos_id.insert(k,str(datos['id']))
+        #Aks is the first array is number
+        CadValue = unicode(ProyectoArray[0])
+        if CadValue.isnumeric():
+            projectos_id.insert(k,str(datos['id']))
+        else:
+            valor = (str(ProyectoArray[0]))
 #print projectos_id
