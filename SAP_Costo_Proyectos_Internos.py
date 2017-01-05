@@ -112,7 +112,7 @@ def Tiempos_TemaWork(IdProyecto):
                 DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
                 #Get Number and Name of proyect
                 NumProyecto = get_tag_task(str(dataValor['todo-item-id']))
-                NomProyecto = 'Aqui el proyecto'
+                NomProyecto = get_name_proyect(NumProyecto)
                 #  Get Descripcion of work
                 DescripcionUser = str(dataValor['description'])
                 DescripcionUser = str(DescripcionUser).replace('\'',' ')
