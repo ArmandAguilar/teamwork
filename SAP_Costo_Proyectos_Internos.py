@@ -151,6 +151,6 @@ def Tiempos_TemaWork(IdProyecto):
                             print(alerta)
         Paginado += 1
 #Run the function by insert the dates
-print('#################################### Insert Proyectos Internos ##########################')
+print('#################################### Insert Proyectos Internos ###########################')
 Tiempos_TemaWork('323850')
-print('#################################### End Proyectos Internos    ##########################')
+print('#################################### End Proyectos Internos    ###########################')
