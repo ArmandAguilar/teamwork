@@ -106,7 +106,7 @@ def Tiempos_TemaWork(IdProyecto):
             Limite = False
         else:
             # i process data
-            print ('================> Pagina: ' + str(Paginado) + ' <================')
+            print ('=================> Pagina: ' + str(Paginado) + ' <=================')
             for dataValor in datajsonTiempo['time-entries']:
                 #Get the metadata of user the MMSSQL
                 DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
