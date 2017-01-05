@@ -114,7 +114,7 @@ def Tiempos_TemaWork(IdProyecto):
                                     cadena = 'Vacaciones'
                                     print (str(cadena))
                                 elif str(dataValor['todo-item-id']) == '10224061':
-                                    cadena = 'Cumpleaños'
+                                    cadena = 'Cumple'
                                     print (str(cadena))
                                 elif str(dataValor['todo-item-id']) == '10224057':
                                     cadena = 'Permisos'
