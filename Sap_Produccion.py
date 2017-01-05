@@ -67,7 +67,6 @@ def Tiempos_TemaWork(IdProyecto):
             print ('================> Pagina: ' + str(Paginado) + 'Proyecto Id: ' + IdProyecto + ' <================')
             for dataValor in datajsonTiempo['time-entries']:
                 ProyectoArray = str(dataValor['project-name']).split(" ")
-                #Fecha = str(dataValor['date']).split("T")
                 DescripcionUser = str(dataValor['description'])
                 DescripcionUser = str(DescripcionUser).replace('\'',' ')
                 DescripcionUser = str(DescripcionUser).replace('"',' ')
@@ -75,12 +74,12 @@ def Tiempos_TemaWork(IdProyecto):
                 #Cut the script by AATiemposDeProduccion
                 DescripcionLimit = str(DescripcionUser[:200])
 
-                #Metadatos de SAP
+                #SAP MetaData
                 DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
 
-                #Nombre del proyecto
+                #Proyect's Name
                 NomProyecto = ProyectName(str(ProyectoArray[0]))
-                #Calculamos el Porcenta y el Costo
+                #Here we to calculate tehe cost and percentage
                 Horas = float(dataValor['hours'])
                 Minutos = float(dataValor['minutes']) / 60
                 HorasReal = Horas + Minutos
@@ -89,15 +88,15 @@ def Tiempos_TemaWork(IdProyecto):
                 else:
                     Porcentaje = (HorasReal/9.0) * 100
 
-                #Costo de Actividad
+                #Activitiy Cost
                 Costo = CostoUnitarioRecursos(DirMetaDataUser['IdUsuario'])
                 PorcentajeF = float("{0:.2f}".format(Porcentaje))
                 Producto = (PorcentajeF * float(Costo)) / 100
                 ProductoF = float("{0:.2f}".format(Producto))
-                #Formateando Fecha
+                #Date Format
                 Fecha = dataValor['dateUserPerspective']
                 FechaJsonArrays = str(Fecha).split("T")
-                #Verifcamos si existe le registro
+                #Ask if existe any fields
                 Existe = validar_si_exiete(dataValor['id'])
                 if DirMetaDataUser['Nombre'] == 'V':
                     vPass = 0

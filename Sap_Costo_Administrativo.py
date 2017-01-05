@@ -73,16 +73,15 @@ def Tiempos_TemaWork(IdProyecto):
                     Passv = 0
                 else:
                     ProyectoArray = str(dataValor['todo-list-name']).split(" ")
-                    #Fecha = str(dataValor['date']).split("T")
                     DescripcionUser = str(dataValor['description'])
                     DescripcionUser = str(DescripcionUser).replace('\'',' ')
                     DescripcionUser = str(DescripcionUser).replace('"',' ')
                     DescripcionUser = str(DescripcionUser).strip()
 
-                    #Metadatos de SAP
+                    #SAP MetaData
                     DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
 
-                    #Nombre del proyecto
+                    #Proyect's name
                     NumProyecto = str(ProyectoArray[0])
                     NomProyecto = str(ProyectoArray[1])
                     #Calculamos el Porcenta y el Costo
@@ -93,15 +92,15 @@ def Tiempos_TemaWork(IdProyecto):
                         Porcentaje = (HorasReal/HorasReal) * 100
                     else:
                         Porcentaje = (HorasReal/9.0) * 100
-                        #Costo de Actividad
+                        #Activity Costo
                         Costo = CostoUnitarioRecursos(DirMetaDataUser['IdUsuario'])
                         PorcentajeF = float("{0:.2f}".format(Porcentaje))
                         Producto = (PorcentajeF * float(Costo)) / 100
                         ProductoF = float("{0:.2f}".format(Producto))
-                        #Formateando Fecha
+                        #Date Format
                         Fecha = dataValor['dateUserPerspective']
                         FechaJsonArrays = str(Fecha).split("T")
-                        #Verifcamos si existe le registro
+                        #are there fileds in the data base
                         Existe = validar_si_exiete(dataValor['id'])
                         if DirMetaDataUser['Nombre'] == 'V':
                                 vPass = 0
@@ -114,6 +113,15 @@ def Tiempos_TemaWork(IdProyecto):
                                 if str(dataValor['todo-item-id']) == '10161660':
                                     cadena = 'Vacaciones'
                                     print (str(cadena))
+                                elif str(dataValor['todo-item-id']) == '10224061':
+                                    cadena = 'Cumpleaños'
+                                    print (str(cadena))
+                                elif str(dataValor['todo-item-id']) == '10224057':
+                                    cadena = 'Permisos'
+                                    print (str(cadena))
+                                elif str(dataValor['todo-item-id']) == '10224062':
+                                    cadena = 'Recursos Disponibles'
+                                    print (str(cadena))
                                 else:
                                     EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
                                     if str(EsInsertable) == 'Si':
@@ -124,7 +132,7 @@ def Tiempos_TemaWork(IdProyecto):
                                         alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
                                         print(alerta)
         Paginado += 1
-#Costo Administrativo 317730
+#Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
 Tiempos_TemaWork('317730')
 print('#################################### End Costo Administrativo    ##########################')
