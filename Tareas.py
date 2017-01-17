@@ -41,4 +41,5 @@ def allTaskCompleted(IdProyecto):
                     li += 1
         Paginado += 1
     print ('No Task: ' + str(li))
+    
 allTaskCompleted('271345')
