@@ -57,6 +57,9 @@ def allTaskCompleted(IdProyecto):
                     IdUsuario = IdUserSAP(str(IdUsuarioTeam[0]))
                     Accion = ExistenteTask(str(dataValor['id']))
                     TaskWord = str(dataValor['content'])
+                    TaskWord = str(TaskWord).replace('\'',' ')
+                    TaskWord = str(TaskWord).replace('"',' ')
+                    TaskWord = str(TaskWord).strip()
                     TaskWords = str(TaskWord[:300])
 
                     if Accion == "Update":
