@@ -35,11 +35,11 @@ def allTaskCompleted(IdProyecto):
                     passt = 0
                 else:
                     IdUsuarioTeam = str(dataValor['responsible-party-id']).split(",")
-                    IdUsuario = IdUserSAP(IdUsuarioTeam)
+                    IdUsuario = IdUserSAP(str(IdUsuarioTeam))
                     Sql = 'INSERT INTO TABLE VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario[0]) + '\',\'' + str(dataValor['content']) + '\')'
                     print(Sql)
                     li += 1
         Paginado += 1
     print ('No Task: ' + str(li))
-    
+
 allTaskCompleted('271345')
