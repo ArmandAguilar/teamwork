@@ -7,6 +7,18 @@ import pypyodbc as pyodbc
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+
+def ExistenteTask(IdTeamWok):
+    Accion = 'Insert'
+    sql = 'SELECT [Id] FROM [SAP].[dbo].[AATareasTeamWork] WHERE [IdTeamWork] = \'' + str(IdTeamWok) + '\''
+    con = pyodbc.connect(constr)
+    cur = con.cursor()
+    cur.execute(sql)
+    for value in cur:
+        Accion = "Update"
+    con.commit()
+    con.close()
+    return Accion
 #This fucntion get all task whith status Close */
 def allTaskCompleted(IdProyecto):
     #pass
@@ -36,9 +48,12 @@ def allTaskCompleted(IdProyecto):
                 else:
                     IdUsuarioTeam = str(dataValor['responsible-party-id']).split(",")
                     IdUsuario = IdUserSAP(str(IdUsuarioTeam[0]))
-                    Sql = 'INSERT INTO TABLE VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['content']) + '\',\'' + str(dataValor['id']) + '\')'
+                    Accion = ExistenteTask(IdTeamWok)
+                    if Accion == "Update":
+                        Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(dataValor['content']) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
+                    else:
+                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['content']) + '\',\'' + str(dataValor['id']) + '\')'
                     print(Sql)
-                    li += 1
         Paginado += 1
     print ('No Task: ' + str(li))
 
