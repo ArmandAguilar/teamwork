@@ -36,7 +36,7 @@ def allTaskCompleted(IdProyecto):
                 else:
                     IdUsuarioTeam = str(dataValor['responsible-party-id']).split(",")
                     IdUsuario = IdUserSAP(str(IdUsuarioTeam[0]))
-                    Sql = 'INSERT INTO TABLE VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['content']) + '\')'
+                    Sql = 'INSERT INTO TABLE VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['content']) + '\',\'' + dataValor['id'] + '\')'
                     print(Sql)
                     li += 1
         Paginado += 1
