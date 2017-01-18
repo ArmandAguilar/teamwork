@@ -56,12 +56,15 @@ def allTaskCompleted(IdProyecto):
                     IdUsuarioTeam = str(dataValor['responsible-party-id']).split(",")
                     IdUsuario = IdUserSAP(str(IdUsuarioTeam[0]))
                     Accion = ExistenteTask(str(dataValor['id']))
+                    TaskWord = str(dataValor['content'])
+                    TaskWords = str(TaskWord[:300])
+
                     if Accion == "Update":
-                        Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(dataValor['content']) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
+                        Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(TaskWords) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
                         procesar_mssql(Sql)
                         print(Sql)
                     else:
-                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['content']) + '\',\'' + str(dataValor['id']) + '\')'
+                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(TaskWords) + '\',\'' + str(dataValor['id']) + '\')'
                         procesar_mssql(Sql)
                         print(Sql)
         Paginado += 1
