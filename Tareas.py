@@ -48,7 +48,7 @@ def allTaskCompleted(IdProyecto):
                 else:
                     IdUsuarioTeam = str(dataValor['responsible-party-id']).split(",")
                     IdUsuario = IdUserSAP(str(IdUsuarioTeam[0]))
-                    Accion = ExistenteTask(IdTeamWok)
+                    Accion = ExistenteTask(str(dataValor['id']))
                     if Accion == "Update":
                         Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(dataValor['content']) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
                     else:
