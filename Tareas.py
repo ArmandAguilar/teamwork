@@ -71,7 +71,7 @@ def allTaskCompleted(IdProyecto):
                         procesar_mssql(Sql)
                         print(Sql)
         Paginado += 1
-print('#################################### Insert Porduccion ##########################')
+print('#################################### Insert Task ##########################')
 for proyecto in projectos_id:
     allTaskCompleted(proyecto)
-print('#################################### End Porduccion ##########################')
+print('#################################### End Task #############################')
