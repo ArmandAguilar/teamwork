@@ -51,9 +51,10 @@ def allTaskCompleted(IdProyecto):
                     Accion = ExistenteTask(str(dataValor['id']))
                     if Accion == "Update":
                         Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(dataValor['content']) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
+                        print(Sql)
                     else:
                         Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['content']) + '\',\'' + str(dataValor['id']) + '\')'
-                    print(Sql)
+                        print(Sql)
         Paginado += 1
     print ('No Task: ' + str(li))
 
