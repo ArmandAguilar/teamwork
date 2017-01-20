@@ -62,7 +62,9 @@ def allTaskCompleted(IdProyecto):
                     TaskWord = str(TaskWord).replace('"',' ')
                     TaskWord = str(TaskWord).strip()
                     TaskWords = str(TaskWord[:300])
-                    FechaInicio = datetime.strptime(str(dataValor['start-date']),'%Y%m%d')
+                    #FechaInicio = datetime.strptime(str(dataValor['start-date']),'%Y%m%d')
+                    AFI = str(dataValor['start-date'])
+                    AFI = str(AFI[:3])
                     FechaProgramada = str(dataValor['due-date'])
                     FechaFinal = str(dataValor['created-on'])
                     Avance = str(dataValor['progress'])
@@ -73,7 +75,7 @@ def allTaskCompleted(IdProyecto):
                         print(Sql)
                     else:
                         va = 0
-                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + dataValor['id'] + '\',\'' + str(TaskWords) + '\',\'' + str(FechaInicio) + '\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
+                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + dataValor['id'] + '\',\'' + str(TaskWords) + '\',\'' + str(AFI) + '\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
                         print(Sql)
         Paginado += 1
