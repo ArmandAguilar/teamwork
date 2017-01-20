@@ -73,7 +73,7 @@ def allTaskCompleted(IdProyecto):
                     else:
                         Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0] + '\',\'' + str(IdUsuario) + '\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
-                        print(Sql)
+                        #print(Sql)
         Paginado += 1
 print('#################################### Insert Task ###########################')
 for proyecto in projectos_id:
