@@ -86,13 +86,14 @@ def allTaskCompleted(IdProyecto):
 
                     Avance = str(dataValor['progress'])
                     TiempoEstimado = str(dataValor['estimated-minutes'])
+
                     if Accion == "Update":
                         Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(TaskWords) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
                         #procesar_mssql(Sql)
                         print(Sql)
                     else:
                         va = 0
-                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['id']) + '\',\'' + str(TaskWords) + '\',\'' + str(FI) + '\',\'' + str(FP) + '\',\'' + str(FF) + '\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
+                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['id']) + '\',\'' + str(TaskWords) + '\',\'' + str(FI) + '\',\'' + str(FP) + '\',\'' + str(FF) + '\',\'' + str(Avance) + '\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'' + str(TiempoEstimado) + '\',\'No\')'
                         #procesar_mssql(Sql)
                         print(Sql)
         Paginado += 1
