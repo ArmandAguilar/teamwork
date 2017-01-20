@@ -4,6 +4,7 @@ from projects import *
 from sap import *
 from mssql import *
 import pypyodbc as pyodbc
+from datetime import datetime,time
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
