@@ -71,7 +71,6 @@ def allTaskCompleted(IdProyecto):
                         #procesar_mssql(Sql)
                         print(Sql)
                     else:
-                        #Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['id']) + '\',\'' + str(TaskWords) + '\',\'' + str(FechaInicio) + '\',\'' + str(FechaProgramada) + '\',\'' + str(FechaFinal) + '\',\'' + str(Avance) + '\',\'Fase\',\'Documento\',\'Diciplica\',\' + str(TiempoEstimado) + '\',\'No\')'
                         Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0] + '\',\'' + str(IdUsuario) + '\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
                         print(Sql)
