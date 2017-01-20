@@ -61,7 +61,7 @@ def allTaskCompleted(IdProyecto):
                     TaskWord = str(TaskWord).replace('"',' ')
                     TaskWord = str(TaskWord).strip()
                     TaskWords = str(TaskWord[:300])
-                    FechaInicio = str(dataValor['start-date'])
+                    FechaInicio = datetime.strptime(str(dataValor['start-date']),'%Y%m%d')
                     FechaProgramada = str(dataValor['due-date'])
                     FechaFinal = str(dataValor['created-on'])
                     Avance = str(dataValor['progress'])
