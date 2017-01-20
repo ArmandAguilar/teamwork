@@ -72,7 +72,7 @@ def allTaskCompleted(IdProyecto):
                         print(Sql)
                     else:
                         va = 0
-                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'NoProyecto\',\'IdUsuario\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
+                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0] + '\',\'' + str(IdUsuario) + '\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
                         print(Sql)
