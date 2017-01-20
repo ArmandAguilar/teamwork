@@ -62,14 +62,22 @@ def allTaskCompleted(IdProyecto):
                     TaskWord = str(TaskWord).replace('"',' ')
                     TaskWord = str(TaskWord).strip()
                     TaskWords = str(TaskWord[:300])
-                    #FechaInicio = datetime.strptime(str(dataValor['start-date']),'%Y%m%d')
+                    #FechaInicio
                     AFI = str(dataValor['start-date'])
                     AFIs =  str(AFI[0:4])
                     MFI = str(dataValor['start-date'])
                     MFIs =  str(MFI[4:6])
                     DFI = str(dataValor['start-date'])
                     DFIs =  str(DFI[6:8])
+                    #FechaProgramada
                     FechaProgramada = str(dataValor['due-date'])
+                    AFP = str(dataValor['start-date'])
+                    AFPs =  str(AFP[0:4])
+                    MFP = str(dataValor['start-date'])
+                    MFPs =  str(MFP[4:6])
+                    DFP = str(dataValor['start-date'])
+                    DFPs =  str(DFP[6:8])
+
                     FechaFinal = str(dataValor['created-on'])
                     Avance = str(dataValor['progress'])
                     TiempoEstimado = str(dataValor['estimated-minutes'])
@@ -82,7 +90,8 @@ def allTaskCompleted(IdProyecto):
                         #Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + dataValor['id'] + '\',\'' + str(TaskWords) + '\',\'' + str(AFI) + '\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
                         FI = str(AFIs) + '-' + str(MFIs) + '-' + str(DFIs)
-                        print(FI)
+                        FP = str(AFPs) + '-' + str(MFPs) + '-' + str(DFPs)
+                        print(FechaFinal)
         Paginado += 1
 print('#################################### Insert Task ############################')
 for proyecto in projectos_id:
