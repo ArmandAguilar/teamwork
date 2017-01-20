@@ -78,7 +78,8 @@ def allTaskCompleted(IdProyecto):
                     DFP = str(dataValor['start-date'])
                     DFPs =  str(DFP[6:8])
 
-                    FechaFinal = str(dataValor['created-on'])
+                    FechaFinal = str(dataValor['created-on']).split("T")
+                    FF = FechaFinal[0]
                     Avance = str(dataValor['progress'])
                     TiempoEstimado = str(dataValor['estimated-minutes'])
                     if Accion == "Update":
@@ -91,7 +92,7 @@ def allTaskCompleted(IdProyecto):
                         #procesar_mssql(Sql)
                         FI = str(AFIs) + '-' + str(MFIs) + '-' + str(DFIs)
                         FP = str(AFPs) + '-' + str(MFPs) + '-' + str(DFPs)
-                        print(FechaFinal)
+                        print(FF)
         Paginado += 1
 print('#################################### Insert Task ############################')
 for proyecto in projectos_id:
