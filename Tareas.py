@@ -68,7 +68,7 @@ def allTaskCompleted(IdProyecto):
                     MFI = str(dataValor['start-date'])
                     MFIs =  str(MFI[5:7])
                     DFI = str(dataValor['start-date'])
-                    DFIs =  str(MFI[9:10])
+                    DFIs =  str(DFI[8:10])
                     FechaProgramada = str(dataValor['due-date'])
                     FechaFinal = str(dataValor['created-on'])
                     Avance = str(dataValor['progress'])
