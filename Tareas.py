@@ -66,7 +66,9 @@ def allTaskCompleted(IdProyecto):
                     AFI = str(dataValor['start-date'])
                     AFIs =  str(AFI[0:4])
                     MFI = str(dataValor['start-date'])
-                    MFIs =  str(MFI[5:6])
+                    MFIs =  str(MFI[5:7])
+                    DFI = str(dataValor['start-date'])
+                    DFIs =  str(MFI[9:10])
                     FechaProgramada = str(dataValor['due-date'])
                     FechaFinal = str(dataValor['created-on'])
                     Avance = str(dataValor['progress'])
@@ -79,7 +81,7 @@ def allTaskCompleted(IdProyecto):
                         va = 0
                         #Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + dataValor['id'] + '\',\'' + str(TaskWords) + '\',\'' + str(AFI) + '\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
-                        FI = str(AFIs) + '-' + str(MFIs)
+                        FI = str(AFIs) + '-' + str(MFIs) + '-' + str(DFIs)
                         print(FI)
         Paginado += 1
 print('#################################### Insert Task ############################')
