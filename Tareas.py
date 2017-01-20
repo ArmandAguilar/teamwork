@@ -61,14 +61,18 @@ def allTaskCompleted(IdProyecto):
                     TaskWord = str(TaskWord).replace('"',' ')
                     TaskWord = str(TaskWord).strip()
                     TaskWords = str(TaskWord[:300])
-
+                    FechaInicio = str(dataValor['start-date'])
+                    FechaProgramada = str(dataValor['due-date'])
+                    FechaFinal = str(dataValor['created-on'])
+                    Avance = str(dataValor['progress'])
+                    TiempoEstimado = str(dataValor['estimated-minutes'])
                     if Accion == "Update":
                         Sql= 'UPDATE [SAP].[dbo].[AATareasTeamWork] SET [NoProyecto] = \'' + str(ProyectoArray[0]) + '\',[IdUsuario] = \'' + str(IdUsuario) + '\',[Tarea] = \'' + str(TaskWords) + '\' WHERE [IdTeamWork] = \'' + str(dataValor['id']) + '\''
-                        procesar_mssql(Sql)
+                        #procesar_mssql(Sql)
                         print(Sql)
                     else:
-                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES(\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['id']) + '\',\'' + str(TaskWords) + '\',\'No\')'
-                        procesar_mssql(Sql)
+                        Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0]) + '\',\'' + str(IdUsuario) + '\',\'' + str(dataValor['id']) + '\',\'' + str(TaskWords) + '\',\'' + str(FechaInicio) + '\',\'' + str(FechaProgramada) + '\',\'' + str(FechaFinal) + '\',\'' + str(Avance) + '\',\'Fase\',\'Documento\',\'Diciplica\',\' + str(TiempoEstimado) + '\',\'No\')'
+                        #procesar_mssql(Sql)
                         print(Sql)
         Paginado += 1
 print('#################################### Insert Task ##########################')
