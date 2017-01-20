@@ -75,9 +75,9 @@ def allTaskCompleted(IdProyecto):
                         Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'NoProyecto\',\'IdUsuario\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #Sql = 'INSERT INTO [SAP].[dbo].[AATareasTeamWork] VALUES (\'' + str(ProyectoArray[0] + '\',\'' + str(IdUsuario) + '\',\'IdTeamWork\',\'Tarea\',\'FechaInicio\',\'FechaProgramada\',\'FechaFinal\',\'Avance\',\'EtiqFase\',\'EtiqDocumento\',\'EtiqDiciplica\',\'TiempoEstimado\',\'Evaluada\')'
                         #procesar_mssql(Sql)
-                        #print(Sql)
+                        print(Sql)
         Paginado += 1
-print('#################################### Insert Task ###########################')
+print('#################################### Insert Task ############################')
 for proyecto in projectos_id:
     allTaskCompleted(proyecto)
-print('#################################### End Task ##############################')
+print('#################################### End Task ###############################')
