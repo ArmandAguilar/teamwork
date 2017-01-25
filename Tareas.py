@@ -64,25 +64,29 @@ def allTaskCompleted(IdProyecto):
                     TaskWords = str(TaskWord[:300])
                     #FechaInicio
                     AFI = str(dataValor['start-date'])
-                    AFIs =  str(AFI[0:4])
-                    MFI = str(dataValor['start-date'])
-                    MFIs =  str(MFI[4:6])
-                    DFI = str(dataValor['start-date'])
-                    DFIs =  str(DFI[6:8])
+                    if len(AFI) > 0:
+                        AFIs =  str(AFI[0:4])
+                        MFI = str(dataValor['start-date'])
+                        MFIs =  str(MFI[4:6])
+                        DFI = str(dataValor['start-date'])
+                        DFIs =  str(DFI[6:8]
+                        FI = str(AFIs) + '-' + str(MFIs) + '-' + str(DFIs)
+                    else:
+                        FI ='1999-01-01'
                     #FechaProgramada
-                    FechaProgramada = str(dataValor['due-date'])
                     AFP = str(dataValor['start-date'])
-                    AFPs =  str(AFP[0:4])
-                    MFP = str(dataValor['start-date'])
-                    MFPs =  str(MFP[4:6])
-                    DFP = str(dataValor['start-date'])
-                    DFPs =  str(DFP[6:8])
+                    if len(AFP):
+                        AFPs =  str(AFP[0:4])
+                        MFP = str(dataValor['start-date'])
+                        MFPs =  str(MFP[4:6])
+                        DFP = str(dataValor['start-date'])
+                        DFPs =  str(DFP[6:8])
+                        FP = str(AFPs) + '-' + str(MFPs) + '-' + str(DFPs)
+                    else:
+                        FP ='1999-01-01'
 
                     FechaFinal = str(dataValor['created-on']).split("T")
                     FF = FechaFinal[0]
-
-                    FI = str(AFIs) + '-' + str(MFIs) + '-' + str(DFIs)
-                    FP = str(AFPs) + '-' + str(MFPs) + '-' + str(DFPs)
 
                     Avance = str(dataValor['progress'])
                     TiempoEstimado = str(dataValor['estimated-minutes'])
