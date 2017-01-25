@@ -69,7 +69,7 @@ def allTaskCompleted(IdProyecto):
                         MFI = str(dataValor['start-date'])
                         MFIs =  str(MFI[4:6])
                         DFI = str(dataValor['start-date'])
-                        DFIs =  str(DFI[6:8]
+                        DFIs =  str(DFI[6:8])
                         FI = str(AFIs) + '-' + str(MFIs) + '-' + str(DFIs)
                     else:
                         FI ='1999-01-01'
