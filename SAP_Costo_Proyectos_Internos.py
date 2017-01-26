@@ -66,7 +66,7 @@ def get_name_proyect(idProyect):
 
 #  i create a function by get the Tag of each task
 def get_tag_task(idTask):
-    NumProyecto = ''
+    NumProyecto = 0
     link = 'https://forta.teamwork.com/tasks/' + str(idTask)  + '.json'
     #print (str(link))
     requestTag = urllib2.Request('https://forta.teamwork.com/tasks/' + str(idTask)  + '.json')
@@ -111,9 +111,9 @@ def Tiempos_TemaWork(IdProyecto):
                 #Get the metadata of user the MMSSQL
                 DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
                 #Get Number and Name of proyect
-                TagsLen = dataValor['todo-item-id']
+                NumProyecto = get_tag_task(str(dataValor['todo-item-id']))
                 if TagsLen > 0:
-                    NumProyecto = get_tag_task(str(dataValor['todo-item-id']))
+
                     NomProyecto = get_name_proyect(NumProyecto)
                     #  Get Descripcion of work
                     DescripcionUser = str(dataValor['description'])
