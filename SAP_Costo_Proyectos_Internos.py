@@ -73,7 +73,7 @@ def get_tag_task(idTask):
     requestTag.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseTag = urllib2.urlopen(requestTag)
     datajsonTag = json.loads(responseTag.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
-    if datajsonTag['todo-item']['tags']) is None:
+    if datajsonTag['todo-item']['tags'] is None:
         NumProyecto = 0
     else:
         ArraysTags = datajsonTag['todo-item']['tags']
