@@ -106,49 +106,54 @@ def Tiempos_TemaWork(IdProyecto):
             Limite = False
         else:
             # i process data
-            print ('=================> Pagina: ' + str(Paginado) + ' <=================')
+            print ('=================> Pagina: ' + str(Paginado) + 'Proyecto Id: ' + str(dataValor['id']) + ' <=================')
             for dataValor in datajsonTiempo['time-entries']:
                 #Get the metadata of user the MMSSQL
                 DirMetaDataUser = metaDataUser(str(dataValor['person-id']))
                 #Get Number and Name of proyect
-                NumProyecto = get_tag_task(str(dataValor['todo-item-id']))
-                NomProyecto = get_name_proyect(NumProyecto)
-                #  Get Descripcion of work
-                DescripcionUser = str(dataValor['description'])
-                DescripcionUser = str(DescripcionUser).replace('\'',' ')
-                DescripcionUser = str(DescripcionUser).replace('"',' ')
-                DescripcionUser = str(DescripcionUser).strip()
-                #Get Date
-                Fecha = dataValor['dateUserPerspective']
-                FechaJsonArrays = str(Fecha).split("T")
-                #i make  the % and Time
-                Horas = float(dataValor['hours'])
-                Minutos = float(dataValor['minutes']) / 60
-                HorasReal = Horas + Minutos
-                if HorasReal > 9:
-                    Porcentaje = (HorasReal/HorasReal) * 100
-                else:
-                    Porcentaje = (HorasReal/9.0) * 100
-                    #Activity Costs
-                    Costo = CostoUnitarioRecursos(DirMetaDataUser['IdUsuario'])
-                    PorcentajeF = float("{0:.2f}".format(Porcentaje))
-                    Producto = (PorcentajeF * float(Costo)) / 100
-                    ProductoF = float("{0:.2f}".format(Producto))
-
-                    Existe = validar_si_exiete(dataValor['id'])
-                    if Existe == 'Si':
-                        sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\', [NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
-                        procesar_sap_clon(sql)
-                        print (sql)
+                TagsLen = dataValor['todo-item-id']
+                if TagsLen > 0:
+                    pass
+                    NumProyecto = get_tag_task(str(dataValor['todo-item-id']))
+                    NomProyecto = get_name_proyect(NumProyecto)
+                    #  Get Descripcion of work
+                    DescripcionUser = str(dataValor['description'])
+                    DescripcionUser = str(DescripcionUser).replace('\'',' ')
+                    DescripcionUser = str(DescripcionUser).replace('"',' ')
+                    DescripcionUser = str(DescripcionUser).strip()
+                    #Get Date
+                    Fecha = dataValor['dateUserPerspective']
+                    FechaJsonArrays = str(Fecha).split("T")
+                    #i make  the % and Time
+                    Horas = float(dataValor['hours'])
+                    Minutos = float(dataValor['minutes']) / 60
+                    HorasReal = Horas + Minutos
+                    if HorasReal > 9:
+                        Porcentaje = (HorasReal/HorasReal) * 100
                     else:
-                        EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
-                        if EsInsertable == 'Si':
-                            sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\')'
+                        Porcentaje = (HorasReal/9.0) * 100
+                        #Activity Costs
+                        Costo = CostoUnitarioRecursos(DirMetaDataUser['IdUsuario'])
+                        PorcentajeF = float("{0:.2f}".format(Porcentaje))
+                        Producto = (PorcentajeF * float(Costo)) / 100
+                        ProductoF = float("{0:.2f}".format(Producto))
+
+                        Existe = validar_si_exiete(dataValor['id'])
+                        if Existe == 'Si':
+                            sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\', [NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
                             procesar_sap_clon(sql)
-                            print(sql)
+                            print (sql)
                         else:
-                            alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
-                            print(alerta)
+                            EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
+                            if EsInsertable == 'Si':
+                                sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NumProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\')'
+                                procesar_sap_clon(sql)
+                                print(sql)
+                            else:
+                                alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
+                                print(alerta)
+                else:
+                    var = 0
         Paginado += 1
 #Run the function by insert the dates
 print('#################################### Insert Proyectos Internos ###########################')
