@@ -113,7 +113,6 @@ def Tiempos_TemaWork(IdProyecto):
                 #Get Number and Name of proyect
                 TagsLen = dataValor['todo-item-id']
                 if TagsLen > 0:
-                    pass
                     NumProyecto = get_tag_task(str(dataValor['todo-item-id']))
                     NomProyecto = get_name_proyect(NumProyecto)
                     #  Get Descripcion of work
