@@ -73,15 +73,14 @@ def get_tag_task(idTask):
     requestTag.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
     responseTag = urllib2.urlopen(requestTag)
     datajsonTag = json.loads(responseTag.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
-    if len(datajsonTag['todo-item']['tags']) > 0:
+    if datajsonTag['todo-item']['tags']) is None:
+        NumProyecto = 0
+    else:
         ArraysTags = datajsonTag['todo-item']['tags']
-
         for itemsTodo in ArraysTags:
             NumProArray = str(itemsTodo['name']).split(" ")
 
             NumProyecto = str(NumProArray[0])
-    else:
-        NumProyecto = 0
     return NumProyecto
 
 #i cretae he function by insert in sap the records in the table
