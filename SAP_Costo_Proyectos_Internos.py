@@ -74,7 +74,7 @@ def get_tag_task(idTask):
     responseTag = urllib2.urlopen(requestTag)
     datajsonTag = json.loads(responseTag.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
     VA = datajsonTag['todo-item']['tags']
-    if VA is None:
+    if VA == '':
         NumProyecto = 0
     else:
         ArraysTags = datajsonTag['todo-item']['tags']
