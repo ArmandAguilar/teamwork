@@ -77,9 +77,9 @@ def allTaskCompleted(IdProyecto):
                     AFP = str(dataValor['start-date'])
                     if len(AFP):
                         AFPs =  str(AFP[0:4])
-                        MFP = str(dataValor['due-date_base'])
+                        MFP = str(dataValor['due-date-base'])
                         MFPs =  str(MFP[4:6])
-                        DFP = str(dataValor['due-date_base'])
+                        DFP = str(dataValor['due-date-base'])
                         DFPs =  str(DFP[6:8])
                         FP = str(AFPs) + '-' + str(MFPs) + '-' + str(DFPs)
                     else:
