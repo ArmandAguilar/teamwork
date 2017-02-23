@@ -77,15 +77,15 @@ def allTaskCompleted(IdProyecto):
                     AFP = str(dataValor['start-date'])
                     if len(AFP):
                         AFPs =  str(AFP[0:4])
-                        MFP = str(dataValor['start-date'])
+                        MFP = str(dataValor['duedate_base'])
                         MFPs =  str(MFP[4:6])
-                        DFP = str(dataValor['start-date'])
+                        DFP = str(dataValor['duedate_base'])
                         DFPs =  str(DFP[6:8])
                         FP = str(AFPs) + '-' + str(MFPs) + '-' + str(DFPs)
                     else:
                         FP ='1999-01-01'
 
-                    FechaFinal = str(dataValor['created-on']).split("T")
+                    FechaFinal = str(dataValor['completed_on']).split("T")
                     FF = FechaFinal[0]
 
                     Avance = str(dataValor['progress'])
