@@ -74,7 +74,7 @@ def allTaskCompleted(IdProyecto):
                     else:
                         FI ='1999-01-01'
                     #FechaProgramada
-                    AFP = str(dataValor['start-date'])
+                    AFP = str(dataValor['due-date-base'])
                     if len(AFP):
                         AFPs =  str(AFP[0:4])
                         MFP = str(dataValor['due-date-base'])
