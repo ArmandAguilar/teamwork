@@ -85,6 +85,7 @@ def allTaskCompleted(IdProyecto):
                     else:
                         FP ='1999-01-01'
                     CF = FechaFinal = str(dataValor['completed_on']).split("T")
+                    
                     if len(CF):
                         FechaFinal = str(dataValor['completed_on']).split("T")
                         FF = FechaFinal[0]
