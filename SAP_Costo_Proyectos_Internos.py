@@ -129,6 +129,8 @@ def Tiempos_TemaWork(IdProyecto):
                     Horas = float(dataValor['hours'])
                     Minutos = float(dataValor['minutes']) / 60
                     HorasReal = Horas + Minutos
+                    #Id Home
+                    IdTareaReal = str(dataValor['todo-item-id'])
                     if HorasReal > 9:
                         Porcentaje = (HorasReal/HorasReal) * 100
                     else:

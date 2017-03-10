@@ -87,7 +87,8 @@ def Tiempos_TemaWork(IdProyecto):
                     Porcentaje = (HorasReal/HorasReal) * 100
                 else:
                     Porcentaje = (HorasReal/9.0) * 100
-
+                #Id Home
+                IdTareaReal = str(dataValor['todo-item-id'])
                 #Activitiy Cost
                 Costo = CostoUnitarioRecursos(DirMetaDataUser['IdUsuario'])
                 PorcentajeF = float("{0:.2f}".format(Porcentaje))
