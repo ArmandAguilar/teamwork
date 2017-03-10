@@ -101,7 +101,7 @@ def Tiempos_TemaWork(IdProyecto):
                         Fecha = dataValor['dateUserPerspective']
                         FechaJsonArrays = str(Fecha).split("T")
                         #Id Home
-                        IdTareaReal = dataValor['todo-item-id'])
+                        IdTareaReal = str(dataValor['todo-item-id'])
                         #are there fileds in the data base
                         Existe = validar_si_exiete(dataValor['id'])
                         if DirMetaDataUser['Nombre'] == 'V':
