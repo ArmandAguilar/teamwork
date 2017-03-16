@@ -94,7 +94,7 @@ def allTaskCompleted(IdProyecto):
                         FechaFinal = str(dataValor['completed_on']).split("T")
                         FF = FechaFinal[0]
                     else:
-                        FF = '1999-00-00'
+                        FF = '1999-01-01'
 
                     Avance = str(dataValor['progress'])
                     TiempoEstimado = str(dataValor['estimated-minutes'])
