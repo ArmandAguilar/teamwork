@@ -14,7 +14,13 @@ sys.setdefaultencoding("utf-8")
 
 print ("############################ Start Sync Datos Teamwork ############################")
 
-import ThroughputClientes
+import Sap_Costo_Administrativo
+
+import Sap_Produccion
+
+import migarar_a_sap
+
+import Tareas
 
 
 print ("############################ End Sync Datos Teamwork  ############################")
