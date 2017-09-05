@@ -158,5 +158,5 @@ def Tiempos_TemaWork(IdProyecto):
 #Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
 #Tiempos_TemaWork('317730')
-print costPersonal()
+costPersonal()
 print('#################################### End Costo Administrativo    ##########################')
