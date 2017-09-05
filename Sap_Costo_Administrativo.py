@@ -22,7 +22,7 @@ def costPersonal():
     cur.execute(Sql)
     for value in cur:
         if value[0] > 0:
-            ListDataJsonCompanys += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
+            SalaryJson += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
     con.commit()
     con.close()
     temp = len(SalaryJson)
