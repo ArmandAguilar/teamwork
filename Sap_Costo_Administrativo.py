@@ -5,7 +5,6 @@ from sap import *
 from mssql import *
 import pypyodbc as pyodbc
 import urllib2, base64
-import json
 import simplejson as json
 import unicodedata
 import sys
