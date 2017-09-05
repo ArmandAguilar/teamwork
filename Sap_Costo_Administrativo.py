@@ -6,10 +6,31 @@ from mssql import *
 import pypyodbc as pyodbc
 import urllib2, base64
 import json
+import simplejson as json
 import unicodedata
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
+#Here we create a new function this fucntion
+#set a json with  all avtive user and get your cost them return a json
+#{ Id:UserId,Costo:$1 }
+def costPersonal():
+    SalaryJson = ''
+    SalaryJson = '{"Person":['
+    Sql = 'SELECT [IdRecurso],[CostoUnitario] FROM [SAP].[dbo].[RecursosCostos]'
+    con = pyodbc.connect(constr)
+    cur = con.cursor()
+    cur.execute(Sql)
+    for value in cur:
+        if value[0] > 0:
+            ListDataJsonCompanys += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
+    con.commit()
+    con.close()
+    temp = len(SalaryJson)
+    SalaryJson = SalaryJson[:temp - 2]
+    SalaryJson += ']}'
+    data = json.loads(SalaryJson)
+    return data
 
 def validar_si_exiete(IdTemaWork):
     Accion = 'No'
@@ -136,5 +157,6 @@ def Tiempos_TemaWork(IdProyecto):
         Paginado += 1
 #Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
-Tiempos_TemaWork('317730')
+#Tiempos_TemaWork('317730')
+print costPersonal()
 print('#################################### End Costo Administrativo    ##########################')
