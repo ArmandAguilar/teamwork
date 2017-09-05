@@ -22,9 +22,10 @@ def costPersonal():
     cur.execute(Sql)
     for value in cur:
             SalaryJson += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
-            print SalaryJson
+
     con.commit()
     con.close()
+    print SalaryJson
     temp = len(SalaryJson)
     SalaryJson = SalaryJson[:temp - 2]
     SalaryJson += ']}'
