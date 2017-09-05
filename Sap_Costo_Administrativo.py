@@ -16,12 +16,11 @@ sys.setdefaultencoding("utf-8")
 def costPersonal():
     SalaryJson = ''
     SalaryJson = '{"Person":['
-    Sql = 'SELECT [IdRecurso],[CostoUnitario] FROM [SAP].[dbo].[RecursosCostos]'
+    Sql = 'SELECT [IdRecurso],[CostoUnitario] FROM [SAP].[dbo].[RecursosCostos] order by [IdRecurso] asc'
     con = pyodbc.connect(constr)
     cur = con.cursor()
     cur.execute(Sql)
     for value in cur:
-        if value[0] > 0:
             SalaryJson += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
             print SalaryJson
     con.commit()
