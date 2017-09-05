@@ -23,13 +23,14 @@ def costPersonal():
     for value in cur:
         if value[0] > 0:
             SalaryJson += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
+            print SalaryJson
     con.commit()
     con.close()
     temp = len(SalaryJson)
     SalaryJson = SalaryJson[:temp - 2]
     SalaryJson += ']}'
     data = json.loads(SalaryJson)
-    return data
+    #return data
 
 def validar_si_exiete(IdTemaWork):
     Accion = 'No'
