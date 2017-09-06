@@ -33,7 +33,7 @@ def costPersonal():
 
 def seekCostobyUser(data,IdUsuario):
     rCosto = 0.0
-    for vCosto in data:
+    for vCosto in data['Person']:
         if IdUsuario == vCosto[IdUser]:
             rCosto = vCosto['Cost']
     return rCosto
