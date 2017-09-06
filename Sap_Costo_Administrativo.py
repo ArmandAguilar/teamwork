@@ -25,12 +25,18 @@ def costPersonal():
 
     con.commit()
     con.close()
-    print SalaryJson
     temp = len(SalaryJson)
     SalaryJson = SalaryJson[:temp - 2]
     SalaryJson += ']}'
     data = json.loads(SalaryJson)
-    #return data
+    return data
+
+def seekCostobyUser(data,IdUsuario):
+    rCosto = 0.0
+    for vCosto in data:
+        if IdUsuario == vCosto[IdUser]:
+            rCosto = vCosto['Cost']
+    return rCosto
 
 def validar_si_exiete(IdTemaWork):
     Accion = 'No'
@@ -158,5 +164,5 @@ def Tiempos_TemaWork(IdProyecto):
 #Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
 #Tiempos_TemaWork('317730')
-costPersonal()
+print seekCostobyUser(costPersonal(),12)
 print('#################################### End Costo Administrativo    ##########################')
