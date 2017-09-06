@@ -166,6 +166,5 @@ def Tiempos_TemaWork(IdProyecto):
         Paginado += 1
 #Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
-#Tiempos_TemaWork('317730')
-print seekCostobyUser(costPersonal(),12)
+Tiempos_TemaWork('317730')
 print('#################################### End Costo Administrativo    ##########################')
