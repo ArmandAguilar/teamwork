@@ -7,6 +7,45 @@ import pypyodbc as pyodbc
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
+#Here we create a new function this fucntion
+#set a json with  all avtive user and get your cost them return a json
+#{ Id:UserId,Costo:$1 }
+def costPersonal():
+    SalaryJson = ''
+    SalaryJson = '{"Person":['
+    Sql = 'SELECT [IdRecurso],[CostoUnitario] FROM [SAP].[dbo].[RecursosCostos] order by [IdRecurso] asc'
+    con = pyodbc.connect(constr)
+    cur = con.cursor()
+    cur.execute(Sql)
+    for value in cur:
+            SalaryJson += '{"IdUser":' +  str(value[0])  + ',"Cost":' + str(value[1]) +  '},' + '\n'
+
+    con.commit()
+    con.close()
+    temp = len(SalaryJson)
+    SalaryJson = SalaryJson[:temp - 2]
+    SalaryJson += ']}'
+    data = json.loads(SalaryJson)
+    return data
+
+def seekCostobyUser(data,IdUsuario):
+    rCosto = 0.0
+    for vCosto in data['Person']:
+        if IdUsuario == vCosto['IdUser']:
+            rCosto = vCosto['Cost']
+    return rCosto
+
+def getHistoricalCosto(IdTemaWork):
+    sql = 'SELECT [Costo] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where [IdTemaWork] = \'' + str(IdTemaWork) + '\''
+    conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
+    cur = conn.cursor()
+    cur.execute(sql)
+    for value in cur:
+        CostoUnitario = value[0]
+    conn.commit()
+    conn.close()
+    return CostoUnitario
+
 def validar_si_exiete(IdTemaWork):
     Accion = 'No'
     sql_buscar = 'SELECT [Porcentaje] FROM [SAP].[dbo].[AATiemposDeProduccionClon] Where IdTemaWork = \'' + str(IdTemaWork) + '\''
@@ -104,14 +143,19 @@ def Tiempos_TemaWork(IdProyecto):
                 else:
 
                     if Existe == 'Si':
-                        sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
-                        procesar_sap_clon(sql)
+                        #Here we calculate the cost with the cost historical
+                        #Costo = getHistoricalCosto(dataValor['id'])
+                        #Producto = (PorcentajeF * float(Costo)) / 100
+                        #ProductoF = float("{0:.2f}".format(Producto))
+                        sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\', Costo =\'' + str(Costo) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
+                        #procesar_sap_clon(sql)
+                        print (sql)
                     else:
                         EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
                         if EsInsertable == 'Si':
-                            sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(ProyectoArray[0]) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\',\'' + str(HorasReal) + '\',\'' + str(IdTareaReal) + '\')'
-                            procesar_sap_clon(sql)
-                            #print (sqlSAP)
+                            sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(ProyectoArray[0]) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\',\'' + str(HorasReal) + '\',\'' + str(IdTareaReal) + '\',\'' + str(Costo) + '\')'
+                            #procesar_sap_clon(sql)
+                            print (sql)
                         else:
                             alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
                             print(alerta)
