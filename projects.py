@@ -67,7 +67,10 @@ for datos in datajson['projects']:
         #Aks is the first array is number
         CadValue = unicode(ProyectoArray[0])
         if CadValue.isnumeric():
-            projectos_id.insert(k,str(datos['id']))
+            if str(datos['id']) == '0000':
+                varr = 0
+            else:
+                projectos_id.insert(k,str(datos['id']))
         else:
             valor = (str(ProyectoArray[0]))
 #print projectos_id
