@@ -162,10 +162,13 @@ def Tiempos_TemaWork(IdProyecto):
                                     cadena = 'Vacaciones'
                                     print (str(cadena))
                                     ProductoF = 0.0
-                                else: str(dataValor['todo-item-id']) == '10224061':
-                                    cadena = 'Cumple'
-                                    print (str(cadena))
-                                    ProductoF = 0.0
+                                else:
+                                    if str(dataValor['todo-item-id']) == '10224061':
+                                        cadena = 'Cumple'
+                                        print (str(cadena))
+                                        ProductoF = 0.0
+                                    else:
+                                        va = 1
 
                                 EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
                                 if str(EsInsertable) == 'Si':
