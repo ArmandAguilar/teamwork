@@ -192,7 +192,6 @@ def Tiempos_TemaWork(IdProyecto):
         Paginado += 1
 #Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
-
 #420710 .- 1 NUEVOS NEGOCIOS
 #420741 .- 5 DIRECCION
 #402515 .- 5 APOYO A LA COMUNIDAD POR EL SISMO DEL 19-Sep-2017
@@ -201,8 +200,7 @@ print('#################################### Insert Costo Administrativo ########
 #416311 .- 60 CAPITAL HUMANO
 #418014 .- 9 ADMINISTRACION
 projectos_id = ['420710','420741','402515','336576','420774','416311','418014']
-#Tiempos_TemaWork('418014')
-#for value in projectos_id:
-#    Tiempos_TemaWork(value)
-Tiempos_TemaWork('416311')
+for value in projectos_id:
+    Tiempos_TemaWork(value)
+#Tiempos_TemaWork('416311')
 print('#################################### End Costo Administrativo    ##########################')
