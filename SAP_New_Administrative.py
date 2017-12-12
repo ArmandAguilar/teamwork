@@ -154,9 +154,20 @@ def Tiempos_TemaWork(IdProyecto):
                                 Costo = getHistoricalCosto(dataValor['id'])
                                 Producto = (PorcentajeF * float(Costo)) / 100
                                 ProductoF = float("{0:.2f}".format(Producto))
+                                if str(dataValor['todo-item-id']) == '10161660':
+                                    cadena = 'Vacaciones'
+                                    print (str(cadena))
+                                    ProductoF = 0.0
+                                else:
+                                    if str(dataValor['todo-item-id']) == '10224061':
+                                        cadena = 'Cumple'
+                                        print (str(cadena))
+                                        ProductoF = 0.0
+                                    else:
+                                        va = 1
                                 sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\', [NumProyecto] = \'' + str(NumProyecto) + '\',[NomProyecto] = \'' + str(NomProyecto) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
                                 #procesar_sap_clon(sql)
-                                #print (sql)
+                                print (sql)
                             else:
                                 if str(dataValor['todo-item-id']) == '10161660':
                                     cadena = 'Vacaciones'
