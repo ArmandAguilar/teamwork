@@ -191,6 +191,7 @@ print('#################################### Insert Costo Administrativo ########
 #416311 .- 60 CAPITAL HUMANO
 #418014 .- 9 ADMINISTRACION
 projectos_id = ['420710','420741','402515','336576','420774','416311','418014']
-for value in projectos_id:
-    Tiempos_TemaWork(value)
+Tiempos_TemaWork('418014')
+#for value in projectos_id:
+#    Tiempos_TemaWork(value)
 print('#################################### End Costo Administrativo    ##########################')
