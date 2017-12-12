@@ -109,10 +109,10 @@ def Tiempos_TemaWork(IdProyecto):
             # i process data
             print ('================> Pagina: ' + str(Paginado) + ' <================')
             for dataValor in datajsonTiempo['time-entries']:
-                if len(dataValor['todo-list-name']) == 0:
+                if len(dataValor['todo-list-name']) <= -1:
                     Passv = 0
                 else:
-                    ProyectoArray = str(dataValor['todo-list-name']).split(" ")
+                    ProyectoArray = str(dataValor['project-name']).split(" ")
                     DescripcionUser = str(dataValor['description'])
                     DescripcionUser = str(DescripcionUser).replace('\'',' ')
                     DescripcionUser = str(DescripcionUser).replace('"',' ')
@@ -145,6 +145,7 @@ def Tiempos_TemaWork(IdProyecto):
                         IdTareaReal = str(dataValor['todo-item-id'])
                         #are there fileds in the data base
                         Existe = validar_si_exiete(dataValor['id'])
+                        #print ('Id Is : ' + str(dataValor['id']))
                         if DirMetaDataUser['Nombre'] == 'V':
                                 vPass = 0
                         else:
@@ -181,5 +182,15 @@ def Tiempos_TemaWork(IdProyecto):
         Paginado += 1
 #Administrative Costs 317730
 print('#################################### Insert Costo Administrativo ##########################')
-Tiempos_TemaWork('419726')
+
+#420710 .- 1 NUEVOS NEGOCIOS
+#420741 .- 5 DIRECCION
+#402515 .- 5 APOYO A LA COMUNIDAD POR EL SISMO DEL 19-Sep-2017
+#336576 .- 7 MEJORA. PROYECTOS ESTRUCTURALES
+#420774 .- 53 MEJORA. PROYECTOS INTEGRALES
+#416311 .- 60 CAPITAL HUMANO
+#418014 .- 9 ADMINISTRACION
+projectos_id = ['420710','420741','402515','336576','420774','416311','418014']
+for value in projectos_id:
+    Tiempos_TemaWork(value)
 print('#################################### End Costo Administrativo    ##########################')

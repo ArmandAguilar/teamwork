@@ -63,6 +63,30 @@ for datos in datajson['projects']:
         Vacio = "o"
     elif datos['id'] == '402515':
         Vacio = "o"
+    elif datos['id'] == '404137':
+        Vacio = "o"
+    elif datos['id'] == '413494':
+        Vacio = "o"
+    elif datos['id'] == '419603':
+        Vacio = "o"
+    elif datos['id'] == '419712':
+        Vacio = "o"
+    elif datos['id'] == '420710':
+        Vacio = "o"
+    elif datos['id'] == '420741':
+        Vacio = "o"
+    elif datos['id'] == '402515':
+        Vacio = "o"
+    elif datos['id'] == '336576':
+        Vacio = "o"
+    elif datos['id'] == '420774':
+        Vacio = "o"
+    elif datos['id'] == '416311':
+        Vacio = "o"
+    elif datos['id'] == '418014':
+        Vacio = "o"
+    elif datos['id'] == '411841':
+        Vacio = "o"
     else:
         #print(str(datos['id']) + '.-' + str(datos['name']) )
         ProyectoArray = str(datos['name']).split(" ")
