@@ -1,3 +1,4 @@
 libs/
 tokens.py
 Oldders/
+*.pyc
