@@ -2,3 +2,4 @@ libs/
 tokens.py
 Oldders/
 *.pyc
+.*DS_Store
