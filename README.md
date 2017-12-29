@@ -31,3 +31,6 @@
 **validate** : This script have function of validation of register for example the script can know if a user have more of 9 hr in a project and don’t permit the insert o update of register.
 
 **tareas** : This script make sync of all task  of all proyect of teamwork DB and them insert or update this task in MSSQL table AATareasTeamWork.
+
+
+![How is works](https://github.com/ArmandAguilar/teamwork/blob/master/Diagram/Dirgram.png)
