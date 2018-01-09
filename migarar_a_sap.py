@@ -33,7 +33,7 @@ def filed_exist(IdTemaWork):
 #This function to merge the
 def migrate():
     valor = 0
-    sql = 'SELECT [Nombre],[Apellidos],[NumProyecto],[NomProyecto],[Dia],[Tarea],[Porcentaje],[Producto],[IdUsuario],[Departamento],[Perfil],[Titulo],[Acronimo],[IdTemaWork] FROM  [SAP].[dbo].[AATiemposDeProduccionClon] WHERE [Dia] >= \'01-06-2017\''
+    sql = 'SELECT [Nombre],[Apellidos],[NumProyecto],[NomProyecto],[Dia],[Tarea],[Porcentaje],[Producto],[IdUsuario],[Departamento],[Perfil],[Titulo],[Acronimo],[IdTemaWork] FROM  [SAP].[dbo].[AATiemposDeProduccionClon] WHERE [Dia] >= \'01-05-2017\''
     conn = pymssql.connect(host=hostMSSQL,user=userMSSQL,password=passMSSQL,database=dbMSSQL)
     cur = conn.cursor()
     cur.execute(sql)
