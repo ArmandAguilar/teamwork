@@ -142,6 +142,8 @@ def Tiempos_TemaWork(IdProyecto):
                 else:
                     #Here seek if exist tags
                     existTag = 0
+                    NoProyecto = ProyectoArray[0]
+                    NomProyecto = NomProyecto
                     try:
                         pexistTag = len(dataValor['tags'])
                     except KeyError:
@@ -149,12 +151,20 @@ def Tiempos_TemaWork(IdProyecto):
 
                     if existTag == 0:
                         #Some code here
+                        NoProyecto = ProyectoArray[0]
+                        NomProyecto = NomProyecto
                     elif existTag == 2059:
                         #some code Here
+                        NoProyecto = 2059
+                        NomProyecto = ''
                     elif existTag == 2058:
                         #some code Here
+                        NoProyecto = 2058
+                        NomProyecto = ''
                     elif existTag == 2052:
                         #some code here
+                        NoProyecto = 2052
+                        NomProyecto = ''
 
                     if Existe == 'Si':
                         #Here we calculate the cost with the cost historical
