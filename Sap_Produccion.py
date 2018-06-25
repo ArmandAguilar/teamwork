@@ -4,6 +4,10 @@ from projects import *
 from sap import *
 from mssql import *
 import pypyodbc as pyodbc
+import urllib2, base64
+import simplejson as json
+import unicodedata
+import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -88,8 +92,9 @@ def Tiempos_TemaWork(IdProyecto):
     Paginado = 1
     Limite = True
     while Limite == True:
-        #
-        requestTiempo = urllib2.Request('https://forta.teamwork.com/projects/' + IdProyecto + '/time.json?page=' + str(Paginado))
+        urls = 'https://forta.teamwork.com/projects/' + IdProyecto + '/time.json?'
+        print (str(urls))
+        requestTiempo = urllib2.Request('https://forta.teamwork.com/projects/' + IdProyecto + '/time.json?fromdate=20180101&page=' + str(Paginado))
         requestTiempo.add_header("Authorization", "BASIC " + base64.b64encode(key + ":xxx"))
         responseTiempo = urllib2.urlopen(requestTiempo)
         datajsonTiempo = json.loads(responseTiempo.read(),encoding='utf-8',cls=None,object_hook=None, parse_float=None,parse_int=None, parse_constant=None,object_pairs_hook=None)
@@ -163,4 +168,5 @@ def Tiempos_TemaWork(IdProyecto):
 print('#################################### Insert Porduccion ##########################')
 for proyecto in projectos_id:
     Tiempos_TemaWork(proyecto)
+#Tiempos_TemaWork('329628')
 print('#################################### End Porduccion ##########################')
