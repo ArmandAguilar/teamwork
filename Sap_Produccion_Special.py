@@ -142,47 +142,54 @@ def Tiempos_TemaWork(IdProyecto):
                 else:
                     #Here seek if exist tags
                     existTag = 0
+                    TagName = 0
                     NoProyecto = ProyectoArray[0]
                     NomProyecto = NomProyecto
                     try:
-                        pexistTag = len(dataValor['tags'])
+                        existTag = len(dataValor['tags'])
+                        if existTag > 0:
+                            TagName = dataValor['tags'][0]['name']
                     except KeyError:
                         print 'There are problems here'
 
-                    if existTag == 0:
+                    if str(TagName) == '0':
                         #Some code here
                         NoProyecto = ProyectoArray[0]
                         NomProyecto = NomProyecto
-                    elif existTag == 2059:
-                        #some code Here
-                        NoProyecto = 2059
-                        NomProyecto = ''
-                    elif existTag == 2058:
-                        #some code Here
-                        NoProyecto = 2058
-                        NomProyecto = ''
-                    elif existTag == 2052:
-                        #some code here
-                        NoProyecto = 2052
-                        NomProyecto = ''
+                    else:
+                        if str(TagName) == '2059':
+                            #some code Here
+                            NoProyecto = 2059
+                            NomProyecto = 'PI. Hotel Via Montejo'
+                        elif str(TagName) == '2058':
+                            #some code Here
+                            NoProyecto = 2058
+                            NomProyecto = 'PI. Edif. Residencial Via Montejo'
+                        elif str(TagName) == '2052':
+                            #some code here
+                            NoProyecto = 2052
+                            NomProyecto = 'Proy Torre 3 C. Towers, Merida'
 
                     if Existe == 'Si':
                         #Here we calculate the cost with the cost historical
                         Costo = getHistoricalCosto(dataValor['id'])
                         Producto = (PorcentajeF * float(Costo)) / 100
                         ProductoF = float("{0:.2f}".format(Producto))
-                        sql = 'UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
+                        if existTag == 0:
+                            sql = str(TagName) + '-UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\',[NumProyecto]=\'' + str(NoProyecto) + '\' ,[NomProyecto]=\'' + str(NomProyecto) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
+                        else:
+                            sql = str(TagName) + '-UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\',[NumProyecto]=\'' + str(NoProyecto) + '\' ,[NomProyecto]=\'' + str(NomProyecto) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
                         #procesar_sap_clon(sql)
-                        #print (sql)
+                        print (sql)
                     else:
                         EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
                         if EsInsertable == 'Si':
-                            sql = 'INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(ProyectoArray[0]) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\',\'' + str(HorasReal) + '\',\'' + str(IdTareaReal) + '\',\'' + str(Costo) + '\')'
+                            sql = str(TagName) + '-INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NoProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\',\'' + str(HorasReal) + '\',\'' + str(IdTareaReal) + '\',\'' + str(Costo) + '\')'
                             #procesar_sap_clon(sql)
-                            #print (sql)
+                            print (sql)
                         else:
                             alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
-                            #print(alerta)
+                            print(alerta)
         Paginado += 1
 print('#################################### Insert Porduccion 2050 = 446552  ##########################')
 Tiempos_TemaWork(446552)
