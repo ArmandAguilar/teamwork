@@ -176,24 +176,29 @@ def Tiempos_TemaWork(IdProyecto):
                         Producto = (PorcentajeF * float(Costo)) / 100
                         ProductoF = float("{0:.2f}".format(Producto))
                         if existTag == 0:
-                            sql = str(TagName) + '-UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\',[NumProyecto]=\'' + str(NoProyecto) + '\' ,[NomProyecto]=\'' + str(NomProyecto) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
+                            sql ='UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\',[NumProyecto]=\'' + str(NoProyecto) + '\' ,[NomProyecto]=\'' + str(NomProyecto) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
                         else:
-                            sql = str(TagName) + '-UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\',[NumProyecto]=\'' + str(NoProyecto) + '\' ,[NomProyecto]=\'' + str(NomProyecto) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
-                        #procesar_sap_clon(sql)
+                            sql ='UPDATE [SAP].[dbo].[AATiemposDeProduccionClon] SET [Nombre] = \'' +  str(DirMetaDataUser['Nombre']) + '\',[Apellidos] = \'' + str(DirMetaDataUser['Apellidos']) + '\',[Dia] = \'' + str(FechaJsonArrays[0]) + '\',[Tarea] = \'' + str(DescripcionUser) + '\',[Porcentaje] = \'' + str(PorcentajeF) + '\',[Producto] = \'' + str(ProductoF) + '\',[IdUsuario] = \'' + str(DirMetaDataUser['IdUsuario']) + '\',[Departamento] = \'' + str(DirMetaDataUser['Departamento'])  + '\',[Perfil] = \'' + str(DirMetaDataUser['Perfil']) + '\',[Titulo] = \'.\',[Acronimo] = \'' + str(DirMetaDataUser['Acronimo']) + '\',[HoraReal]=\'' + str(HorasReal) + '\',[IdTarea]=\'' + str(IdTareaReal) + '\',[NumProyecto]=\'' + str(NoProyecto) + '\' ,[NomProyecto]=\'' + str(NomProyecto) + '\' WHERE IdTemaWork=\'' + str(dataValor['id']) + '\''
+                        procesar_sap_clon(sql)
                         print (sql)
                     else:
                         EsInsertable = validar_dia_completo(DirMetaDataUser['IdUsuario'],FechaJsonArrays[0],PorcentajeF)
                         if EsInsertable == 'Si':
-                            sql = str(TagName) + '-INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NoProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\',\'' + str(HorasReal) + '\',\'' + str(IdTareaReal) + '\',\'' + str(Costo) + '\')'
-                            #procesar_sap_clon(sql)
+                            sql ='INSERT INTO [SAP].[dbo].[AATiemposDeProduccionClon] VALUES (\'' + str(DirMetaDataUser['Nombre']) + '\',\'' + str(DirMetaDataUser['Apellidos']) + '\',\'' + str(NoProyecto) + '\',\'' + str(NomProyecto) + '\',\'' + str(FechaJsonArrays[0]) + '\',\'' + str(DescripcionUser) + '\' ,\'' + str(PorcentajeF) + '\' ,\'' + str(ProductoF) + '\',\'' + str(DirMetaDataUser['IdUsuario']) + '\',\'0\',\'' + str(DirMetaDataUser['Departamento']) + '\',\'' + str(DirMetaDataUser['Perfil']) + '\',\'.\',\'' + str(DirMetaDataUser['Acronimo'])+ '\',\'Si\',\'' + str(dataValor['id']) + '\',\'' + str(HorasReal) + '\',\'' + str(IdTareaReal) + '\',\'' + str(Costo) + '\')'
+                            procesar_sap_clon(sql)
                             print (sql)
                         else:
-                            alerta = 'Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
+                            alerta = 'Id: ' + str(dataValor['id']) + ' Proyecto: ' + str(dataValor['project-id']) + '-' + str(dataValor['project-name']) + ' Usuario (' + str(DirMetaDataUser['IdUsuario']) + ') : ' + str(DirMetaDataUser['Nombre']) + ' ' + str(DirMetaDataUser['Apellidos']) + ' Dia:' +  str(FechaJsonArrays[0]) + ' Horas :' +  str(HorasReal) + ' Porcentaje: ' + str(PorcentajeF)
+                            sqlDeleteClon = 'DELETE FROM [SAP].[dbo].[AATiemposDeProduccionClon] WHERE IdUsuario = \'' + str(DirMetaDataUser['IdUsuario']) + '\' and Dia = \'' + str(FechaJsonArrays[0]) + '\''
+                            sqlDelete = 'DELETE FROM [SAP].[dbo].[AATiemposDeProduccion] WHERE IdUsuario = \'' + str(DirMetaDataUser['IdUsuario']) + '\' and Dia = \'' + str(FechaJsonArrays[0]) + '\''
                             print(alerta)
+                            #procesar_sap_clon(sqlDeleteClon)
+                            #procesar_sap_clon(sqlDelete)
         Paginado += 1
-print('#################################### Insert Porduccion 2050 = 446552  ##########################')
+print('#################################### Insert 2050 = 446552  ##########################')
 Tiempos_TemaWork(446552)
 print('#################################### End Porduccion ##########################')
-#print('#################################### Insert Porduccion 2061 = 456496 ##########################')
-#Tiempos_TemaWork(proyecto)
-#print('#################################### End Porduccion ##########################')
+print('--------------------------------------------------------------------------------------------------')
+print('#################################### Insert 2061 = 456496 ##########################')
+Tiempos_TemaWork(456496)
+print('#################################### End Porduccion ##########################')
